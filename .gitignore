@@ -1,0 +1,46 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local virtual environments
+.venv/
+venv/
+env/
+
+# Local environment configuration (keep templates)
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Build and packaging output
+/build/
+/dist/
+*.egg-info/
+
+# Generated test and coverage reports
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+/tests/artifacts/pytest_results.xml
+
+# Local application history
+/data/history.json
+
+# Local project notes and prompts
+/IMPLEMENTATION_STATUS.md
+/FINAL_AUDIT.md
+/Prompts_PVD_DWT_Desktop_Python_v2.md
+
+# Editor and operating system files
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+Desktop.ini
+~$*.docx
