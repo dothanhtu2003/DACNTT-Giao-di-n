@@ -81,6 +81,7 @@ class MainWindow(tk.Tk):
             self.set_status('Đang xử lý; vui lòng đợi tác vụ hiện tại hoàn tất.')
             return
         self.busy = True
+        self.compare_tab.update_busy()
         self.set_status('Đang xử lý…')
         self.configure(cursor='watch')
         future = self.executor.submit(work)
@@ -90,6 +91,7 @@ class MainWindow(tk.Tk):
                 self.after(60, poll)
                 return
             self.busy = False
+            self.compare_tab.update_busy()
             self.configure(cursor='')
             try:
                 on_done(future.result())

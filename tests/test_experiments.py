@@ -76,3 +76,28 @@ def test_cli_unicode_paths(tmp_path):
                             env=os.environ | {'PYTHONIOENCODING': 'cp1252'}, timeout=30)
     assert result.returncode == 0, result.stderr.decode('utf-8', errors='replace')
     assert (output / 'robustness_results.csv').exists()
+
+
+def test_gui_service_matches_benchmark_actual_case_seed(tmp_path):
+    from services.stego_service import StegoService
+    from storage.history_store import HistoryStore
+    from experiments.robustness_runner import public_payload
+    path = tmp_path / 'same.png'
+    Image.fromarray(np.random.default_rng(27).integers(24, 232, (128, 128, 4),
+                                                      dtype=np.uint8)).save(path)
+    config = default_config()
+    config['payload_levels'] = [{'kind': 'bytes', 'value': 8}]
+    rows = run_experiments([path], tmp_path / 'benchmark', config)
+    service = StegoService(HistoryStore(tmp_path / 'history.json'))
+    embedded = service.compare(path, public_payload(8))['results']
+    assert all(r['success'] for r in embedded.values())
+    for attack in config['attacks']:
+        parameter = json.dumps(attack['parameters'], sort_keys=True, separators=(',', ':'))
+        cases = [r for r in rows if r['attack'] == attack['name'] and r['attack_parameter'] == parameter]
+        results = service.try_robustness(embedded, attack['name'], attack['parameters'], cases[0]['seed'])
+        for row in cases:
+            result = results[row['method']]
+            assert result['ber'] == row['ber_after_attack']
+            assert result['success'] == row['extract_success']
+            assert result['error_type'] == row['error_type']
+            assert (result['width'], result['height']) == (row['attacked_width'], row['attacked_height'])

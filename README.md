@@ -24,7 +24,7 @@ python main.py
 
 1. **Nhúng dữ liệu:** chọn PNG/BMP, chọn PVD/DWT, nhập UTF-8, kiểm tra dung lượng, nhúng, xem metrics, lưu PNG. Tự trích xuất lại để xác nhận packet khớp trước khi cho lưu.
 2. **Trích xuất dữ liệu:** chọn ảnh và đúng method, xem message chỉ đọc, Copy; báo lỗi LENGTH/UTF-8.
-3. **So sánh PVD – DWT:** cùng ảnh/message; capacity, payload, packet bits, usage, bpp, PSNR, SSIM, BER, extract status; hai nhánh độc lập, hỗ trợ partial, lưu từng PNG.
+3. **So sánh PVD – DWT:** cùng ảnh/message; capacity, payload, packet bits, usage, bpp, PSNR, SSIM, BER kiểm tra nhúng, extract status; hai nhánh độc lập, hỗ trợ partial, lưu từng PNG trước tác động. Phần **Thử nghiệm độ bền** nằm trong tab này.
 4. **Lịch sử:** metadata local, refresh, xem chi tiết, xóa bản ghi hoặc xóa tất cả có xác nhận.
 
 Message rỗng hợp lệ, cần packet 32 bit. History **không lưu secret message, extracted message hoặc raw payload**; `data/history.json` hỏng/trống được khôi phục thành danh sách rỗng. Nội dung trích xuất chỉ ở bộ nhớ GUI, trừ khi người dùng chủ động Copy.
@@ -59,7 +59,25 @@ Xem [TEST_REPORT.md](TEST_REPORT.md).
 
 ## Robustness và benchmark
 
-`experiments/` tách khỏi unit tests, không thêm tab GUI. OpenCV thực sự dùng cho JPEG encode/decode, Gaussian blur và resize; NumPy hỗ trợ noise và biến đổi cường độ.
+### Thử độ bền trong tab So sánh
+
+Chọn ảnh PNG/BMP và nhập thông điệp, bấm **Chạy so sánh**, sau đó cuộn xuống phần **Thử nghiệm độ bền**. Chọn tác động, nhập tham số đang hiển thị và bấm **Thử độ bền**. Mỗi lần thử độc lập từ ảnh Stego trước tác động đã kiểm tra thành công. Nếu một phương pháp nhúng thất bại, phương pháp còn lại vẫn được thử; phương pháp thất bại ghi “Không thử được — nhúng thất bại”. Nút thử bị khóa khi chưa có kết quả hợp lệ hoặc có tác vụ đang chạy.
+
+Giá trị tham số mặc định là mức đầu tiên của từng tác động trong `experiments/experiment_config.py`. Chỉ Gaussian và muối tiêu dùng seed; mặc định là `SEED` trong cùng cấu hình, có thể nhập số nguyên không âm. Seed được kiểm tra bằng NumPy `SeedSequence`, không áp trần 32 bit. Hai phương pháp nhận cùng seed thực tế; các tác động khác ghi seed `null` trong lịch sử. Benchmark vẫn sinh seed cho từng trường hợp bằng cách hiện có; muốn đối chiếu GUI với một dòng CSV phải nhập **seed thực tế của dòng đó**, cùng ảnh, payload và tham số.
+
+Tham số thực phải hữu hạn, không nhận NaN/vô cực. Miền tham số theo `attacks.py`, với hai **giới hạn riêng của GUI/dịch vụ tương tác**: kernel là số nguyên lẻ từ **1 đến 51**, scale **0 < scale ≤ 4** để hạn chế kích thước tác vụ. Những giới hạn này không áp dụng cho chương trình benchmark. JPEG quality là số nguyên 1–100; sigma ≥ 0; amount trong [0,1]; delta hữu hạn; alpha ≥ 0; fraction trong (0,1]. Tham số sai được báo trước khi gửi tác vụ nền.
+
+Ảnh sau tác động, kích thước, cấu hình, seed, BER và trạng thái khớp toàn bộ packet được hiển thị riêng cho PVD/DWT. PSNR/SSIM và biểu đồ so sánh thuộc **trước tác động**. Đánh giá dùng nguyên `assess_extraction()` với `engine.extract()`: chỉ tính BER khi độ dài dãy bit và 32 bit LENGTH khớp packet gốc; LENGTH sai hoặc thiếu dữ liệu hiển thị **Không xác định**, không thay bằng 0 hoặc 1. UTF-8 hợp lệ không chứng minh khớp packet; nếu UTF-8 lỗi sau khi tính BER thì giữ BER và báo thất bại. Nội dung thông điệp không hiển thị trong kết quả độ bền.
+
+Resize giữ kích thước đã đổi; crop cắt giữa và giữ phần ảnh còn lại. Không phục hồi kích thước hoặc căn chỉnh, nên thuật toán có thể mất đồng bộ. Tác động quang học, kể cả JPEG encode/decode trong bộ nhớ, giữ alpha gốc; resize/crop biến đổi alpha cùng ảnh. Chỉ có chức năng lưu Stego **trước** tác động.
+
+Đổi ảnh/thông điệp xóa kết quả nhúng và độ bền; chạy lại so sánh cũng vô hiệu hóa kết quả cũ ngay. Đổi tác động/tham số/seed chỉ xóa kết quả độ bền, giữ Stego để thử lại. Token phiên bản loại bỏ kết quả cũ ngay cả khi đổi lựa chọn rồi đổi lại. Worker chỉ dùng bản chụp dữ liệu/cấu hình, không truy cập Tkinter.
+
+Mỗi phương pháp thực sự được thử ghi một metadata với `operation=robustness`, tên tác động, `attack_parameters` JSON chuẩn hóa, seed hoặc null, BER, trạng thái, kích thước và lỗi nếu có. Không ghi thông điệp, packet gốc, byte payload hoặc mảng ảnh. Packet đối chiếu chỉ ở bộ nhớ. Bản ghi cũ thiếu trường mới vẫn đọc được; tab Lịch sử ghi nhãn **Thử độ bền**, cấu hình xem qua **Xem chi tiết**. Tác vụ hoàn tất cho cấu hình cũ vẫn ghi lịch sử của bản chụp đó, nhưng không hiển thị như kết quả lựa chọn mới. Lỗi ghi lịch sử không xóa kết quả và được hiển thị thành cảnh báo.
+
+### Chạy hàng loạt bằng lệnh
+
+`experiments/` tiếp tục hỗ trợ CLI; GUI chỉ tái sử dụng hàm áp dụng tác động và đánh giá packet, không chạy ma trận benchmark. OpenCV thực sự dùng cho JPEG encode/decode, Gaussian blur và resize; NumPy hỗ trợ noise và biến đổi cường độ.
 Đủ baseline none, JPEG, Gaussian noise, Salt & Pepper, blur, brightness, contrast, resize, crop.
 
 ```powershell
@@ -97,11 +115,11 @@ core/
 gui/
   main_window.py, common.py, embed_tab.py, extract_tab.py
   compare_tab.py, history_tab.py, dwt_view.py
-services/stego_service.py
+services/stego_service.py, services/robustness.py
 metrics/metrics.py
 storage/history_store.py
 experiments/
-  experiment_config.py, attacks.py, robustness_runner.py
+  experiment_config.py, attacks.py, extraction.py, robustness_runner.py
   benchmark_runner.py, summarize_results.py
   results/
     robustness_results.csv, experiment_config_snapshot.json, stego/

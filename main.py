@@ -4,7 +4,6 @@ from gui.main_window import MainWindow
 
 
 def main() -> None:
-    """Khởi chạy giao diện bốn tab."""
     MainWindow().mainloop()
 
 

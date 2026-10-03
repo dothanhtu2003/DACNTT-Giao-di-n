@@ -10,6 +10,10 @@ from core.image_utils import load_image, image_info, save_stego
 from core.payload import build_packet, packet_to_bits, decode_message, read_length
 from metrics.metrics import payload_metrics, psnr, ssim, ber
 from storage.history_store import HistoryStore
+from experiments.attacks import apply_attack
+from experiments.extraction import assess_extraction
+from services.robustness import validate_configuration
+import json
 
 ENGINES = {'PVD': pvd, 'DWT': dwt}
 
@@ -61,7 +65,7 @@ class StegoService:
             result.update(payload_metrics(len(message.encode('utf-8')), engine.calculate_capacity(image),
                                           result['width'], result['height']))
             output = engine.embed(image, expected)
-            result.update(output_image=output, psnr=psnr(image, output))
+            result.update(output_image=output, psnr=psnr(image, output), expected_packet=expected)
             result['ssim'] = ssim(image, output) if min(image.shape[:2]) >= 3 else None
             # No success claim when clipping/rounding prevents exact recovery.
             try:
@@ -103,6 +107,40 @@ class StegoService:
         results = {method: self.embed(image_path, message, method, operation='compare') for method in ENGINES}
         successes = sum(result['success'] for result in results.values())
         return {'status': {0: 'failed', 1: 'partial', 2: 'success'}[successes], 'results': results}
+
+    def try_robustness(self, embedded, attack, parameters, seed=None):
+        parameters, seed = validate_configuration(attack, parameters, seed)
+        results = {}
+        for method in ENGINES:
+            source = embedded.get(method, {})
+            result = dict(method=method, attack=attack, attack_parameters=json.dumps(
+                parameters, sort_keys=True, separators=(',', ':'), allow_nan=False),
+                seed=seed, output_image=None, ber=None, success=False,
+                width=None, height=None, status='not_tested', error=None)
+            results[method] = result
+            if not source.get('success') or source.get('output_image') is None or source.get('expected_packet') is None:
+                result['error'] = 'Không thử được — nhúng thất bại'
+                continue
+            try:
+                attacked = apply_attack(source['output_image'].copy(), attack, parameters, seed=seed)
+                assessment = assess_extraction(engine_for(method), attacked, source['expected_packet'])
+                result.update(output_image=attacked, width=attacked.shape[1], height=attacked.shape[0],
+                              ber=assessment['ber_after_attack'], success=assessment['extract_success'],
+                              status='success' if assessment['extract_success'] else 'extraction_failed',
+                              error=assessment['notes'], error_type=assessment['error_type'])
+            except Exception as exc:
+                # A failure in either branch must not discard the other method's result.
+                result.update(status='failed', error=str(exc), error_type=type(exc).__name__)
+            record = {key: result.get(key) for key in (
+                'method', 'attack', 'attack_parameters', 'seed', 'ber', 'status', 'width', 'height',
+                'error', 'error_type')}
+            record.update(timestamp=datetime.now(timezone.utc).isoformat(), operation='robustness',
+                          input_filename=Path(source['input_path']).name)
+            try:
+                result['history_id'] = self.history.add_record(record)
+            except OSError:
+                result['history_warning'] = 'Không ghi được lịch sử; kết quả thử vẫn được giữ.'
+        return results
 
     def save(self, result, path):
         if not result['success'] or result['output_image'] is None:

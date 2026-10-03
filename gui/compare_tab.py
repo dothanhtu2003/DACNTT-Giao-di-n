@@ -1,56 +1,223 @@
+import tkinter as tk
 from tkinter import ttk
+from copy import deepcopy
 
 from gui.common import BaseTab, Preview, message_editor, format_value
+from gui.compare_chart import CompareChart
+from services.robustness import (ATTACK_LABELS, DEFAULT_PARAMETERS, PARAMETER_HELP,
+                                 NOISE, SEED, validate_configuration)
 
 ROWS = [('Capacity bits', 'capacity_bits'), ('Payload bytes', 'payload_bytes'),
         ('Packet bits', 'packet_bits'), ('Usage %', 'usage_percent'), ('bpp', 'bpp'),
-        ('PSNR (dB)', 'psnr'), ('SSIM', 'ssim'), ('BER', 'ber'), ('Extract status', 'extract_status')]
+        ('PSNR (dB)', 'psnr'), ('SSIM', 'ssim'),
+        ('BER nhúng', 'ber'), ('Khôi phục packet', 'extract_status')]
 
 
 class CompareTab(BaseTab):
     def __init__(self, parent, app):
         super().__init__(parent, app)
         self.results = {}
-        self.columnconfigure(0, weight=2)
-        self.columnconfigure(1, weight=3)
+        self.version = 0
+        self.robustness_results = {}
+        self.columnconfigure(0, weight=1)
         self.rowconfigure(0, weight=1)
-        left = ttk.Frame(self)
+        self.canvas = tk.Canvas(self, highlightthickness=0, background='#f4f6f8')
+        self.canvas.grid(row=0, column=0, sticky='nsew')
+        scroll = ttk.Scrollbar(self, orient='vertical', command=self.canvas.yview)
+        scroll.grid(row=0, column=1, sticky='ns')
+        self.canvas.configure(yscrollcommand=scroll.set)
+        self.content = ttk.Frame(self.canvas)
+        window = self.canvas.create_window((0, 0), window=self.content, anchor='nw')
+        self.content.bind('<Configure>', lambda e: self.canvas.configure(scrollregion=self.canvas.bbox('all')))
+        self.canvas.bind('<Configure>', lambda e: self.canvas.itemconfigure(window, width=e.width))
+        self.app.bind_all('<MouseWheel>', self.scroll_wheel, add='+')
+        top = ttk.Frame(self.content, height=580)
+        top.pack(fill='x')
+        top.pack_propagate(False)
+        top.grid_propagate(False)
+        top.columnconfigure(0, weight=2)
+        top.columnconfigure(1, weight=3)
+        top.rowconfigure(0, weight=1)
+        left = ttk.Frame(top)
         left.grid(row=0, column=0, sticky='nsew', padx=(0, 18))
-        self.preview = Preview(left, 'Cùng ảnh nguồn', (320, 155))
+        self.preview = Preview(left, 'Cùng ảnh nguồn', (320, 100))
         self.preview.pack(fill='both', expand=True)
         ttk.Button(left, text='Chọn ảnh PNG/BMP', command=self.choose).pack(anchor='w', pady=8)
         ttk.Label(left, text='Cùng văn bản UTF-8').pack(anchor='w')
-        frame, self.message = message_editor(left, height=3)
+        frame, self.message = message_editor(left, height=2)
         frame.pack(fill='both', expand=True, pady=8)
         self.message.bind('<<Modified>>', self.message_changed)
         ttk.Button(left, text='Chạy so sánh', style='Accent.TButton', command=self.compare).pack(anchor='w')
-        right = ttk.Frame(self)
+        right = ttk.Frame(top)
         right.grid(row=0, column=1, sticky='nsew')
-        self.table = ttk.Treeview(right, columns=('metric', 'PVD', 'DWT'), show='headings', height=9, style='Compare.Treeview')
+        right.columnconfigure(0, weight=1)
+        right.rowconfigure(1, weight=1, minsize=150)
+        ttk.Style(self).configure('Compare.Treeview', rowheight=22)
+        table_frame = ttk.Frame(right)
+        table_frame.grid(row=0, column=0, sticky='ew')
+        ttk.Label(table_frame, text='Trước tác động · PSNR/SSIM: ảnh gốc so với Stego').pack(anchor='w')
+        self.table = ttk.Treeview(table_frame, columns=('metric', 'PVD', 'DWT'), show='headings', height=9, style='Compare.Treeview')
         for key, width in [('metric', 135), ('PVD', 165), ('DWT', 165)]:
             self.table.heading(key, text='Tiêu chí' if key == 'metric' else key)
             self.table.column(key, width=width, minwidth=90, anchor='w')
         self.table.pack(fill='x')
-        preview_row = ttk.Frame(right)
-        preview_row.pack(fill='both', expand=True, pady=(12, 0))
+        self.chart = CompareChart(right)
+        self.chart.grid(row=1, column=0, sticky='nsew', pady=(6, 0))
+        preview_row = ttk.Frame(left)
+        preview_row.pack(side='bottom', fill='x', before=self.preview, pady=(6, 0))
+        save_row = ttk.Frame(right)
+        save_row.grid(row=2, column=0, sticky='ew')
         self.previews, self.save_buttons = {}, {}
         for method in ('PVD', 'DWT'):
             column = ttk.Frame(preview_row)
             column.pack(side='left', fill='both', expand=True, padx=3)
-            self.previews[method] = Preview(column, method + ' Stego', (230, 100))
+            self.previews[method] = Preview(column, method + ' trước tác động', (230, 50))
+            self.previews[method].configure(padding=2)
+            self.previews[method].caption.pack_forget()
             self.previews[method].pack(fill='both', expand=True)
-            button = ttk.Button(column, text=f'Lưu {method} PNG', state='disabled',
+            button = ttk.Button(save_row, text=f'Lưu {method} trước tác động', state='disabled',
                                 command=lambda m=method: self.save_result(self.results.get(m)))
-            button.pack(side='bottom', pady=8, before=self.previews[method])
+            button.pack(side='left', expand=True, pady=4)
             self.save_buttons[method] = button
-        self.status_label = ttk.Label(right, text='Hai phương pháp chạy độc lập.', wraplength=550)
-        self.status_label.pack(side='bottom', fill='x', before=preview_row)
+        self.status_label = ttk.Label(right, text='Hai phương pháp chạy độc lập.',
+                                      wraplength=550, font=('Segoe UI', 9))
+        right.bind('<Configure>', lambda event: self.status_label.configure(wraplength=max(100, event.width)))
+        self.status_label.grid(row=3, column=0, sticky='ew')
+        self.build_robustness()
+
+    def scroll_wheel(self, event):
+        if self.app.notebook.select() == str(self):
+            self.canvas.yview_scroll(-int(event.delta / 120), 'units')
+            return 'break'
+
+    def build_robustness(self):
+        panel = ttk.LabelFrame(self.content, text='Thử nghiệm độ bền', padding=10)
+        panel.pack(fill='x', pady=(12, 0))
+        controls = ttk.Frame(panel)
+        controls.pack(fill='x')
+        self.attack = tk.StringVar(value=ATTACK_LABELS['none'])
+        self.parameter = tk.StringVar()
+        self.seed = tk.StringVar(value=str(SEED))
+        ttk.Label(controls, text='Tác động:').pack(side='left')
+        ttk.Combobox(controls, textvariable=self.attack, values=list(ATTACK_LABELS.values()),
+                     state='readonly', width=25).pack(side='left', padx=8)
+        self.try_button = ttk.Button(controls, text='Thử độ bền', command=self.try_robustness,
+                                     state='disabled')
+        self.try_button.pack(side='left')
+        self.parameter_frame = ttk.Frame(panel)
+        self.parameter_label = ttk.Label(self.parameter_frame)
+        self.parameter_label.pack(side='left')
+        ttk.Entry(self.parameter_frame, textvariable=self.parameter, width=16).pack(side='left', padx=8)
+        self.seed_frame = ttk.Frame(panel)
+        ttk.Label(self.seed_frame, text='Seed: số nguyên không âm (NumPy, không giới hạn 32 bit)').pack(side='left')
+        ttk.Entry(self.seed_frame, textvariable=self.seed, width=28).pack(side='left', padx=8)
+        self.attack_note = ttk.Label(panel, wraplength=850)
+        self.attack_note.pack(fill='x', pady=4)
+        preview_row = ttk.Frame(panel)
+        preview_row.pack(fill='x')
+        self.attacked_previews, self.robustness_text = {}, {}
+        for method in ('PVD', 'DWT'):
+            column = ttk.Frame(preview_row)
+            column.pack(side='left', fill='both', expand=True, padx=4)
+            self.attacked_previews[method] = Preview(column, method + ' sau tác động', (300, 110))
+            self.attacked_previews[method].pack(fill='x')
+            self.robustness_text[method] = tk.StringVar(value='Chưa thử độ bền.')
+            ttk.Label(column, textvariable=self.robustness_text[method], wraplength=410,
+                      justify='left').pack(fill='x', pady=4)
+        self.parameter.trace_add('write', self.robustness_changed)
+        self.seed.trace_add('write', self.robustness_changed)
+        self.attack.trace_add('write', self.attack_changed)
+        self.attack_changed()
+
+    def attack_name(self):
+        return next(name for name, label in ATTACK_LABELS.items() if label == self.attack.get())
+
+    def attack_changed(self, *args):
+        name = self.attack_name()
+        self.parameter_frame.pack_forget()
+        self.seed_frame.pack_forget()
+        params = DEFAULT_PARAMETERS[name]
+        if params:
+            key, value = next(iter(params.items()))
+            self.parameter_label.configure(text=PARAMETER_HELP[key])
+            self.parameter.set(str(value))
+            self.parameter_frame.pack(fill='x', before=self.attack_note, pady=4)
+        if name in NOISE:
+            self.seed_frame.pack(fill='x', before=self.attack_note, pady=4)
+        self.attack_note.configure(text=(
+            'Giữ kích thước sau resize/crop, không căn chỉnh. Có thể mất đồng bộ và không khôi phục được.'
+            if name in ('resize', 'crop') else
+            'Mỗi lần thử bắt đầu từ Stego trước tác động. JPEG encode/decode trong bộ nhớ; tác động quang học giữ alpha.'))
+        self.robustness_changed()
+
+    def clear_robustness(self):
+        self.robustness_results = {}
+        for method in ('PVD', 'DWT'):
+            self.attacked_previews[method].clear()
+            self.robustness_text[method].set('Chưa thử độ bền cho cấu hình hiện tại.')
+
+    def robustness_changed(self, *args):
+        self.version += 1
+        self.clear_robustness()
+        self.update_busy()
+
+    def update_busy(self):
+        available = any(r.get('success') and r.get('expected_packet') is not None
+                        and r.get('output_image') is not None for r in self.results.values())
+        self.try_button.configure(state='normal' if available and not self.app.busy else 'disabled')
+
+    def try_robustness(self):
+        if self.app.busy:
+            return
+        self.message_changed()
+        if not any(r.get('success') for r in self.results.values()):
+            return
+        name = self.attack_name()
+        parameters = {key: self.parameter.get() for key in DEFAULT_PARAMETERS[name]}
+        try:
+            parameters, seed = validate_configuration(name, parameters, self.seed.get())
+        except ValueError as exc:
+            self.show_error(str(exc))
+            return
+        self.clear_robustness()
+        token = self.version
+        embedded = deepcopy(self.results)
+        service = self.app.service
+        def completed(results):
+            warnings = [r['history_warning'] for r in results.values() if r.get('history_warning')]
+            if token != self.version:
+                self.app.set_status('Tác vụ cấu hình cũ đã hoàn tất; kết quả hiển thị đã bị bỏ.' +
+                                    (' ' + ' '.join(warnings) if warnings else ''))
+                return
+            self.robustness_results = results
+            for method, result in results.items():
+                if result['output_image'] is not None:
+                    self.attacked_previews[method].show(result['output_image'])
+                details = f'{ATTACK_LABELS[result["attack"]]} · {result["attack_parameters"]}\n'
+                details += f'Seed: {result["seed"] if result["seed"] is not None else "Không dùng"}\n'
+                if result['status'] == 'not_tested':
+                    details += result['error']
+                else:
+                    details += f'Kích thước: {result["width"]} × {result["height"]}\n'
+                    details += 'BER sau tác động: ' + ('Không xác định' if result['ber'] is None else format_value(result['ber']))
+                    details += '\nKhôi phục toàn bộ packet: ' + ('Đúng' if result['success'] else 'Thất bại')
+                    if result['error']:
+                        details += '\n' + result['error']
+                if result.get('history_warning'):
+                    details += '\n' + result['history_warning']
+                self.robustness_text[method].set(details)
+            self.app.set_status('Đã hoàn tất thử độ bền.' + (' ' + ' '.join(warnings) if warnings else ''))
+        self.app.run_job(lambda: service.try_robustness(embedded, name, parameters, seed), completed)
 
     def choose(self):
         self.choose_image(self.preview, self.clear)
 
     def clear(self):
+        self.version += 1
         self.results = {}
+        self.clear_robustness()
+        self.update_busy()
+        self.chart.clear()
         self.table.delete(*self.table.get_children())
         for method in ('PVD', 'DWT'):
             self.previews[method].clear()
@@ -63,12 +230,18 @@ class CompareTab(BaseTab):
             self.clear()
 
     def compare(self):
+        if self.app.busy:
+            return
         if not self.require_image():
             return
+        self.message_changed()
         path, message = self.path, self.message.get('1.0', 'end-1c')
         service = self.app.service
+        if not self.app.busy:
+            self.clear()
+        token = self.version
         def completed(result):
-            if (self.path, self.message.get('1.0', 'end-1c')) != (path, message):
+            if token != self.version:
                 self.app.set_status('Tác vụ đã hoàn tất cho dữ liệu trước đó. Hãy chạy lại so sánh.')
                 return
             self.show_result(result)
@@ -76,6 +249,9 @@ class CompareTab(BaseTab):
 
     def show_result(self, comparison):
         self.results = comparison['results']
+        self.clear_robustness()
+        self.update_busy()
+        self.chart.show(self.results)
         self.table.delete(*self.table.get_children())
         for label, key in ROWS:
             self.table.insert('', 'end', values=(label, *(format_value(self.results[m].get(key)) for m in ('PVD', 'DWT'))))

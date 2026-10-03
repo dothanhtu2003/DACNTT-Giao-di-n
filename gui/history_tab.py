@@ -3,7 +3,7 @@ from tkinter import ttk, messagebox
 
 from gui.common import BaseTab, format_value
 
-COLUMNS = [('timestamp', 'Thời gian', 180), ('operation', 'Thao tác', 75),
+COLUMNS = [('timestamp', 'Thời gian', 180), ('operation', 'Thao tác', 125),
            ('method', 'Phương pháp', 90), ('input_filename', 'Ảnh', 160),
            ('payload_bytes', 'Payload', 75), ('psnr', 'PSNR', 75),
            ('ssim', 'SSIM', 75), ('ber', 'BER', 65), ('status', 'Trạng thái', 130)]
@@ -46,7 +46,11 @@ class HistoryTab(BaseTab):
             for index, record in enumerate(reversed(records)):
                 iid = str(index)
                 self.records[iid] = record
-                self.table.insert('', 'end', iid=iid, values=[format_value(record.get(key)) for key, _, _ in COLUMNS])
+                operations = {'embed': 'Nhúng', 'extract': 'Trích xuất', 'compare': 'So sánh',
+                              'save': 'Lưu Stego', 'robustness': 'Thử độ bền'}
+                self.table.insert('', 'end', iid=iid, values=[
+                    operations.get(record.get(key), record.get(key)) if key == 'operation'
+                    else format_value(record.get(key)) for key, _, _ in COLUMNS])
         except OSError as exc:
             self.app.set_status('Không đọc được lịch sử: ' + str(exc))
 
