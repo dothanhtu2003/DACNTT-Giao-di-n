@@ -1,4 +1,5 @@
 import tkinter as tk
+import json
 from tkinter import ttk
 from copy import deepcopy
 
@@ -12,6 +13,20 @@ ROWS = [('Capacity bits', 'capacity_bits'), ('Payload bytes', 'payload_bytes'),
         ('PSNR (dB)', 'psnr'), ('SSIM', 'ssim'),
         ('BER nhúng', 'ber'), ('Khôi phục packet', 'extract_status')]
 
+ROBUSTNESS_ROWS = [
+    ('Tác động và tham số', 'attack'), ('Seed', 'seed'),
+    ('Kích thước ảnh sau tác động', 'dimensions'), ('BER sau tác động', 'ber'),
+    ('Khôi phục toàn bộ packet', 'recovery'), ('Nguyên nhân / ghi chú', 'notes'),
+]
+PARAMETER_LABELS = {
+    'quality': 'Chất lượng JPEG', 'sigma': 'Độ lệch chuẩn nhiễu',
+    'amount': 'Tỷ lệ pixel nhiễu', 'kernel_size': 'Cạnh bộ lọc',
+    'delta': 'Mức tăng độ sáng', 'alpha': 'Hệ số tương phản',
+    'scale': 'Tỷ lệ mỗi chiều', 'fraction': 'Phần giữ lại mỗi chiều',
+}
+RESULT_COLORS = {'neutral': '#1d2939', 'muted': '#596579',
+                 'success': '#166534', 'failure': '#b42318'}
+
 
 class CompareTab(BaseTab):
     def __init__(self, parent, app):
@@ -19,16 +34,26 @@ class CompareTab(BaseTab):
         self.results = {}
         self.version = 0
         self.robustness_results = {}
+        self.mode = tk.StringVar(value='Một ảnh')
+        self.batch_panel = None
+        modes = ttk.Frame(self)
+        modes.grid(row=0, column=0, sticky='ew', pady=(0, 6))
+        for name in ('Một ảnh', 'Bộ ảnh'):
+            ttk.Radiobutton(modes, text=name, variable=self.mode, value=name,
+                            command=self.mode_changed).pack(side='left', padx=8)
         self.columnconfigure(0, weight=1)
-        self.rowconfigure(0, weight=1)
+        self.rowconfigure(1, weight=1)
         self.canvas = tk.Canvas(self, highlightthickness=0, background='#f4f6f8')
-        self.canvas.grid(row=0, column=0, sticky='nsew')
+        self.canvas.grid(row=1, column=0, sticky='nsew')
         scroll = ttk.Scrollbar(self, orient='vertical', command=self.canvas.yview)
-        scroll.grid(row=0, column=1, sticky='ns')
+        self.page_scroll = scroll
+        scroll.grid(row=1, column=1, sticky='ns')
         self.canvas.configure(yscrollcommand=scroll.set)
-        self.content = ttk.Frame(self.canvas)
-        window = self.canvas.create_window((0, 0), window=self.content, anchor='nw')
-        self.content.bind('<Configure>', lambda e: self.canvas.configure(scrollregion=self.canvas.bbox('all')))
+        self.viewport = ttk.Frame(self.canvas)
+        self.content = ttk.Frame(self.viewport)
+        self.content.pack(fill='x')
+        window = self.canvas.create_window((0, 0), window=self.viewport, anchor='nw')
+        self.viewport.bind('<Configure>', lambda e: self.canvas.configure(scrollregion=self.canvas.bbox('all')))
         self.canvas.bind('<Configure>', lambda e: self.canvas.itemconfigure(window, width=e.width))
         self.app.bind_all('<MouseWheel>', self.scroll_wheel, add='+')
         top = ttk.Frame(self.content, height=580)
@@ -85,8 +110,28 @@ class CompareTab(BaseTab):
         self.status_label.grid(row=3, column=0, sticky='ew')
         self.build_robustness()
 
+    def mode_changed(self):
+        self.version += 1
+        self.content.pack_forget()
+        if self.batch_panel is not None:
+            self.batch_panel.grid_remove()
+            self.batch_panel.changed()
+        if self.mode.get() == 'Bộ ảnh':
+            if self.batch_panel is None:
+                from gui.batch_panel import BatchPanel
+                self.batch_panel = BatchPanel(self, self)
+            self.canvas.grid_remove()
+            self.page_scroll.grid_remove()
+            self.batch_panel.grid(row=1, column=0, columnspan=2, sticky='nsew')
+        else:
+            self.canvas.grid()
+            self.page_scroll.grid()
+            self.content.pack(fill='x')
+        self.canvas.yview_moveto(0)
+        self.update_busy()
+
     def scroll_wheel(self, event):
-        if self.app.notebook.select() == str(self):
+        if self.app.notebook.select() == str(self) and self.mode.get() == 'Một ảnh':
             self.canvas.yview_scroll(-int(event.delta / 120), 'units')
             return 'break'
 
@@ -113,17 +158,32 @@ class CompareTab(BaseTab):
         ttk.Entry(self.seed_frame, textvariable=self.seed, width=28).pack(side='left', padx=8)
         self.attack_note = ttk.Label(panel, wraplength=850)
         self.attack_note.pack(fill='x', pady=4)
-        preview_row = ttk.Frame(panel)
-        preview_row.pack(fill='x')
-        self.attacked_previews, self.robustness_text = {}, {}
-        for method in ('PVD', 'DWT'):
-            column = ttk.Frame(preview_row)
-            column.pack(side='left', fill='both', expand=True, padx=4)
-            self.attacked_previews[method] = Preview(column, method + ' sau tác động', (300, 110))
-            self.attacked_previews[method].pack(fill='x')
-            self.robustness_text[method] = tk.StringVar(value='Chưa thử độ bền.')
-            ttk.Label(column, textvariable=self.robustness_text[method], wraplength=410,
-                      justify='left').pack(fill='x', pady=4)
+        self.robustness_grid = ttk.Frame(panel)
+        self.robustness_grid.pack(fill='x')
+        self.attacked_previews, self.robustness_cells = {}, {}
+        self.robustness_headers, self.robustness_row_labels = {}, {}
+        for column, title in enumerate(('Chỉ số', 'PVD', 'DWT')):
+            header = ttk.Label(self.robustness_grid, text=title, font=('Segoe UI', 10, 'bold'))
+            header.grid(row=0, column=column, sticky='ew', padx=6, pady=(2, 4))
+            self.robustness_headers[title] = header
+        for column, method in enumerate(('PVD', 'DWT'), start=1):
+            preview = Preview(self.robustness_grid, method + ' sau tác động', (150, 150))
+            preview.configure(padding=2)
+            preview.caption.pack_forget()
+            preview.grid(row=1, column=column, sticky='n', padx=6, pady=(0, 4))
+            self.attacked_previews[method] = preview
+            self.robustness_cells[method] = {}
+        for row, (title, key) in enumerate(ROBUSTNESS_ROWS, start=2):
+            label = ttk.Label(self.robustness_grid, text=title, width=1,
+                              anchor='nw', justify='left', padding=6)
+            label.grid(row=row, column=0, sticky='nsew')
+            self.robustness_row_labels[key] = label
+            for column, method in enumerate(('PVD', 'DWT'), start=1):
+                cell = ttk.Label(self.robustness_grid, width=1, anchor='nw',
+                                 justify='left', padding=6)
+                cell.grid(row=row, column=column, sticky='nsew')
+                self.robustness_cells[method][key] = cell
+        self.robustness_grid.bind('<Configure>', self.resize_robustness_columns)
         self.parameter.trace_add('write', self.robustness_changed)
         self.seed.trace_add('write', self.robustness_changed)
         self.attack.trace_add('write', self.attack_changed)
@@ -153,8 +213,62 @@ class CompareTab(BaseTab):
     def clear_robustness(self):
         self.robustness_results = {}
         for method in ('PVD', 'DWT'):
-            self.attacked_previews[method].clear()
-            self.robustness_text[method].set('Chưa thử độ bền cho cấu hình hiện tại.')
+            self.attacked_previews[method].clear('Chưa thử')
+            for key in self.robustness_cells[method]:
+                self.set_robustness_cell(method, key, 'Chưa thử')
+
+    def resize_robustness_columns(self, event):
+        # Allocate from the viewport, never from the requested width of long text.
+        metric_width = min(210, event.width // 4)
+        method_width = (event.width - metric_width) // 2
+        for column, width in enumerate((metric_width, method_width, method_width)):
+            self.robustness_grid.columnconfigure(column, minsize=width, weight=0)
+            labels = (self.robustness_row_labels.values() if column == 0 else
+                      self.robustness_cells[('PVD', 'DWT')[column - 1]].values())
+            for label in labels:
+                label.configure(wraplength=max(1, width - 12))
+
+    def set_robustness_cell(self, method, key, text, state='neutral'):
+        self.robustness_cells[method][key].configure(
+            text=text, foreground=RESULT_COLORS[state],
+            font=('Segoe UI', 10, 'bold' if state in ('success', 'failure') else 'normal'))
+
+    def show_robustness_result(self, method, result):
+        parameters = result.get('attack_parameters') or {}
+        if isinstance(parameters, str):
+            parameters = json.loads(parameters)
+        attack = ATTACK_LABELS.get(result.get('attack'), '—')
+        details = [f'{PARAMETER_LABELS.get(key, key)}: {value:g}'
+                   if isinstance(value, (int, float)) else
+                   f'{PARAMETER_LABELS.get(key, key)}: {value}'
+                   for key, value in parameters.items()]
+        self.set_robustness_cell(method, 'attack', '\n'.join([attack, *details]))
+        not_tested = result['status'] == 'not_tested'
+        self.set_robustness_cell(method, 'seed', '—' if not_tested else
+                                 ('Không dùng' if result['seed'] is None else str(result['seed'])))
+        width, height = result.get('width'), result.get('height')
+        self.set_robustness_cell(method, 'dimensions',
+                                 f'{width} × {height}' if not not_tested and
+                                 width is not None and height is not None else '—')
+        ber = result.get('ber')
+        self.set_robustness_cell(method, 'ber', '—' if not_tested else
+                                 ('Không xác định' if ber is None else format_value(ber)),
+                                 'muted' if not not_tested and ber is None else 'neutral')
+        state = 'muted' if not_tested else ('success' if result['success'] else 'failure')
+        self.set_robustness_cell(method, 'recovery', 'Không thử được' if not_tested else
+                                 ('Khôi phục đúng' if result['success'] else 'Thất bại'), state)
+        notes = ['Nhúng thất bại'] if not_tested else []
+        for key in ('error', 'notes', 'history_warning'):
+            note = result.get(key)
+            if note and note not in notes and not (not_tested and key == 'error' and
+                                                   note == 'Không thử được — nhúng thất bại'):
+                notes.append(note)
+        self.set_robustness_cell(method, 'notes', '\n'.join(notes) or '—')
+        preview = self.attacked_previews[method]
+        if result.get('output_image') is not None and not not_tested:
+            preview.show(result['output_image'])
+        else:
+            preview.clear('Không thử được' if not_tested else 'Chưa có ảnh kết quả')
 
     def robustness_changed(self, *args):
         self.version += 1
@@ -162,6 +276,8 @@ class CompareTab(BaseTab):
         self.update_busy()
 
     def update_busy(self):
+        if self.batch_panel is not None:
+            self.batch_panel.update_busy()
         available = any(r.get('success') and r.get('expected_packet') is not None
                         and r.get('output_image') is not None for r in self.results.values())
         self.try_button.configure(state='normal' if available and not self.app.busy else 'disabled')
@@ -191,21 +307,7 @@ class CompareTab(BaseTab):
                 return
             self.robustness_results = results
             for method, result in results.items():
-                if result['output_image'] is not None:
-                    self.attacked_previews[method].show(result['output_image'])
-                details = f'{ATTACK_LABELS[result["attack"]]} · {result["attack_parameters"]}\n'
-                details += f'Seed: {result["seed"] if result["seed"] is not None else "Không dùng"}\n'
-                if result['status'] == 'not_tested':
-                    details += result['error']
-                else:
-                    details += f'Kích thước: {result["width"]} × {result["height"]}\n'
-                    details += 'BER sau tác động: ' + ('Không xác định' if result['ber'] is None else format_value(result['ber']))
-                    details += '\nKhôi phục toàn bộ packet: ' + ('Đúng' if result['success'] else 'Thất bại')
-                    if result['error']:
-                        details += '\n' + result['error']
-                if result.get('history_warning'):
-                    details += '\n' + result['history_warning']
-                self.robustness_text[method].set(details)
+                self.show_robustness_result(method, result)
             self.app.set_status('Đã hoàn tất thử độ bền.' + (' ' + ' '.join(warnings) if warnings else ''))
         self.app.run_job(lambda: service.try_robustness(embedded, name, parameters, seed), completed)
 

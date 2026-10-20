@@ -9,6 +9,7 @@ from uuid import uuid4
 
 DEFAULT_PATH = Path(__file__).resolve().parents[1] / 'data' / 'history.json'
 FIELDS = {
+    'run_id', 'image_count', 'case_count', 'planned_cases',
     'id', 'timestamp', 'operation', 'method', 'input_filename', 'output_path',
     'width', 'height', 'payload_bytes', 'packet_bits', 'capacity_bits',
     'usage_percent', 'bpp', 'psnr', 'ssim', 'ber', 'status',

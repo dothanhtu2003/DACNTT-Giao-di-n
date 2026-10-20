@@ -47,7 +47,7 @@ class HistoryTab(BaseTab):
                 iid = str(index)
                 self.records[iid] = record
                 operations = {'embed': 'Nhúng', 'extract': 'Trích xuất', 'compare': 'So sánh',
-                              'save': 'Lưu Stego', 'robustness': 'Thử độ bền'}
+                              'save': 'Lưu Stego', 'robustness': 'Thử độ bền', 'batch': 'Bộ ảnh'}
                 self.table.insert('', 'end', iid=iid, values=[
                     operations.get(record.get(key), record.get(key)) if key == 'operation'
                     else format_value(record.get(key)) for key, _, _ in COLUMNS])

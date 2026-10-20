@@ -4,3 +4,4 @@ PyWavelets>=1.4,<2
 scikit-image>=0.21,<1
 opencv-python>=4.8,<6
 pytest>=7,<10
+matplotlib>=3.8,<4

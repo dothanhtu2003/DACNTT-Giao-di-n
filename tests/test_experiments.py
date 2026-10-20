@@ -14,6 +14,20 @@ from core import pvd
 from core.payload import packet_to_bits, build_packet
 
 
+def test_legacy_quantitative_fixture(tmp_path):
+    """Reference captured from the committed legacy runner before batch changes."""
+    from pathlib import Path
+    cover = tmp_path / 'legacy.png'
+    Image.fromarray(np.full((80, 80, 3), 128, dtype=np.uint8)).save(cover)
+    rows = run_experiments([cover], tmp_path / 'result', default_config())
+    quantitative = [{k: v for k, v in row.items() if k not in ('run_id', 'stego_path')} for row in rows]
+    for row in quantitative:
+        if row.get('psnr_before_attack') == float('inf'):
+            row['psnr_before_attack'] = 'Infinity'
+    reference = json.loads((Path(__file__).parent / 'fixtures' / 'legacy_quantitative.json').read_text(encoding='utf-8'))
+    assert quantitative == reference
+
+
 def test_runner_reproducible_and_private(tmp_path):
     cover = tmp_path / 'cover.png'
     Image.fromarray(np.full((80, 80, 3), 128, dtype=np.uint8)).save(cover)

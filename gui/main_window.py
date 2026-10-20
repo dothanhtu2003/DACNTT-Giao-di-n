@@ -76,7 +76,7 @@ class MainWindow(tk.Tk):
     def refresh_history(self):
         self.history_tab.refresh()
 
-    def run_job(self, work, on_done):
+    def run_job(self, work, on_done, on_error=None):
         if self.busy:
             self.set_status('Đang xử lý; vui lòng đợi tác vụ hiện tại hoàn tất.')
             return
@@ -96,6 +96,8 @@ class MainWindow(tk.Tk):
             try:
                 on_done(future.result())
             except Exception as exc:
+                if on_error is not None:
+                    on_error(exc)
                 self.set_status('Không thể hoàn tất tác vụ.')
                 messagebox.showerror('Lỗi xử lý', str(exc), parent=self)
             self.refresh_history()

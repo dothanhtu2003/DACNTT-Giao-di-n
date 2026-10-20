@@ -4,11 +4,14 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.tox/
+.nox/
 
 # Local virtual environments
 .venv/
 venv/
 env/
+ENV/
 
 # Local environment configuration (keep templates)
 .env
@@ -20,13 +23,17 @@ env/
 /build/
 /dist/
 *.egg-info/
+.eggs/
 
 # Generated test and coverage reports
 .coverage
 .coverage.*
 htmlcov/
 coverage.xml
+junit.xml
 /tests/artifacts/pytest_results.xml
+/tests/artifacts/batch_example_history.json
+/experiments/batch_results/
 
 # Local application history
 /data/history.json

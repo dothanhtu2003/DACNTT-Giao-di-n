@@ -34,9 +34,9 @@ class Preview(ttk.LabelFrame):
         self.image_label.configure(image=self.photo, text='')
         self.caption.configure(text=caption)
 
-    def clear(self):
+    def clear(self, text='Chưa có ảnh'):
         self.photo = None
-        self.image_label.configure(image='', text='Chưa có ảnh')
+        self.image_label.configure(image='', text=text)
         self.caption.configure(text='')
 
 

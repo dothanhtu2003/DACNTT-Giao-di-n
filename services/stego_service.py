@@ -33,6 +33,19 @@ def base_result(path, method):
 
 
 class StegoService:
+    def run_batch(self, image_paths, output_root, config, cancel=None, progress=None):
+        from experiments.batch_runner import run_batch
+        result = run_batch(image_paths, output_root, config, cancel, progress)
+        try:
+            self.history.add_record({'timestamp': datetime.now(timezone.utc).isoformat(),
+                'operation': 'batch', 'method': 'PVD/DWT', 'run_id': result['run_id'],
+                'status': result['status'], 'image_count': result['counts']['images'],
+                'case_count': result['completed_cases'], 'planned_cases': result['counts']['cases'],
+                'output_path': result['output_dir']})
+        except OSError as exc:
+            result['history_warning'] = 'Không ghi được lịch sử: ' + str(exc)
+        return result
+
     def __init__(self, history=None):
         self.history = history if history is not None else HistoryStore()
 
