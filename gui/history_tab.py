@@ -1,11 +1,11 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-from gui.common import BaseTab, format_value
+from gui.common import BaseTab, format_value, format_status
 
 COLUMNS = [('timestamp', 'Thời gian', 180), ('operation', 'Thao tác', 125),
            ('method', 'Phương pháp', 90), ('input_filename', 'Ảnh', 160),
-           ('payload_bytes', 'Payload', 75), ('psnr', 'PSNR', 75),
+           ('payload_bytes', 'Byte', 75), ('psnr', 'PSNR', 75),
            ('ssim', 'SSIM', 75), ('ber', 'BER', 65), ('status', 'Trạng thái', 130)]
 
 
@@ -15,7 +15,7 @@ class HistoryTab(BaseTab):
         self.records = {}
         actions = ttk.Frame(self)
         actions.pack(fill='x', pady=(0, 12))
-        for title, command in [('Refresh', self.refresh), ('Xem chi tiết', self.detail),
+        for title, command in [('Làm mới', self.refresh), ('Xem chi tiết', self.detail),
                                ('Xóa bản ghi', self.delete), ('Xóa tất cả', self.clear_all)]:
             ttk.Button(actions, text=title, command=command).pack(side='left', padx=(0, 8))
         container = ttk.Frame(self)
@@ -33,7 +33,7 @@ class HistoryTab(BaseTab):
         container.rowconfigure(0, weight=1)
         container.columnconfigure(0, weight=1)
         self.table.bind('<Double-1>', lambda event: self.detail())
-        ttk.Label(self, text='Lịch sử chỉ lưu metadata. Không lưu văn bản bí mật, nội dung trích xuất hoặc raw payload.').pack(anchor='w', pady=(12, 0))
+        ttk.Label(self, text='Không lưu nội dung bí mật.').pack(anchor='w', pady=(12, 0))
 
     def refresh(self):
         # Avoid concurrent read-modify-write while a service job logs its result.
@@ -50,6 +50,7 @@ class HistoryTab(BaseTab):
                               'save': 'Lưu Stego', 'robustness': 'Thử độ bền', 'batch': 'Bộ ảnh'}
                 self.table.insert('', 'end', iid=iid, values=[
                     operations.get(record.get(key), record.get(key)) if key == 'operation'
+                    else format_status(record.get(key)) if key == 'status'
                     else format_value(record.get(key)) for key, _, _ in COLUMNS])
         except OSError as exc:
             self.app.set_status('Không đọc được lịch sử: ' + str(exc))
@@ -64,7 +65,7 @@ class HistoryTab(BaseTab):
             self.app.set_status('Hãy chọn một bản ghi.')
             return
         window = tk.Toplevel(self)
-        window.title('Chi tiết metadata')
+        window.title('Chi tiết bản ghi')
         window.geometry('620x560')
         text = tk.Text(window, wrap='word', font=('Segoe UI', 10), padx=18, pady=18)
         text.pack(fill='both', expand=True)
@@ -85,7 +86,7 @@ class HistoryTab(BaseTab):
     def clear_all(self):
         if self.app.busy:
             return
-        if messagebox.askyesno('Xóa lịch sử', 'Xóa tất cả bản ghi metadata?', parent=self):
+        if messagebox.askyesno('Xóa lịch sử', 'Xóa tất cả bản ghi?', parent=self):
             try:
                 self.app.service.history.clear()
                 self.refresh()

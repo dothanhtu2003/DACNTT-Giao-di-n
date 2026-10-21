@@ -22,10 +22,10 @@ python main.py
 
 ## Bốn tab
 
-1. **Nhúng dữ liệu:** chọn PNG/BMP, chọn PVD/DWT, nhập UTF-8, kiểm tra dung lượng, nhúng, xem metrics, lưu PNG. Tự trích xuất lại để xác nhận packet khớp trước khi cho lưu.
-2. **Trích xuất dữ liệu:** chọn ảnh và đúng method, xem message chỉ đọc, Copy; báo lỗi LENGTH/UTF-8.
-3. **So sánh PVD – DWT:** chọn **Một ảnh** để so sánh cùng ảnh/message và thử độ bền hiện có, hoặc **Bộ ảnh** để chạy ma trận qua service và xem bảng tổng hợp. Hai nhánh độc lập, hỗ trợ partial, lưu PNG baseline.
-4. **Lịch sử:** metadata local, refresh, xem chi tiết, xóa bản ghi hoặc xóa tất cả có xác nhận.
+1. **Nhúng dữ liệu:** chọn PNG/BMP, chọn PVD/DWT, nhập UTF-8, nhúng, xem metrics, lưu PNG. Dung lượng được kiểm tra tự động khi chọn ảnh, đổi phương pháp hoặc sửa văn bản. Tự trích xuất lại để xác nhận packet khớp trước khi cho lưu.
+2. **Trích xuất dữ liệu:** chọn ảnh và đúng phương pháp, xem văn bản chỉ đọc, Sao chép. **Lưu ý trích xuất** giải thích giới hạn LENGTH/UTF-8 và xác thực dữ liệu.
+3. **So sánh PVD – DWT:** chọn **Một ảnh** để so sánh chất lượng nhúng trên cùng ảnh/message, hoặc **Bộ ảnh** để chạy ma trận qua service và xem bảng tổng hợp. Hai nhánh độc lập, hỗ trợ partial, lưu PNG baseline.
+4. **Lịch sử:** metadata local, Làm mới, xem chi tiết, xóa bản ghi hoặc xóa tất cả có xác nhận.
 
 Message rỗng hợp lệ, cần packet 32 bit. History **không lưu secret message, extracted message hoặc raw payload**; `data/history.json` hỏng/trống được khôi phục thành danh sách rỗng. Nội dung trích xuất chỉ ở bộ nhớ GUI, trừ khi người dùng chủ động Copy.
 
@@ -43,7 +43,7 @@ Message rỗng hợp lệ, cần packet 32 bit. History **không lưu secret mes
 
 **JPEG chỉ là attack trong robustness, không phải Stego output chuẩn và không nhận làm input nhúng trong GUI.**
 DWT dùng Y=0.299R+0.587G+0.114B, giữ các thành phần màu còn lại trước round/clip, alpha không đổi.
-Nút **Xem cấu hình** chỉ đọc. Với DWT, **Xem phân rã DWT** mở cửa sổ LL/LH/HL/HH, đánh dấu HH. Normalization từng dải chỉ để hiển thị.
+Với DWT, **Xem phân rã DWT** mở cửa sổ LL/LH/HL/HH, đánh dấu HH. Normalization từng dải chỉ để hiển thị.
 
 PSNR/SSIM đo cover so với Stego; RGBA chỉ đo RGB. MSE=0 cho PSNR infinity. BER chỉ tính trên packet đã xác lập đồng bộ.
 
@@ -59,29 +59,15 @@ Xem [TEST_REPORT.md](TEST_REPORT.md).
 
 ## Robustness và benchmark
 
-### Thử độ bền trong tab So sánh
-
-Chọn ảnh PNG/BMP và nhập thông điệp, bấm **Chạy so sánh**, sau đó cuộn xuống phần **Thử nghiệm độ bền**. Chọn tác động, nhập tham số đang hiển thị và bấm **Thử độ bền**. Mỗi lần thử độc lập từ ảnh Stego trước tác động đã kiểm tra thành công. Nếu một phương pháp nhúng thất bại, phương pháp còn lại vẫn được thử; phương pháp thất bại ghi “Không thử được — nhúng thất bại”. Nút thử bị khóa khi chưa có kết quả hợp lệ hoặc có tác vụ đang chạy.
-
-Giá trị tham số mặc định là mức đầu tiên của từng tác động trong `experiments/experiment_config.py`. Chỉ Gaussian và muối tiêu dùng seed; mặc định là `SEED` trong cùng cấu hình, có thể nhập số nguyên không âm. Seed được kiểm tra bằng NumPy `SeedSequence`, không áp trần 32 bit. Hai phương pháp nhận cùng seed thực tế; các tác động khác ghi seed `null` trong lịch sử. Benchmark vẫn sinh seed cho từng trường hợp bằng cách hiện có; muốn đối chiếu GUI với một dòng CSV phải nhập **seed thực tế của dòng đó**, cùng ảnh, payload và tham số.
-
-Tham số thực phải hữu hạn, không nhận NaN/vô cực. Miền tham số theo `attacks.py`, với hai **giới hạn riêng của GUI/dịch vụ tương tác**: kernel là số nguyên lẻ từ **1 đến 51**, scale **0 < scale ≤ 4** để hạn chế kích thước tác vụ. Những giới hạn này không áp dụng cho chương trình benchmark. JPEG quality là số nguyên 1–100; sigma ≥ 0; amount trong [0,1]; delta hữu hạn; alpha ≥ 0; fraction trong (0,1]. Tham số sai được báo trước khi gửi tác vụ nền.
-
-Ảnh sau tác động, kích thước, cấu hình, seed, BER và trạng thái khớp toàn bộ packet được hiển thị riêng cho PVD/DWT. PSNR/SSIM và biểu đồ so sánh thuộc **trước tác động**. Đánh giá dùng nguyên `assess_extraction()` với `engine.extract()`: chỉ tính BER khi độ dài dãy bit và 32 bit LENGTH khớp packet gốc; LENGTH sai hoặc thiếu dữ liệu hiển thị **Không xác định**, không thay bằng 0 hoặc 1. UTF-8 hợp lệ không chứng minh khớp packet; nếu UTF-8 lỗi sau khi tính BER thì giữ BER và báo thất bại. Nội dung thông điệp không hiển thị trong kết quả độ bền.
-
-Resize giữ kích thước đã đổi; crop cắt giữa và giữ phần ảnh còn lại. Không phục hồi kích thước hoặc căn chỉnh, nên thuật toán có thể mất đồng bộ. Tác động quang học, kể cả JPEG encode/decode trong bộ nhớ, giữ alpha gốc; resize/crop biến đổi alpha cùng ảnh. Chỉ có chức năng lưu Stego **trước** tác động.
-
-Đổi ảnh/thông điệp xóa kết quả nhúng và độ bền; chạy lại so sánh cũng vô hiệu hóa kết quả cũ ngay. Đổi tác động/tham số/seed chỉ xóa kết quả độ bền, giữ Stego để thử lại. Token phiên bản loại bỏ kết quả cũ ngay cả khi đổi lựa chọn rồi đổi lại. Worker chỉ dùng bản chụp dữ liệu/cấu hình, không truy cập Tkinter.
-
-Mỗi phương pháp thực sự được thử ghi một metadata với `operation=robustness`, tên tác động, `attack_parameters` JSON chuẩn hóa, seed hoặc null, BER, trạng thái, kích thước và lỗi nếu có. Không ghi thông điệp, packet gốc, byte payload hoặc mảng ảnh. Packet đối chiếu chỉ ở bộ nhớ. Bản ghi cũ thiếu trường mới vẫn đọc được; tab Lịch sử ghi nhãn **Thử độ bền**, cấu hình xem qua **Xem chi tiết**. Tác vụ hoàn tất cho cấu hình cũ vẫn ghi lịch sử của bản chụp đó, nhưng không hiển thị như kết quả lựa chọn mới. Lỗi ghi lịch sử không xóa kết quả và được hiển thị thành cảnh báo.
+Thử nghiệm độ bền được thực hiện trong chế độ **Bộ ảnh**. Chế độ **Một ảnh** hiển thị ảnh sau nhúng, bảng chỉ số, biểu đồ so sánh và lưu Stego PVD/DWT.
 
 ### Bộ ảnh trong tab So sánh
 
-Chọn **Bộ ảnh**, thư mục nguồn và thư mục đầu ra. Chỉ đọc PNG/BMP trực tiếp trong thư mục, không đệ quy. Danh sách cho biết kích thước, mode gốc → mode xử lý và lỗi của file không đọc được/không hỗ trợ. Khuyến nghị **10–20 ảnh thật**, có ảnh xám, màu, vùng phẳng và nhiều chi tiết; dưới 10 ảnh vẫn cho chạy và có lưu ý. Chương trình không tự phân loại hay tải thêm ảnh.
+Chọn **Bộ ảnh**, thư mục nguồn và thư mục đầu ra. Chỉ đọc PNG/BMP trực tiếp trong thư mục, không đệ quy. Giao diện báo số ảnh hợp lệ và số file bị loại. Khuyến nghị **10–20 ảnh thật**, có ảnh xám, màu, vùng phẳng và nhiều chi tiết; dưới 10 ảnh vẫn cho chạy và có lưu ý. Chương trình không tự phân loại hay tải thêm ảnh.
 
 Nhập danh sách payload **theo byte** và seed nguyên không âm, cách nhau dấu phẩy. Seed trùng được loại, mặc định là 5 seed liên tiếp từ `SEED`. Chọn tác động và nhập nhiều mức tham số; mặc định payload/mức lấy toàn bộ `experiment_config.py`. Baseline **Không tác động** luôn có. Chỉ Gaussian/muối tiêu lặp theo seed; tác động xác định chạy một lần mỗi mức. Bộ ảnh dùng trực tiếp seed đã nhập cho cả PVD/DWT; **CLI cũ vẫn giữ cách sinh seed bằng hash**, nên hai chế độ không có cùng seed mặc định. Payload là chuỗi ASCII công khai từ `public_payload()`, cùng ảnh/payload thì hai phương pháp nhận cùng dữ liệu. Không dùng văn bản bí mật từ Một ảnh.
 
-Bấm **Đọc danh sách / kiểm tra cấu hình** để xem số ảnh, cấu hình nhúng và tối đa số ca tác động (gồm baseline). GUI dùng giới hạn kernel lẻ 1–51 và scale trong (0,4], có ghi ngay trên nhãn; payload tối đa uint32, nhưng kiểm tra dung lượng trước khi tạo dữ liệu. Không có giới hạn riêng về số ảnh hoặc số ca. Baseline lỗi làm số ca thực chạy nhỏ hơn dự kiến.
+Danh sách ảnh được kiểm tra khi chọn thư mục ảnh; cấu hình được kiểm tra lại tự động trước khi chạy. GUI dùng giới hạn kernel lẻ 1–51 và scale trong (0,4], có ghi ngay trên nhãn; payload tối đa uint32, nhưng kiểm tra dung lượng trước khi tạo dữ liệu. Không có giới hạn riêng về số ảnh hoặc số ca. Baseline lỗi làm số ca thực chạy nhỏ hơn dự kiến.
 
 Mỗi ảnh × phương pháp × payload nhúng một lần, lưu/đọc lại PNG và kiểm tra toàn bộ packet. `baselines.csv` phân biệt `capacity`, `embed_io_error`, `mismatch` và `valid`; chỉ `valid` mới chạy các tác động. Mỗi tác động bắt đầu từ cùng Stego baseline, không cộng dồn, resize/crop không căn chỉnh. Một ảnh/phương pháp lỗi không dừng ảnh tiếp theo. Xử lý tuần tự và giải phóng mảng từng ảnh; giữ metadata/ca thử trong RAM, không giữ mảng ảnh toàn bộ dữ liệu.
 
@@ -93,7 +79,7 @@ Bảng chính dùng **một Treeview với 8 cột**, vừa 1000 × 760, có cu�
 
 Bộ lọc phương pháp/payload/tác động/tập ảnh chỉ chọn dòng đã có, không tính lại, không gộp nhóm và không sửa thứ tự CSV. Mặc định chọn **baseline chung PVD/DWT**; có nhãn giải thích tập đang hiển thị và số dòng phù hợp. Số ảnh đủ điều kiện nằm ở từng dòng, không suy ra một số ảnh cố định cho toàn bảng. Thứ tự hiển thị là **payload → tác động (thứ tự danh mục) → mức tham số → PVD/DWT**; payload và tham số số sắp theo giá trị số.
 
-Khi `completed`, tiến độ đạt 100% và ghi số ca đã chạy/số ca bỏ do baseline chỉ khi metadata đủ để xác định; chênh lệch khác không tự quy thành lỗi baseline. Khi hủy, giữ tiến độ ca thực chạy và ghi **Đã hủy — kết quả chưa đầy đủ**. SD giữa ảnh bằng 0 không tự chứng minh độ ổn định tổng quát. Xem [BATCH_UI_REPORT.md](BATCH_UI_REPORT.md) về kiểm chứng mặt nạ muối tiêu, vị trí nhúng PVD và ảnh chụp GUI.
+Khi `completed`, tiến độ đạt 100% và ghi số ảnh nguồn chạy thành công/thất bại, mỗi ảnh tính một lần. Ảnh thành công khi toàn bộ baseline PVD/DWT ở các mức payload đã chọn đều hợp lệ; nếu có baseline lỗi, ảnh được tính thất bại. Đây là kết quả nhúng/đối chiếu baseline, không phải tỷ lệ khôi phục sau tác động. Thiếu metadata thì không suy đoán số ảnh. Khi hủy, giữ tiến độ ca thực chạy và ghi **Đã hủy — kết quả chưa đầy đủ**. SD giữa ảnh bằng 0 không tự chứng minh độ ổn định tổng quát. Xem [BATCH_UI_REPORT.md](BATCH_UI_REPORT.md) về kiểm chứng mặt nạ muối tiêu, vị trí nhúng PVD và ảnh chụp GUI.
 
 ### Xem và lưu biểu đồ Bộ ảnh
 

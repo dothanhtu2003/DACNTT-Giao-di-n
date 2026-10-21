@@ -11,6 +11,37 @@ from core.image_utils import load_image, image_info, create_thumbnail
 IMAGE_TYPES = [('Ảnh PNG / BMP', '*.png *.bmp')]
 
 
+def format_status(value):
+    return {
+        'success': 'Thành công', 'failed': 'Thất bại',
+        'partial': 'Thành công một phần', 'extraction_failed': 'Trích xuất lỗi',
+        'not_checked': 'Chưa kiểm tra', 'not_tested': 'Chưa thử',
+        'integrity_verified': 'Khớp 100%', 'valid_length_utf8': 'Đọc được văn bản',
+        'completed': 'Hoàn tất', 'cancelled': 'Đã hủy',
+    }.get(value, format_value(value))
+
+
+def show_help(parent, title, body):
+    window = tk.Toplevel(parent)
+    window.title(title)
+    window.transient(parent.winfo_toplevel())
+    window.geometry('660x480')
+    window.minsize(420, 300)
+    frame = ttk.Frame(window, padding=16)
+    frame.pack(fill='both', expand=True)
+    frame.columnconfigure(0, weight=1)
+    frame.rowconfigure(0, weight=1)
+    text = tk.Text(frame, wrap='word', font=('Segoe UI', 10), padx=10, pady=10)
+    scroll = ttk.Scrollbar(frame, command=text.yview)
+    text.configure(yscrollcommand=scroll.set)
+    text.grid(row=0, column=0, sticky='nsew')
+    scroll.grid(row=0, column=1, sticky='ns')
+    text.insert('1.0', body)
+    text.configure(state='disabled')
+    ttk.Button(frame, text='Đóng', command=window.destroy).grid(row=1, column=0, columnspan=2, pady=(12, 0))
+    return window
+
+
 def format_value(value):
     if value is None:
         return '—'

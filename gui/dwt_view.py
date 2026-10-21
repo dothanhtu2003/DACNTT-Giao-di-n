@@ -13,14 +13,14 @@ class DWTView(tk.Toplevel):
         self.title('Phân rã DWT — Haar level 1')
         self.geometry('740x640')
         self.photos = []
-        ttk.Label(self, text='Wavelet: Haar  ·  Level: 1  ·  Band: HH  ·  QIM Delta: 18  ·  Repetition: 5',
+        ttk.Label(self, text='Haar · Mức 1 · QIM Δ = 18 · Lặp 5',
                   padding=12).pack(fill='x')
         grid = ttk.Frame(self, padding=12)
         grid.pack(fill='both', expand=True)
         grid.columnconfigure((0, 1), weight=1)
         grid.rowconfigure((0, 1), weight=1)
         for index, (name, band) in enumerate(decompose_for_visualization(image).items()):
-            label = name + (' — Dải được sử dụng để nhúng dữ liệu' if name == 'HH' else '')
+            label = name + (' — Dải nhúng' if name == 'HH' else '')
             frame = ttk.LabelFrame(grid, text=label, padding=8)
             frame.grid(row=index // 2, column=index % 2, sticky='nsew', padx=5, pady=5)
             span = float(np.ptp(band))
@@ -30,4 +30,4 @@ class DWTView(tk.Toplevel):
             photo = ImageTk.PhotoImage(display)
             self.photos.append(photo)
             ttk.Label(frame, image=photo, anchor='center').pack(fill='both', expand=True)
-        ttk.Label(self, text='Mỗi dải được chuẩn hóa riêng để hiển thị; không dùng ảnh này để nhúng.', padding=10).pack(fill='x')
+        ttk.Label(self, text='Các dải được chuẩn hóa riêng, chỉ để minh họa.', padding=10).pack(fill='x')

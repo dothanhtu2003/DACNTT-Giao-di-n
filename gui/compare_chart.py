@@ -66,7 +66,7 @@ class CompareChart(tk.Canvas):
         width, height = self.winfo_width(), self.winfo_height()
         if width < 100 or height < 120:
             return
-        self.create_text(width / 2, 13, text='SO SÁNH PVD – DWT · TRƯỚC TÁC ĐỘNG',
+        self.create_text(width / 2, 13, text='SO SÁNH CHẤT LƯỢNG NHÚNG',
                          font=('Segoe UI', 10, 'bold'))
         self.create_text(width / 2, 32, text='Điểm chuẩn hóa tương đối (0–100)',
                          font=('Segoe UI', 9))

@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
-from gui.common import BaseTab, Preview, method_selector, message_editor
+from gui.common import BaseTab, Preview, method_selector, message_editor, show_help
 
 
 class ExtractTab(BaseTab):
@@ -23,8 +23,11 @@ class ExtractTab(BaseTab):
         frame, self.message = message_editor(right, height=7)
         frame.pack(fill='both', expand=True)
         self.message.configure(state='disabled')
-        self.copy_button = ttk.Button(right, text='Copy', state='disabled', command=self.copy)
-        self.copy_button.pack(anchor='w', pady=10)
+        actions = ttk.Frame(right)
+        actions.pack(fill='x', pady=10)
+        self.copy_button = ttk.Button(actions, text='Sao chép', state='disabled', command=self.copy)
+        self.copy_button.pack(side='left')
+        ttk.Button(actions, text='Lưu ý trích xuất', command=self.show_help).pack(side='right')
         self.result_status = tk.StringVar(value='Chọn đúng phương pháp đã dùng khi nhúng.')
         ttk.Label(right, textvariable=self.result_status, wraplength=480).pack(fill='x')
 
@@ -36,7 +39,7 @@ class ExtractTab(BaseTab):
         self.message.delete('1.0', 'end')
         self.message.configure(state='disabled')
         self.copy_button.configure(state='disabled')
-        self.result_status.set('Sẵn sàng trích xuất.')
+        self.result_status.set('Chọn đúng phương pháp đã dùng khi nhúng.')
 
     def extract(self):
         if not self.require_image():
@@ -58,11 +61,18 @@ class ExtractTab(BaseTab):
             self.message.insert('1.0', result['message'])
             self.message.configure(state='disabled')
             self.copy_button.configure(state='normal')
-            self.result_status.set(f'Thành công · LENGTH hợp lệ · UTF-8 hợp lệ · {result["payload_bytes"]} bytes.\n'
-                                   'Packet không có checksum; không xác thực được nguồn gốc chỉ từ LENGTH/UTF-8.')
+            self.result_status.set(f'Trích xuất thành công · {result["payload_bytes"]} byte.')
         else:
             self.result_status.set(result['error'])
-        self.app.set_status(result.get('history_warning', self.result_status.get()))
+        self.app.set_status(result.get('history_warning', 'Đã trích xuất.' if result['success'] else 'Trích xuất thất bại.'))
+
+    def show_help(self):
+        return show_help(self, 'Lưu ý trích xuất',
+                         'Chọn đúng phương pháp PVD hoặc DWT đã dùng để nhúng.\n\n'
+                         'Ứng dụng đọc độ dài LENGTH và giải mã văn bản UTF-8. '
+                         'Packet không có checksum: đọc được văn bản không chứng minh ảnh có chứa dữ liệu nhúng '
+                         'hay xác thực được nguồn gốc. Ảnh chưa nhúng cũng có thể cho kết quả rỗng.\n\n'
+                         'Chỉ quy trình nhúng và so sánh có dữ liệu gốc để kiểm tra khôi phục khớp 100%.')
 
     def copy(self):
         self.clipboard_clear()

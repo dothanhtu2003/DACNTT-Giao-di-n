@@ -76,11 +76,13 @@ def test_gui_workflow(app, tmp_path, monkeypatch, method):
         'Nhúng dữ liệu', 'Trích xuất dữ liệu', 'So sánh PVD – DWT', 'Lịch sử']
     embed = app.embed_tab
     embed.choose()
+    assert 'Dung lượng:' in embed.metric_text.get()
+    assert 'Văn bản: 0 byte' in embed.metric_text.get()
     embed.method.set(method)
     embed.message.insert('1.0', 'Kiểm thử 🔐')
     app.update()
+    assert f'Văn bản: {len("Kiểm thử 🔐".encode("utf-8"))} byte' in embed.metric_text.get()
     embed.changed()
-    embed.check_capacity()
     embed.embed()
     wait_job(app)
     assert embed.result['success']
@@ -220,99 +222,8 @@ def prepare_comparison(app, tmp_path, monkeypatch, message='Hello'):
     tab.message.insert('1.0', message)
     app.update()
     tab.compare()
-    assert str(tab.try_button['state']) == 'disabled'
     wait_job(app)
     return tab
-
-
-@pytest.mark.parametrize('message', ['Hello', 'x' * 150])
-def test_robustness_workflow_and_configuration(app, tmp_path, monkeypatch, message):
-    from services.robustness import ATTACK_LABELS, DEFAULT_PARAMETERS
-    tab = prepare_comparison(app, tmp_path, monkeypatch, message)
-    assert str(tab.try_button['state']) == 'normal'
-    tab.try_robustness()
-    assert str(tab.try_button['state']) == 'disabled'
-    wait_job(app)
-    assert tab.robustness_results['PVD']['ber'] == 0
-    assert tab.robustness_results['DWT']['status'] == ('success' if message == 'Hello' else 'not_tested')
-    original = tab.results
-    for name, label in ATTACK_LABELS.items():
-        tab.attack.set(label)
-        app.update()
-        assert tab.results is original and not tab.robustness_results
-        assert bool(tab.parameter_frame.winfo_manager()) == bool(DEFAULT_PARAMETERS[name])
-        assert bool(tab.seed_frame.winfo_manager()) == (name in ('gaussian_noise', 'salt_pepper'))
-        tab.try_robustness()
-        wait_job(app)
-        assert tab.robustness_results['PVD']['output_image'] is not None
-        assert all(message not in cell.cget('text') for cell in tab.robustness_cells['PVD'].values())
-    tab.parameter.set('.8')
-    assert tab.results is original and not tab.robustness_results
-    tab.seed.set('42')
-    assert tab.results is original
-    for geometry in ('1000x760', '1180x760'):
-        app.geometry(geometry)
-        app.update()
-        assert_buttons_visible(tab)
-        for widget in (*tab.attacked_previews.values(), tab.parameter_frame):
-            assert_scroll_accessible(tab, widget)
-    tab.message.insert('end', '!')
-    app.update()
-    assert not tab.results and str(tab.try_button['state']) == 'disabled'
-
-
-def test_gui_invalid_parameters_before_worker(app, tmp_path, monkeypatch):
-    tab = prepare_comparison(app, tmp_path, monkeypatch)
-    errors = []
-    monkeypatch.setattr(tab, 'show_error', errors.append)
-    monkeypatch.setattr(app, 'run_job', lambda *args: pytest.fail('invalid input started worker'))
-    for name, value in [('Làm mờ Gaussian', '53'), ('Thay đổi kích thước', '4.1'),
-                        ('Nhiễu Gaussian', 'nan'), ('Thay đổi độ sáng', 'inf')]:
-        tab.attack.set(name)
-        tab.parameter.set(value)
-        tab.try_robustness()
-    tab.attack.set('Nhiễu muối tiêu')
-    tab.seed.set('-1')
-    tab.try_robustness()
-    assert len(errors) == 5
-
-
-@pytest.mark.parametrize('change', ['attack', 'parameter', 'seed', 'message', 'image', 'compare'])
-def test_stale_robustness_token_and_captured_history(app, tmp_path, monkeypatch, change):
-    tab = prepare_comparison(app, tmp_path, monkeypatch)
-    tab.attack.set('Nhiễu Gaussian')
-    pending = []
-    # Hold delivery, allowing the UI to change away and back before completion.
-    monkeypatch.setattr(app, 'run_job', lambda work, done: pending.append((work, done)))
-    tab.try_robustness()
-    token = tab.version
-    if change == 'attack':
-        tab.attack.set('Không tác động')
-        tab.attack.set('Nhiễu Gaussian')
-    elif change == 'parameter':
-        tab.parameter.set('8')
-        tab.parameter.set('1.0')
-    elif change == 'seed':
-        seed = tab.seed.get()
-        tab.seed.set('42')
-        tab.seed.set(seed)
-    elif change == 'message':
-        tab.message.insert('end', '!')
-        app.update()
-        tab.message.delete('end-2c', 'end-1c')
-        app.update()
-    elif change == 'image':
-        tab.choose()
-    else:
-        tab.compare()
-    assert tab.version > token
-    work, done = pending[0]
-    results = work()
-    done(results)
-    assert not tab.robustness_results
-    records = [r for r in app.service.history.get_all() if r['operation'] == 'robustness']
-    assert len(records) == 2 and all(r['attack'] == 'gaussian_noise' for r in records)
-    assert all(r['attack_parameters'] == '{"sigma":1.0}' for r in records)
 
 
 def test_stale_compare_token_and_restart(app, tmp_path, monkeypatch):
@@ -320,7 +231,7 @@ def test_stale_compare_token_and_restart(app, tmp_path, monkeypatch):
     pending = []
     monkeypatch.setattr(app, 'run_job', lambda work, done: pending.append((work, done)))
     tab.compare()
-    assert not tab.results and not tab.robustness_results
+    assert not tab.results
     assert all(str(b['state']) == 'disabled' for b in tab.save_buttons.values())
     tab.compare()
     pending[0][1](pending[0][0]())
@@ -328,139 +239,12 @@ def test_stale_compare_token_and_restart(app, tmp_path, monkeypatch):
     pending[1][1](pending[1][0]())
     assert tab.results
     tab.compare()
-    tab.attack.set('Nén JPEG')
-    tab.attack.set('Không tác động')
+    tab.mode.set('Bộ ảnh')
+    tab.mode_changed()
+    tab.mode.set('Một ảnh')
+    tab.mode_changed()
     pending[2][1](pending[2][0]())
     assert not tab.results
-
-
-def test_robustness_busy_worker_and_warning(app, tmp_path, monkeypatch):
-    import threading
-    tab = prepare_comparison(app, tmp_path, monkeypatch)
-    owner = threading.get_ident()
-    original = app.service.try_robustness
-    def work(*args):
-        assert threading.get_ident() != owner
-        results = original(*args)
-        for result in results.values():
-            result['history_warning'] = 'Không ghi được lịch sử'
-        return results
-    monkeypatch.setattr(app.service, 'try_robustness', work)
-    app.busy = True  # A job on any tab disables robustness.
-    tab.update_busy()
-    assert str(tab.try_button['state']) == 'disabled'
-    tab.try_robustness()
-    assert not tab.robustness_results
-    app.busy = False
-    tab.update_busy()
-    tab.try_robustness()
-    wait_job(app)
-    assert all(r['success'] for r in tab.robustness_results.values())
-    assert 'Không ghi được lịch sử' in app.status.get()
-    assert all('Không ghi được lịch sử' in cells['notes'].cget('text')
-               for cells in tab.robustness_cells.values())
-
-
-def robustness_result(**changes):
-    result = dict(attack='none', attack_parameters='{}', seed=None, width=128,
-                  height=128, ber=0.0, success=True, status='success', error=None,
-                  output_image=np.full((128, 128, 3), 128, dtype=np.uint8))
-    result.update(changes)
-    return result
-
-
-def test_robustness_table_structure_and_states(app):
-    from gui.compare_tab import ROBUSTNESS_ROWS, RESULT_COLORS
-    from tkinter.font import Font
-    tab = app.compare_tab
-    assert [title for title, key in ROBUSTNESS_ROWS] == [
-        'Tác động và tham số', 'Seed', 'Kích thước ảnh sau tác động',
-        'BER sau tác động', 'Khôi phục toàn bộ packet', 'Nguyên nhân / ghi chú']
-    assert set(tab.robustness_cells) == {'PVD', 'DWT'}
-    assert set(tab.robustness_headers) == {'Chỉ số', 'PVD', 'DWT'}
-    for method, cells in tab.robustness_cells.items():
-        assert list(cells) == [key for title, key in ROBUSTNESS_ROWS]
-        assert all(cell.cget('text') == 'Chưa thử' for cell in cells.values())
-    tab.show_robustness_result('PVD', robustness_result(history_warning='Không ghi được lịch sử'))
-    tab.show_robustness_result('DWT', robustness_result(
-        status='extraction_failed', success=False, ber=None, error='LENGTH sai',
-        history_warning='Cảnh báo lịch sử'))
-    for method, text, state in [('PVD', 'Khôi phục đúng', 'success'),
-                                ('DWT', 'Thất bại', 'failure')]:
-        cell = tab.robustness_cells[method]['recovery']
-        assert cell.cget('text') == text
-        assert str(cell.cget('foreground')) == RESULT_COLORS[state]
-        assert Font(app, font=cell.cget('font')).actual('weight') == 'bold'
-        assert tab.robustness_cells[method]['seed'].cget('text') == 'Không dùng'
-    cells = tab.robustness_cells['DWT']
-    assert cells['ber'].cget('text') == 'Không xác định'
-    assert str(cells['ber'].cget('foreground')) == RESULT_COLORS['muted']
-    assert cells['notes'].cget('text') == 'LENGTH sai\nCảnh báo lịch sử'
-    assert tab.robustness_cells['PVD']['notes'].cget('text') == 'Không ghi được lịch sử'
-    tab.show_robustness_result('DWT', robustness_result(
-        status='not_tested', success=False, output_image=None, width=None, height=None,
-        ber=None, attack='resize', attack_parameters='{"scale":0.5}',
-        error='Không thử được — nhúng thất bại'))
-    assert cells['attack'].cget('text') == 'Thay đổi kích thước\nTỷ lệ mỗi chiều: 0.5'
-    assert cells['recovery'].cget('text') == 'Không thử được'
-    assert str(cells['recovery'].cget('foreground')) == RESULT_COLORS['muted']
-    assert cells['notes'].cget('text') == 'Nhúng thất bại'
-    assert all(cells[key].cget('text') == '—' for key in ('seed', 'dimensions', 'ber'))
-    assert tab.attacked_previews['DWT'].photo is None
-    assert tab.attacked_previews['DWT'].image_label.cget('text') == 'Không thử được'
-    tab.show_robustness_result('PVD', robustness_result())
-    assert tab.robustness_cells['PVD']['notes'].cget('text') == '—'
-    tab.clear_robustness()
-    for method, cells in tab.robustness_cells.items():
-        for cell in cells.values():
-            assert cell.cget('text') == 'Chưa thử'
-            assert str(cell.cget('foreground')) == RESULT_COLORS['neutral']
-            assert Font(app, font=cell.cget('font')).actual('weight') == 'normal'
-        preview = tab.attacked_previews[method]
-        assert preview.photo is None and not preview.image_label.cget('image')
-        assert preview.image_label.cget('text') == 'Chưa thử'
-
-
-def test_robustness_wrapping_alignment_and_thumbnails(app):
-    tab = app.compare_tab
-    app.notebook.select(tab)
-    app.geometry('1000x760')
-    note = 'Ghi chú dài cần xuống dòng và giữ toàn bộ nội dung trong cột. ' * 12
-    images = {'PVD': np.full((800, 40, 3), 128, dtype=np.uint8),
-              'DWT': np.full((40, 800, 3), 128, dtype=np.uint8)}
-    for method, image in images.items():
-        tab.show_robustness_result(method, robustness_result(
-            attack='crop', attack_parameters='{"fraction":0.5}', output_image=image,
-            width=image.shape[1], height=image.shape[0], error=note if method == 'PVD' else None))
-    app.update()
-    for method, image in images.items():
-        preview = tab.attacked_previews[method]
-        assert max(preview.photo.width(), preview.photo.height()) <= 150
-        assert min(preview.photo.width(), preview.photo.height()) < 20
-        assert preview.photo.width() / preview.photo.height() == pytest.approx(
-            image.shape[1] / image.shape[0], rel=.1)
-        assert tab.robustness_cells[method]['dimensions'].cget('text') == f'{image.shape[1]} × {image.shape[0]}'
-        column = 1 if method == 'PVD' else 2
-        assert int(preview.grid_info()['column']) == column
-        header = tab.robustness_headers[method]
-        assert preview.master is tab.robustness_grid
-        for cell in tab.robustness_cells[method].values():
-            assert int(cell.grid_info()['column']) == column
-            assert cell.winfo_x() == header.winfo_x() - 6
-            assert int(cell.cget('wraplength')) <= cell.winfo_width() - 12
-    for key in tab.robustness_row_labels:
-        pvd, dwt = (tab.robustness_cells[m][key] for m in ('PVD', 'DWT'))
-        assert pvd.winfo_y() == dwt.winfo_y()
-        assert pvd.winfo_height() == dwt.winfo_height()
-        assert pvd.winfo_width() == dwt.winfo_width()
-        assert str(pvd.cget('anchor')) == 'nw'
-        assert_scroll_accessible(tab, pvd)
-        assert pvd.winfo_x() + pvd.winfo_width() <= dwt.winfo_x()
-    assert tab.robustness_cells['PVD']['notes'].winfo_height() > 100
-    previous_wrap = int(tab.robustness_cells['PVD']['notes'].cget('wraplength'))
-    app.geometry('1400x900')
-    app.update()
-    assert int(tab.robustness_cells['PVD']['notes'].cget('wraplength')) > previous_wrap
 
 
 def prepare_batch(app, tmp_path):
@@ -502,10 +286,9 @@ def test_batch_gui_real_worker_table_and_four_tabs(app, tmp_path, monkeypatch):
     captured = panel.inspect()
     assert len(captured[0]) == 2 and captured[1]['seeds'] == [7, 8]
     assert '56' in panel.plan.cget('text')
-    assert len(panel.inventory.get_children()) == 3
+    assert len(panel.entries) == 3
     panel.start()
     assert app.busy and str(panel.run_button['state']) == 'disabled'
-    assert str(tab.try_button['state']) == 'disabled'
     panel.start()  # Busy must prevent a second batch.
     wait_job(app)
     assert not panel.active and panel.result['completed_cases'] == 56
@@ -518,7 +301,7 @@ def test_batch_gui_real_worker_table_and_four_tabs(app, tmp_path, monkeypatch):
     time.sleep(.12)
     app.update()  # A queued worker progress event must not replace the completion caption.
     assert float(panel.progress['value']) == float(panel.progress['maximum'])
-    assert '56 ca đã chạy; 0 ca không chạy do baseline' in panel.progress_text.cget('text')
+    assert '2 ảnh chạy thành công · 0 ảnh thất bại' in panel.progress_text.cget('text')
     # No whole-page scrolling is needed for results or persistent actions.
     for widget in (panel.run_button, panel.cancel_button, panel.open_button, panel.table):
         app.update()

@@ -13,7 +13,14 @@ from tkinter.font import Font
 
 from experiments.batch_runner import scan_directory, batch_config, planned_counts
 from experiments.experiment_config import default_config
-from services.robustness import ATTACK_LABELS, PARAMETER_HELP
+from services.robustness import ATTACK_LABELS
+
+PARAMETER_HINTS = {
+    'quality': 'Chất lượng: 1–100', 'sigma': 'Sigma ≥ 0',
+    'amount': 'Tỷ lệ: 0–1', 'kernel_size': 'Cạnh lọc lẻ: 1–51',
+    'delta': 'Mức tăng sáng', 'alpha': 'Hệ số ≥ 0',
+    'scale': 'Tỷ lệ: 0 < s ≤ 4', 'fraction': 'Phần giữ lại: 0 < f ≤ 1',
+}
 
 SUMMARY_COLUMNS = [
     ('method', 'PP'), ('payload_bytes', 'Byte'), ('attack', 'Tác động'),
@@ -99,22 +106,37 @@ def detail_text(row, result):
 
 
 def completed_caption(result):
-    """Attribute omissions only when the supplied baseline inventory supports it."""
-    completed = result.get('completed_cases', MISSING)
+    """Count each source once; success requires every embedding baseline to pass."""
     counts = result.get('counts', {})
+    images, embeddings = counts.get('images'), counts.get('embeddings')
     baselines = result.get('baselines')
-    embeddings, cases = counts.get('embeddings'), counts.get('cases')
+    unknown = 'Hoàn tất: chưa đủ dữ liệu để đếm ảnh thành công/thất bại.'
     known = {'valid', 'capacity', 'embed_io_error', 'mismatch'}
-    if (isinstance(embeddings, int) and embeddings > 0 and isinstance(cases, int)
-            and cases % embeddings == 0 and isinstance(baselines, list) and len(baselines) == embeddings
-            and all(b.get('baseline_status') in known for b in baselines)
-            and len({(b.get('image_id'), b.get('method'), b.get('payload_bytes')) for b in baselines}) == embeddings):
-        skipped = sum(b['baseline_status'] != 'valid' for b in baselines) * (cases // embeddings)
-        text = f'Hoàn tất: {completed} ca đã chạy; {skipped} ca không chạy do baseline không hợp lệ.'
-        if isinstance(completed, int) and cases != completed + skipped:
-            text += f' Chênh lệch khác: {cases - completed - skipped} ca; chưa xác định nguyên nhân.'
-        return text
-    return f'Hoàn tất: {completed} ca đã chạy; thiếu dữ liệu để xác định số ca bỏ do baseline.'
+    if (type(images) is not int or images <= 0 or type(embeddings) is not int
+            or embeddings <= 0 or embeddings % images or not isinstance(baselines, list)
+            or len(baselines) != embeddings):
+        return unknown
+    groups, configurations = {}, set()
+    for base in baselines:
+        image_id = base.get('image_id')
+        method, payload = base.get('method'), base.get('payload_bytes')
+        status = base.get('baseline_status')
+        if (type(image_id) is not int or not 0 <= image_id < images
+                or method not in ('PVD', 'DWT') or type(payload) is not int
+                or status not in known):
+            return unknown
+        key = (image_id, method, payload)
+        if key in configurations:
+            return unknown
+        configurations.add(key)
+        groups.setdefault(image_id, []).append(base)
+    expected = embeddings // images
+    expected_configs = {(b['method'], b['payload_bytes']) for b in baselines}
+    if (len(groups) != images or len(expected_configs) != expected
+            or any(len(group) != expected for group in groups.values())):
+        return unknown
+    success = sum(all(b['baseline_status'] == 'valid' for b in group) for group in groups.values())
+    return f'Hoàn tất: {success} ảnh chạy thành công · {images - success} ảnh thất bại.'
 
 
 def integer_list(text):
@@ -122,23 +144,6 @@ def integer_list(text):
     if not values or any(v < 0 for v in values):
         raise ValueError('Nhập danh sách số nguyên không âm, cách nhau bằng dấu phẩy.')
     return list(dict.fromkeys(values))
-
-
-def scroll_table(parent, columns, height):
-    frame = ttk.Frame(parent)
-    frame.pack(fill='x', pady=4)
-    table = ttk.Treeview(frame, columns=[k for k, _ in columns], show='headings', height=height)
-    for key, label in columns:
-        table.heading(key, text=label)
-        table.column(key, width=150, minwidth=90, stretch=False)
-    vertical = ttk.Scrollbar(frame, command=table.yview)
-    horizontal = ttk.Scrollbar(frame, orient='horizontal', command=table.xview)
-    table.configure(yscrollcommand=vertical.set, xscrollcommand=horizontal.set)
-    table.grid(row=0, column=0, sticky='nsew')
-    vertical.grid(row=0, column=1, sticky='ns')
-    horizontal.grid(row=1, column=0, sticky='ew')
-    frame.columnconfigure(0, weight=1)
-    return table
 
 
 class BatchPanel(ttk.Frame):
@@ -187,17 +192,14 @@ class BatchPanel(ttk.Frame):
             row.pack(fill='x', pady=2)
             ttk.Button(row, text=title, command=command).pack(side='left')
             ttk.Entry(row, textvariable=variable).pack(side='left', fill='x', expand=True, padx=6)
-        ttk.Button(cfg, text='Đọc danh sách / kiểm tra cấu hình', command=self.inspect).pack(anchor='w')
-        self.inventory = scroll_table(cfg, [('name', 'Tên file'), ('size', 'Kích thước'),
-                                   ('mode', 'Mode gốc → xử lý'), ('status', 'Trạng thái / lỗi')], 3)
-        self.notice = ttk.Label(cfg, wraplength=850, text='Chọn ảnh PNG/BMP trực tiếp trong thư mục; không đọc đệ quy.')
+        self.notice = ttk.Label(cfg, wraplength=850, text='Ảnh PNG/BMP trong thư mục đã chọn.')
         self.notice.pack(fill='x')
-        for title, variable in [('Payload bytes (dấu phẩy)', self.payloads), ('Seed (dấu phẩy; chỉ dùng cho nhiễu)', self.seeds)]:
+        for title, variable in [('Payload (byte)', self.payloads), ('Seed nhiễu', self.seeds)]:
             row = ttk.Frame(cfg)
             row.pack(fill='x', pady=2)
-            ttk.Label(row, text=title, width=42).pack(side='left')
+            ttk.Label(row, text=title, width=18).pack(side='left')
             ttk.Entry(row, textvariable=variable).pack(side='left', fill='x', expand=True)
-        ttk.Label(cfg, text='Baseline “Không tác động” luôn được thêm. Chọn tác động và nhập nhiều mức, cách nhau dấu phẩy.').pack(anchor='w')
+        ttk.Label(cfg, text='Các mức cách nhau bằng dấu phẩy · Luôn có mẫu không tác động.').pack(anchor='w')
         self.attacks = {}
         grid = ttk.Frame(cfg)
         grid.pack(fill='x')
@@ -211,10 +213,10 @@ class BatchPanel(ttk.Frame):
             row = index - 1
             ttk.Checkbutton(grid, text=label, variable=enabled).grid(row=row, column=0, sticky='w')
             ttk.Entry(grid, textvariable=values, width=23).grid(row=row, column=1, sticky='ew', padx=6)
-            ttk.Label(grid, text=PARAMETER_HELP[key]).grid(row=row, column=2, sticky='w')
+            ttk.Label(grid, text=PARAMETER_HINTS[key]).grid(row=row, column=2, sticky='w')
             self.attacks[name] = (key, enabled, values)
         grid.columnconfigure(1, weight=1)
-        self.plan = ttk.Label(cfg, text='Chưa kiểm tra cấu hình.', wraplength=850)
+        self.plan = ttk.Label(cfg, text='Chọn thư mục ảnh để bắt đầu.', wraplength=850)
         self.plan.pack(fill='x', pady=5)
         actions = self.top_actions
         self.run_button = ttk.Button(actions, text='Chạy Bộ ảnh', command=self.start, style='Batch.TButton')
@@ -264,8 +266,7 @@ class BatchPanel(ttk.Frame):
         self.table.bind('<<TreeviewSelect>>', self.selection_changed)
         self.table.bind('<Double-1>', self.show_detail)
         self.legend = ttk.Label(self, wraplength=900, text=
-            'Đúng TB: khôi phục toàn bộ packet TB theo ảnh — chỉ số chính. BER TB (0–1): đọc cùng Ca BER NA.\n'
-            'NA: Không xác định; không phải 0 hoặc 1. SD = 0 không tự chứng minh ổn định tổng quát. PP/Ảnh: phương pháp/ảnh đủ điều kiện.')
+            'Đúng TB: khôi phục packet TB theo ảnh · BER TB: 0–1 · NA: không xác định')
         self.legend.grid(row=7, column=0, sticky='ew', pady=4)
         footer = ttk.Frame(self)
         footer.grid(row=8, column=0, sticky='ew')
@@ -298,7 +299,7 @@ class BatchPanel(ttk.Frame):
         self.detail_button.configure(state='disabled')
         self.chart_button.configure(state='disabled')
         self.row_count.configure(text='Chưa có kết quả cho cấu hình này.')
-        self.plan.configure(text='Cấu hình đã đổi; kiểm tra lại trước khi chạy.')
+        self.plan.configure(text='Cấu hình sẽ được kiểm tra khi chạy.')
         self.progress.configure(value=0)
         self.progress_text.configure(text='Đang chạy cấu hình đã chụp; lựa chọn mới chưa có kết quả.'
                                       if self.active else 'Cấu hình đã đổi; chưa có kết quả.')
@@ -438,22 +439,17 @@ class BatchPanel(ttk.Frame):
         try:
             entries = scan_directory(self.source.get())
             self.entries = entries
-            self.inventory.delete(*self.inventory.get_children())
-            for e in entries:
-                self.inventory.insert('', 'end', values=(e['name'], f'{e.get("width", "?")} × {e.get("height", "?")}',
-                    f'{e.get("mode", "?")} → {e.get("effective_mode", "?")}', e.get('error', 'Đọc được')))
             config = self.capture_config()
             if not self.destination.get().strip():
                 raise ValueError('Cần thư mục đầu ra.')
             paths = [e['path'] for e in entries if e['status'] == 'ready']
             if not paths:
-                raise ValueError('Không có ảnh đọc được; xem lỗi trong danh sách file.')
+                raise ValueError('Không có ảnh PNG/BMP đọc được trong thư mục đã chọn.')
             counts = planned_counts(len(paths), config)
-            self.notice.configure(text=f'{len(paths)} ảnh đọc được; {len(entries) - len(paths)} file bị loại. '
-                'Khuyến nghị 10–20 ảnh thật gồm xám, màu, vùng phẳng và nhiều chi tiết. Không tự phân loại ảnh.' +
-                (' Lưu ý: ít hơn 10 ảnh; vẫn cho phép chạy kiểm tra.' if len(paths) < 10 else ''))
+            self.notice.configure(text=f'{len(paths)} ảnh hợp lệ · {len(entries) - len(paths)} file bị loại' +
+                (' · Nên dùng ít nhất 10 ảnh.' if len(paths) < 10 else ''))
             self.plan.configure(text=f'{counts["images"]} ảnh × 2 phương pháp: {counts["embeddings"]} cấu hình nhúng; '
-                f'tối đa {counts["cases"]} ca (gồm baseline). Baseline lỗi sẽ bỏ tác động. Seed trùng được loại.')
+                f'tối đa {counts["cases"]} ca (gồm baseline).')
             return paths, config, str(Path(self.destination.get()).resolve())
         except (OSError, ValueError) as exc:
             self.compare.show_error(str(exc))
@@ -566,9 +562,9 @@ class BatchPanel(ttk.Frame):
         selected = self.table.selection()
         self.table.delete(*self.table.get_children())
         self.row_data = {}
-        self.scope_label.configure(text='Đang hiển thị: ' + (
-            'Ảnh có baseline hợp lệ ở cả PVD và DWT, theo từng payload' if self.common.get() else
-            'Toàn bộ ảnh có baseline hợp lệ của từng phương pháp'))
+        self.scope_label.configure(text=(
+            'Ảnh nhúng thành công ở cả PVD/DWT, theo payload.' if self.common.get() else
+            'Ảnh nhúng thành công của từng phương pháp.'))
         if not self.result:
             self.chart_button.configure(state='disabled')
             self.row_count.configure(text='Chưa có kết quả.')

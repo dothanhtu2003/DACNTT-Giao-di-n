@@ -239,7 +239,7 @@ class BatchChartWindow(tk.Toplevel):
         for index, plot in enumerate(self.plots):
             panel = ttk.Frame(content)
             panel.pack(fill='x', pady=10)
-            ttk.Button(panel, text=f'Lưu biểu đồ tổng quát PNG — Payload {plot["payload"]} byte',
+            ttk.Button(panel, text=f'Lưu PNG · Payload {plot["payload"]} byte',
                        command=lambda i=index: self.choose_save(i)).pack(anchor='w', padx=10)
             fig = chart_figure(plot)
             self.figures.append(fig)

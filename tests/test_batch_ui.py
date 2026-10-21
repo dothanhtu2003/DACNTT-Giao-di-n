@@ -123,7 +123,7 @@ def test_filters_numeric_order_and_data_unchanged(app):
     panel.filter_payload.set('999')  # Defensive empty state for a stale/unsupported selection.
     assert not panel.table.get_children() and 'không có dòng phù hợp' in panel.row_count.cget('text')
     assert result == original  # Includes original ordering; CSV/export data is untouched.
-    assert 'Đang hiển thị: Toàn bộ ảnh có baseline hợp lệ của từng phương pháp' == panel.scope_label.cget('text')
+    assert 'Ảnh nhúng thành công của từng phương pháp.' == panel.scope_label.cget('text')
     assert '5' not in panel.scope_label.cget('text')
 
 
@@ -165,18 +165,18 @@ def test_detail_long_parameter_na_and_units(app):
     assert 'Tổng số ảnh dự kiến: Thiếu dữ liệu' in missing
 
 
-def test_completed_cancelled_failed_and_no_false_baseline_attribution(app):
+def test_completed_image_counts_and_incomplete_runs(app):
     panel = panel_for(app)
     result = result_fixture()
     result['completed_cases'] = 190
-    assert '10 ca không chạy do baseline' in completed_caption(result)
+    assert completed_caption(result) == 'Hoàn tất: 4 ảnh chạy thành công · 1 ảnh thất bại.'
     panel.present_result(result)
     assert float(panel.progress['value']) == float(panel.progress['maximum'])
     result = deepcopy(result)
     result['completed_cases'] = 180
-    assert 'Chênh lệch khác: 10 ca; chưa xác định nguyên nhân' in completed_caption(result)
+    assert completed_caption(result) == 'Hoàn tất: 4 ảnh chạy thành công · 1 ảnh thất bại.'
     del result['baselines']
-    assert 'thiếu dữ liệu' in completed_caption(result)
+    assert 'chưa đủ dữ liệu' in completed_caption(result)
     result['status'] = 'cancelled'
     panel.present_result(result)
     assert float(panel.progress['value']) == 180 and float(panel.progress['maximum']) == 200

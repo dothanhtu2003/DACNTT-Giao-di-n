@@ -24,12 +24,12 @@ class MainWindow(tk.Tk):
         self.service = service if service is not None else StegoService()
         self.executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix='stego')
         self.busy = False
-        self.status = tk.StringVar(value='Sẵn sàng · PNG/BMP đầu vào • PNG đầu ra')
+        self.status = tk.StringVar(value='Sẵn sàng')
         self._style()
         header = ttk.Frame(self, padding=(22, 16))
         header.pack(fill='x')
         ttk.Label(header, text='GIẤU TIN TRONG ẢNH SỐ', style='Title.TLabel').pack(anchor='w')
-        ttk.Label(header, text='PVD & DWT  /  Nhúng, trích xuất và đánh giá chất lượng ảnh',
+        ttk.Label(header, text='PVD & DWT',
                   style='Subtitle.TLabel').pack(anchor='w', pady=(4, 0))
         ttk.Label(self, textvariable=self.status, padding=(20, 10), wraplength=1100).pack(side='bottom', fill='x')
         self.notebook = ttk.Notebook(self)
