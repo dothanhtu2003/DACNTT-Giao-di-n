@@ -4,9 +4,9 @@ from pathlib import Path
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 
-from PIL import ImageTk
+from PIL import Image, ImageTk
 
-from core.image_utils import load_image, image_info, create_thumbnail
+from core.image_utils import load_image, image_info
 
 IMAGE_TYPES = [('Ảnh PNG / BMP', '*.png *.bmp')]
 
@@ -55,19 +55,85 @@ class Preview(ttk.LabelFrame):
         super().__init__(parent, text=title, padding=10)
         self.size = size
         self.photo = None
-        self.image_label = ttk.Label(self, text='Chưa chọn ảnh', anchor='center')
+        self._source = None
+        self._original = None
+        self._resize_job = None
+        self._rendered_size = None
+        self._viewer = None
+        # Keep the requested layout independent of the displayed bitmap size.
+        self.viewport = ttk.Frame(self, width=size[0], height=size[1])
+        self.viewport.pack_propagate(False)
+        self.image_label = ttk.Label(self.viewport, text='Chưa chọn ảnh', anchor='center')
         self.caption = ttk.Label(self, text='', anchor='center', wraplength=size[0])
         self.caption.pack(side='bottom', fill='x', pady=(8, 0))
+        self.viewport.pack(fill='both', expand=True)
         self.image_label.pack(fill='both', expand=True)
+        self.image_label.bind('<Button-1>', self.open_viewer)
+        self.viewport.bind('<Configure>', self._queue_resize)
+        self.bind('<Destroy>', self._cancel_resize, add='+')
 
-    def show(self, image, caption=''):
-        self.photo = ImageTk.PhotoImage(create_thumbnail(image, self.size))
-        self.image_label.configure(image=self.photo, text='')
+    def show(self, image, caption='', original=None):
+        self._close_viewer()
+        self._cancel_resize()
+        self._source = Image.fromarray(image).copy()
+        self._original = Image.fromarray(original).copy() if original is not None else None
+        self._rendered_size = None
         self.caption.configure(text=caption)
+        self.image_label.configure(cursor='hand2')
+        self._render()
+
+    def open_viewer(self, event=None):
+        if self._source is None:
+            return
+        if self._viewer is not None and self._viewer.winfo_exists():
+            self._viewer.lift()
+            return self._viewer
+        from gui.image_view import ImageView
+        self._viewer = ImageView(self, self._source, self.cget('text'), original=self._original)
+        return self._viewer
+
+    def _close_viewer(self):
+        if self._viewer is not None and self._viewer.winfo_exists():
+            self._viewer.destroy()
+        self._viewer = None
+
+    def _queue_resize(self, event):
+        self.caption.configure(wraplength=max(1, event.width))
+        self._cancel_resize()
+        self._resize_job = self.after(60, self._render)
+
+    def _cancel_resize(self, event=None):
+        if event is not None and event.widget is not self:
+            return
+        if self._resize_job is not None:
+            self.after_cancel(self._resize_job)
+            self._resize_job = None
+
+    def _render(self):
+        self._resize_job = None
+        if self._source is None:
+            return
+        width, height = self.viewport.winfo_width(), self.viewport.winfo_height()
+        if width <= 1 or height <= 1:
+            return
+        scale = min(width / self._source.width, height / self._source.height)
+        size = (max(1, int(self._source.width * scale)),
+                max(1, int(self._source.height * scale)))
+        if size == self._rendered_size:
+            return
+        self.photo = ImageTk.PhotoImage(
+            self._source.resize(size, Image.Resampling.LANCZOS), master=self)
+        self.image_label.configure(image=self.photo, text='')
+        self._rendered_size = size
 
     def clear(self, text='Chưa có ảnh'):
+        self._close_viewer()
+        self._cancel_resize()
+        self._source = None
+        self._original = None
+        self._rendered_size = None
         self.photo = None
-        self.image_label.configure(image='', text=text)
+        self.image_label.configure(image='', text=text, cursor='')
         self.caption.configure(text='')
 
 

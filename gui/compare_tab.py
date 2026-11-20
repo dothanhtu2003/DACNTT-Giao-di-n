@@ -35,7 +35,10 @@ class CompareTab(BaseTab):
         self.content.pack(fill='x')
         window = self.canvas.create_window((0, 0), window=self.viewport, anchor='nw')
         self.viewport.bind('<Configure>', lambda e: self.canvas.configure(scrollregion=self.canvas.bbox('all')))
-        self.canvas.bind('<Configure>', lambda e: self.canvas.itemconfigure(window, width=e.width))
+        def resize_content(event):
+            self.canvas.itemconfigure(window, width=event.width)
+            top.configure(height=max(580, event.height))
+        self.canvas.bind('<Configure>', resize_content)
         self.app.bind_all('<MouseWheel>', self.scroll_wheel, add='+')
         top = ttk.Frame(self.content, height=580)
         top.pack(fill='x')
@@ -46,7 +49,7 @@ class CompareTab(BaseTab):
         top.rowconfigure(0, weight=1)
         left = ttk.Frame(top)
         left.grid(row=0, column=0, sticky='nsew', padx=(0, 18))
-        self.preview = Preview(left, 'Cùng ảnh nguồn', (320, 100))
+        self.preview = Preview(left, 'Cùng ảnh nguồn', (320, 150))
         self.preview.pack(fill='both', expand=True)
         ttk.Button(left, text='Chọn ảnh PNG/BMP', command=self.choose).pack(anchor='w', pady=8)
         ttk.Label(left, text='Văn bản bí mật').pack(anchor='w')
@@ -70,14 +73,14 @@ class CompareTab(BaseTab):
         self.chart = CompareChart(right)
         self.chart.grid(row=1, column=0, sticky='nsew', pady=(6, 0))
         preview_row = ttk.Frame(left)
-        preview_row.pack(side='bottom', fill='x', before=self.preview, pady=(6, 0))
+        preview_row.pack(side='bottom', fill='both', expand=True, before=self.preview, pady=(6, 0))
         save_row = ttk.Frame(right)
         save_row.grid(row=2, column=0, sticky='ew')
         self.previews, self.save_buttons = {}, {}
         for method in ('PVD', 'DWT'):
             column = ttk.Frame(preview_row)
             column.pack(side='left', fill='both', expand=True, padx=3)
-            self.previews[method] = Preview(column, method + ' sau nhúng', (230, 50))
+            self.previews[method] = Preview(column, method + ' sau nhúng', (230, 100))
             self.previews[method].configure(padding=2)
             self.previews[method].caption.pack_forget()
             self.previews[method].pack(fill='both', expand=True)
@@ -168,7 +171,7 @@ class CompareTab(BaseTab):
         for method, result in self.results.items():
             self.save_buttons[method].configure(state='normal' if result['success'] else 'disabled')
             if result['output_image'] is not None:
-                self.previews[method].show(result['output_image'])
+                self.previews[method].show(result['output_image'], original=self.image)
             else:
                 self.previews[method].clear()
             if result['error']:

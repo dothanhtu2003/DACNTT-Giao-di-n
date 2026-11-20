@@ -37,6 +37,97 @@ def wait_job(app):
     app.update()
 
 
+def settle_previews(app):
+    app.update()
+    time.sleep(0.1)
+    app.update()
+
+
+def test_click_preview_opens_zoomable_image(app):
+    preview = app.embed_tab.cover_preview
+    assert preview.open_viewer() is None
+    image = np.full((160, 240, 3), 128, dtype=np.uint8)
+    preview.show(image)
+    settle_previews(app)
+    preview.image_label.event_generate('<Button-1>')
+    app.update()
+    viewer = preview._viewer
+    assert viewer.winfo_exists()
+    assert preview.open_viewer() is viewer
+    assert viewer.photo.width() > preview.photo.width()
+    assert viewer.photo.width() <= viewer.canvas.winfo_width()
+    assert viewer.photo.height() <= viewer.canvas.winfo_height()
+    viewer.actual_size()
+    assert (viewer.photo.width(), viewer.photo.height()) == (240, 160)
+    viewer.canvas.event_generate('<MouseWheel>', delta=120)
+    assert viewer.photo.width() == 300
+    viewer.zoom(4)
+    app.update()
+    assert viewer.photo.width() > viewer.canvas.winfo_width()
+    viewer.canvas.xview_moveto(1)
+    assert viewer.canvas.xview()[0] > 0
+    viewer.fit()
+    app.update()
+    assert viewer.canvas.xview() == (0, 1)
+    viewer.geometry('700x500')
+    app.update()
+    assert viewer.photo.width() <= viewer.canvas.winfo_width()
+    assert viewer.photo.height() <= viewer.canvas.winfo_height()
+    preview.show(np.zeros((50, 50), dtype=np.uint8))
+    assert not viewer.winfo_exists()
+    viewer = preview.open_viewer()
+    app.update()
+    assert viewer.source.size == (50, 50)
+    viewer.destroy()
+    viewer = preview.open_viewer()
+    preview.clear()
+    assert not viewer.winfo_exists()
+    assert preview.open_viewer() is None
+
+
+@pytest.mark.parametrize('tab_name', ['embed_tab', 'extract_tab', 'compare_tab', 'dwt'])
+def test_previews_follow_window_size(app, tab_name):
+    image = np.full((80, 120, 3), 128, dtype=np.uint8)
+    if tab_name == 'dwt':
+        from gui.dwt_view import DWTView
+        window = DWTView(app, image)
+        previews = window.previews
+        geometries = ('740x640', '1100x900')
+    else:
+        window = app
+        tab = getattr(app, tab_name)
+        app.notebook.select(tab)
+        previews = {
+            'embed_tab': [app.embed_tab.cover_preview, app.embed_tab.stego_preview],
+            'extract_tab': [app.extract_tab.preview],
+            'compare_tab': [app.compare_tab.preview, *app.compare_tab.previews.values()],
+        }[tab_name]
+        geometries = ('1000x760', '1500x1000')
+    for preview in previews:
+        preview.show(image)
+    sizes = []
+    for geometry in (*geometries, geometries[0]):
+        window.geometry(geometry)
+        settle_previews(app)
+        current = []
+        for preview in previews:
+            width, height = preview.photo.width(), preview.photo.height()
+            assert width <= preview.viewport.winfo_width()
+            assert height <= preview.viewport.winfo_height()
+            assert abs(width / height - 1.5) < 0.03
+            current.append((width, height))
+        sizes.append(current)
+    for small, large, restored in zip(*sizes):
+        assert large[0] > small[0] and large[1] > small[1]
+        assert restored == small
+    for preview in previews:
+        preview.clear()
+    settle_previews(app)
+    assert all(preview.photo is None for preview in previews)
+    if window is not app:
+        window.destroy()
+
+
 def assert_buttons_visible(tab):
     bottom = tab.winfo_rooty() + tab.winfo_height()
     pending = list(tab.winfo_children())
@@ -65,6 +156,37 @@ def assert_scroll_accessible(tab, widget):
     assert widget.winfo_rooty() + widget.winfo_height() <= tab.canvas.winfo_rooty() + tab.canvas.winfo_height()
 
 
+def assert_before_after_view(app, preview, original, output):
+    preview.image_label.event_generate('<Button-1>')
+    app.update()
+    viewer = preview._viewer
+    assert len(viewer.canvases) == 2
+    assert np.array_equal(np.asarray(viewer.sources[0]), original)
+    assert np.array_equal(np.asarray(viewer.sources[1]), output)
+    assert viewer.photos[0].width() == viewer.photos[1].width()
+    viewer.actual_size()
+    assert all(photo.width() == original.shape[1] for photo in viewer.photos)
+    viewer.zoom(8)
+    app.update()
+    viewer._scroll('x', 'moveto', 0.2)
+    positions = [canvas.xview()[0] for canvas in viewer.canvases]
+    assert positions[0] > 0
+    assert abs(positions[0] - positions[1]) < 0.005
+    canvas = viewer.canvases[0]
+    canvas.event_generate('<ButtonPress-1>', x=100, y=100)
+    canvas.event_generate('<B1-Motion>', x=50, y=50)
+    assert viewer.canvases[0].xview()[0] > positions[0]
+    assert abs(viewer.canvases[0].xview()[0] - viewer.canvases[1].xview()[0]) < 0.005
+    canvas.event_generate('<MouseWheel>', delta=-120)
+    assert viewer.photos[0].width() == viewer.photos[1].width()
+    viewer.fit()
+    app.update()
+    for canvas, photo in zip(viewer.canvases, viewer.photos):
+        assert photo.width() <= canvas.winfo_width()
+        assert photo.height() <= canvas.winfo_height()
+    viewer.destroy()
+
+
 @pytest.mark.parametrize('method', ['PVD', 'DWT'])
 def test_gui_workflow(app, tmp_path, monkeypatch, method):
     cover = tmp_path / 'cover.bmp'
@@ -86,6 +208,7 @@ def test_gui_workflow(app, tmp_path, monkeypatch, method):
     embed.embed()
     wait_job(app)
     assert embed.result['success']
+    assert_before_after_view(app, embed.stego_preview, embed.image, embed.result['output_image'])
     assert_buttons_visible(embed)
     embed.save_button.invoke()
     assert stego.exists()
@@ -109,6 +232,8 @@ def test_gui_workflow(app, tmp_path, monkeypatch, method):
     compare.compare()
     wait_job(app)
     assert all(result['success'] for result in compare.results.values())
+    for name, preview in compare.previews.items():
+        assert_before_after_view(app, preview, compare.image, compare.results[name]['output_image'])
     assert len(compare.table.get_children()) == 9
     assert compare.chart.winfo_ismapped()
     assert len(compare.chart.find_withtag('bar')) == 8

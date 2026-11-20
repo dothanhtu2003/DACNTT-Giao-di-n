@@ -91,7 +91,8 @@ class EmbedTab(BaseTab):
         self.result = result
         self.save_button.configure(state='normal' if result['success'] else 'disabled')
         if result['output_image'] is not None:
-            self.stego_preview.show(result['output_image'], result['method'] + ' · PNG')
+            self.stego_preview.show(result['output_image'], result['method'] + ' · PNG',
+                                    original=self.image)
         else:
             self.stego_preview.clear()
         if result['success']:
