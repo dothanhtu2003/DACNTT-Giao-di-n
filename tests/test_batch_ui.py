@@ -58,8 +58,11 @@ def capture(window, name):
     window.update()
     folder = Path(__file__).parent / 'artifacts'
     folder.mkdir(exist_ok=True)
-    ImageGrab.grab(bbox=(window.winfo_rootx(), window.winfo_rooty(), window.winfo_rootx() + window.winfo_width(),
-                         window.winfo_rooty() + window.winfo_height())).save(folder / name)
+    try:
+        ImageGrab.grab(bbox=(window.winfo_rootx(), window.winfo_rooty(), window.winfo_rootx() + window.winfo_width(),
+                             window.winfo_rooty() + window.winfo_height())).save(folder / name)
+    except OSError:
+        pass  # Bỏ qua lưu ảnh snapshot nếu môi trường không có màn hình vật lý (headless/background)
 
 
 def test_columns_layout_collapse_and_zoom(app):

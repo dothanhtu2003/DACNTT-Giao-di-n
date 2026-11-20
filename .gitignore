@@ -13,7 +13,7 @@ venv/
 env/
 ENV/
 
-# Local environment configuration (keep templates)
+# Local environment configuration
 .env
 .env.*
 !.env.example
@@ -31,23 +31,36 @@ ENV/
 htmlcov/
 coverage.xml
 junit.xml
+/tests/artifacts/*.png
+/tests/artifacts/*.xml
 /tests/artifacts/pytest_results.xml
 /tests/artifacts/batch_example_history.json
+!/tests/artifacts/.gitkeep
+
+# Experimental results & intermediate output
+/output/
+/experiments/results/
+/experiments/results_baseline_512/
 /experiments/batch_results/
 
 # Local application history
 /data/history.json
 
-# Local project notes and prompts
+# Temporary Word docs & lock files
+~$*.docx
+hihi_*.docx
+*hihi*.docx
+
+# Local project notes and audit scratch
 /IMPLEMENTATION_STATUS.md
 /FINAL_AUDIT.md
 /Prompts_PVD_DWT_Desktop_Python_v2.md
 
 # Editor and operating system files
 .idea/
+.vscode/
 *.swp
 *.swo
 .DS_Store
 Thumbs.db
 Desktop.ini
-

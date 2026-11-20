@@ -440,8 +440,11 @@ def test_batch_gui_real_worker_table_and_four_tabs(app, tmp_path, monkeypatch):
     from PIL import ImageGrab
     artifacts = Path(__file__).parent / 'artifacts'
     artifacts.mkdir(exist_ok=True)
-    ImageGrab.grab(bbox=(app.winfo_rootx(), app.winfo_rooty(), app.winfo_rootx() + app.winfo_width(),
-                         app.winfo_rooty() + app.winfo_height())).save(artifacts / 'gui_batch_summary_1000x760.png')
+    try:
+        ImageGrab.grab(bbox=(app.winfo_rootx(), app.winfo_rooty(), app.winfo_rootx() + app.winfo_width(),
+                             app.winfo_rooty() + app.winfo_height())).save(artifacts / 'gui_batch_summary_1000x760.png')
+    except OSError:
+        pass  # Bỏ qua lưu ảnh snapshot nếu môi trường không có màn hình vật lý (headless/background)
     tab.mode.set('Một ảnh')
     tab.mode_changed()
     app.update()

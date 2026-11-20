@@ -9,14 +9,12 @@ from pathlib import Path
 import platform
 from uuid import uuid4
 
-import numpy as np
-
 from core.image_utils import load_image, save_stego
-from core.payload import build_packet, packet_to_bits, decode_message
+from core.payload import build_packet, packet_to_bits
 from experiments.extraction import assess_extraction
 from experiments.attacks import apply_attack
 from experiments.experiment_config import default_config
-from metrics.metrics import payload_metrics, psnr, ssim, ber
+from metrics.metrics import payload_metrics, psnr, ssim
 from services.stego_service import engine_for
 
 COLUMNS = ['run_id', 'image_name', 'width', 'height', 'method', 'capacity_bits',

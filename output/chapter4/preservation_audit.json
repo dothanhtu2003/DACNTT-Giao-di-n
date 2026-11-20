@@ -1,9 +1,0 @@
-{
-  "replaced_image_placeholders": 9,
-  "modified_existing_zip_parts": [
-    "word/document.xml",
-    "word/_rels/document.xml.rels"
-  ],
-  "all_other_parts_byte_identical": true,
-  "document_xml_identical_after_reversing_nine_replacements": true
-}
