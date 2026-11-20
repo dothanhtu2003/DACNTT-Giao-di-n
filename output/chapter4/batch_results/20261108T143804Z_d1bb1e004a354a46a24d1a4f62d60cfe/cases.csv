@@ -1,0 +1,1004 @@
+﻿image_id,image_name,method,payload_bytes,stego_path,attack,attack_parameter,seed,extract_success,ber_after_attack,error_type,notes
+0,4.2.01.png,PVD,128,stego/0_PVD_128.png,none,{},NA,True,0.0,,
+0,4.2.01.png,PVD,128,stego/0_PVD_128.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,128,stego/0_PVD_128.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,128,stego/0_PVD_128.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,128,stego/0_PVD_128.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,128,stego/0_PVD_128.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+0,4.2.01.png,PVD,128,stego/0_PVD_128.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.3077651515151515,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+0,4.2.01.png,PVD,128,stego/0_PVD_128.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,128,stego/0_PVD_128.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,128,stego/0_PVD_128.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+0,4.2.01.png,PVD,128,stego/0_PVD_128.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+0,4.2.01.png,PVD,128,stego/0_PVD_128.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,128,stego/0_PVD_128.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,128,stego/0_PVD_128.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,128,stego/0_PVD_128.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,128,stego/0_PVD_128.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,128,stego/0_PVD_128.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,512,stego/0_PVD_512.png,none,{},NA,True,0.0,,
+0,4.2.01.png,PVD,512,stego/0_PVD_512.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,512,stego/0_PVD_512.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,512,stego/0_PVD_512.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,512,stego/0_PVD_512.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,512,stego/0_PVD_512.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.35852713178294576,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+0,4.2.01.png,PVD,512,stego/0_PVD_512.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.4125484496124031,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+0,4.2.01.png,PVD,512,stego/0_PVD_512.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,512,stego/0_PVD_512.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,512,stego/0_PVD_512.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+0,4.2.01.png,PVD,512,stego/0_PVD_512.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+0,4.2.01.png,PVD,512,stego/0_PVD_512.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,512,stego/0_PVD_512.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,512,stego/0_PVD_512.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,512,stego/0_PVD_512.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,512,stego/0_PVD_512.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,512,stego/0_PVD_512.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1024,stego/0_PVD_1024.png,none,{},NA,True,0.0,,
+0,4.2.01.png,PVD,1024,stego/0_PVD_1024.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1024,stego/0_PVD_1024.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1024,stego/0_PVD_1024.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1024,stego/0_PVD_1024.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1024,stego/0_PVD_1024.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.4182879377431907,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+0,4.2.01.png,PVD,1024,stego/0_PVD_1024.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.45379377431906615,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+0,4.2.01.png,PVD,1024,stego/0_PVD_1024.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1024,stego/0_PVD_1024.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1024,stego/0_PVD_1024.png,brightness,"{""delta"":-10.0}",NA,False,0.00024319066147859923,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+0,4.2.01.png,PVD,1024,stego/0_PVD_1024.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+0,4.2.01.png,PVD,1024,stego/0_PVD_1024.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1024,stego/0_PVD_1024.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1024,stego/0_PVD_1024.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1024,stego/0_PVD_1024.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1024,stego/0_PVD_1024.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1024,stego/0_PVD_1024.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1500,stego/0_PVD_1500.png,none,{},NA,True,0.0,,
+0,4.2.01.png,PVD,1500,stego/0_PVD_1500.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1500,stego/0_PVD_1500.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1500,stego/0_PVD_1500.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1500,stego/0_PVD_1500.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1500,stego/0_PVD_1500.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.43816489361702127,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+0,4.2.01.png,PVD,1500,stego/0_PVD_1500.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.4670046542553192,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+0,4.2.01.png,PVD,1500,stego/0_PVD_1500.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1500,stego/0_PVD_1500.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1500,stego/0_PVD_1500.png,brightness,"{""delta"":-10.0}",NA,False,0.0003324468085106383,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+0,4.2.01.png,PVD,1500,stego/0_PVD_1500.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+0,4.2.01.png,PVD,1500,stego/0_PVD_1500.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1500,stego/0_PVD_1500.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1500,stego/0_PVD_1500.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1500,stego/0_PVD_1500.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1500,stego/0_PVD_1500.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,PVD,1500,stego/0_PVD_1500.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,DWT,128,stego/0_DWT_128.png,none,{},NA,True,0.0,,
+0,4.2.01.png,DWT,128,stego/0_DWT_128.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,DWT,128,stego/0_DWT_128.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,128,stego/0_DWT_128.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+0,4.2.01.png,DWT,128,stego/0_DWT_128.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.004734848484848485,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+0,4.2.01.png,DWT,128,stego/0_DWT_128.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+0,4.2.01.png,DWT,128,stego/0_DWT_128.png,salt_pepper,"{""amount"":0.01}",20260919,True,0.0,,
+0,4.2.01.png,DWT,128,stego/0_DWT_128.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,128,stego/0_DWT_128.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,128,stego/0_DWT_128.png,brightness,"{""delta"":-10.0}",NA,False,0.041666666666666664,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+0,4.2.01.png,DWT,128,stego/0_DWT_128.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+0,4.2.01.png,DWT,128,stego/0_DWT_128.png,contrast,"{""alpha"":0.9}",NA,True,0.0,,
+0,4.2.01.png,DWT,128,stego/0_DWT_128.png,contrast,"{""alpha"":1.1}",NA,False,0.03787878787878788,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+0,4.2.01.png,DWT,128,stego/0_DWT_128.png,resize,"{""scale"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,128,stego/0_DWT_128.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,128,stego/0_DWT_128.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,DWT,128,stego/0_DWT_128.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,DWT,512,stego/0_DWT_512.png,none,{},NA,True,0.0,,
+0,4.2.01.png,DWT,512,stego/0_DWT_512.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,DWT,512,stego/0_DWT_512.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,512,stego/0_DWT_512.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+0,4.2.01.png,DWT,512,stego/0_DWT_512.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.003391472868217054,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+0,4.2.01.png,DWT,512,stego/0_DWT_512.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+0,4.2.01.png,DWT,512,stego/0_DWT_512.png,salt_pepper,"{""amount"":0.01}",20260919,True,0.0,,
+0,4.2.01.png,DWT,512,stego/0_DWT_512.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,512,stego/0_DWT_512.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,512,stego/0_DWT_512.png,brightness,"{""delta"":-10.0}",NA,False,0.037306201550387594,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+0,4.2.01.png,DWT,512,stego/0_DWT_512.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+0,4.2.01.png,DWT,512,stego/0_DWT_512.png,contrast,"{""alpha"":0.9}",NA,True,0.0,,
+0,4.2.01.png,DWT,512,stego/0_DWT_512.png,contrast,"{""alpha"":1.1}",NA,False,0.03464147286821705,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+0,4.2.01.png,DWT,512,stego/0_DWT_512.png,resize,"{""scale"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,512,stego/0_DWT_512.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,512,stego/0_DWT_512.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,DWT,512,stego/0_DWT_512.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,DWT,1024,stego/0_DWT_1024.png,none,{},NA,True,0.0,,
+0,4.2.01.png,DWT,1024,stego/0_DWT_1024.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,DWT,1024,stego/0_DWT_1024.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,1024,stego/0_DWT_1024.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+0,4.2.01.png,DWT,1024,stego/0_DWT_1024.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.0036478599221789884,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+0,4.2.01.png,DWT,1024,stego/0_DWT_1024.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+0,4.2.01.png,DWT,1024,stego/0_DWT_1024.png,salt_pepper,"{""amount"":0.01}",20260919,True,0.0,,
+0,4.2.01.png,DWT,1024,stego/0_DWT_1024.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,1024,stego/0_DWT_1024.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,1024,stego/0_DWT_1024.png,brightness,"{""delta"":-10.0}",NA,False,0.03404669260700389,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+0,4.2.01.png,DWT,1024,stego/0_DWT_1024.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+0,4.2.01.png,DWT,1024,stego/0_DWT_1024.png,contrast,"{""alpha"":0.9}",NA,True,0.0,,
+0,4.2.01.png,DWT,1024,stego/0_DWT_1024.png,contrast,"{""alpha"":1.1}",NA,False,0.0310068093385214,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+0,4.2.01.png,DWT,1024,stego/0_DWT_1024.png,resize,"{""scale"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,1024,stego/0_DWT_1024.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,1024,stego/0_DWT_1024.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,DWT,1024,stego/0_DWT_1024.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,DWT,1500,stego/0_DWT_1500.png,none,{},NA,True,0.0,,
+0,4.2.01.png,DWT,1500,stego/0_DWT_1500.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,DWT,1500,stego/0_DWT_1500.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,1500,stego/0_DWT_1500.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+0,4.2.01.png,DWT,1500,stego/0_DWT_1500.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.0036569148936170214,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+0,4.2.01.png,DWT,1500,stego/0_DWT_1500.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+0,4.2.01.png,DWT,1500,stego/0_DWT_1500.png,salt_pepper,"{""amount"":0.01}",20260919,True,0.0,,
+0,4.2.01.png,DWT,1500,stego/0_DWT_1500.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,1500,stego/0_DWT_1500.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,1500,stego/0_DWT_1500.png,brightness,"{""delta"":-10.0}",NA,False,0.03440824468085106,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+0,4.2.01.png,DWT,1500,stego/0_DWT_1500.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+0,4.2.01.png,DWT,1500,stego/0_DWT_1500.png,contrast,"{""alpha"":0.9}",NA,True,0.0,,
+0,4.2.01.png,DWT,1500,stego/0_DWT_1500.png,contrast,"{""alpha"":1.1}",NA,False,0.03174867021276596,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+0,4.2.01.png,DWT,1500,stego/0_DWT_1500.png,resize,"{""scale"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,1500,stego/0_DWT_1500.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+0,4.2.01.png,DWT,1500,stego/0_DWT_1500.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+0,4.2.01.png,DWT,1500,stego/0_DWT_1500.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,128,stego/1_PVD_128.png,none,{},NA,True,0.0,,
+1,4.2.03.png,PVD,128,stego/1_PVD_128.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,128,stego/1_PVD_128.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,128,stego/1_PVD_128.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,128,stego/1_PVD_128.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,128,stego/1_PVD_128.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+1,4.2.03.png,PVD,128,stego/1_PVD_128.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.36553030303030304,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+1,4.2.03.png,PVD,128,stego/1_PVD_128.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,128,stego/1_PVD_128.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,128,stego/1_PVD_128.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+1,4.2.03.png,PVD,128,stego/1_PVD_128.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+1,4.2.03.png,PVD,128,stego/1_PVD_128.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,128,stego/1_PVD_128.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,128,stego/1_PVD_128.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,128,stego/1_PVD_128.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,128,stego/1_PVD_128.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,128,stego/1_PVD_128.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,512,stego/1_PVD_512.png,none,{},NA,True,0.0,,
+1,4.2.03.png,PVD,512,stego/1_PVD_512.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,512,stego/1_PVD_512.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,512,stego/1_PVD_512.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,512,stego/1_PVD_512.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,512,stego/1_PVD_512.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.34375,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+1,4.2.03.png,PVD,512,stego/1_PVD_512.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.469234496124031,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+1,4.2.03.png,PVD,512,stego/1_PVD_512.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,512,stego/1_PVD_512.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,512,stego/1_PVD_512.png,brightness,"{""delta"":-10.0}",NA,False,0.0007267441860465116,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+1,4.2.03.png,PVD,512,stego/1_PVD_512.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+1,4.2.03.png,PVD,512,stego/1_PVD_512.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,512,stego/1_PVD_512.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,512,stego/1_PVD_512.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,512,stego/1_PVD_512.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,512,stego/1_PVD_512.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,512,stego/1_PVD_512.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1024,stego/1_PVD_1024.png,none,{},NA,True,0.0,,
+1,4.2.03.png,PVD,1024,stego/1_PVD_1024.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1024,stego/1_PVD_1024.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1024,stego/1_PVD_1024.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1024,stego/1_PVD_1024.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1024,stego/1_PVD_1024.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.44285019455252916,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+1,4.2.03.png,PVD,1024,stego/1_PVD_1024.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.4810311284046693,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+1,4.2.03.png,PVD,1024,stego/1_PVD_1024.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1024,stego/1_PVD_1024.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1024,stego/1_PVD_1024.png,brightness,"{""delta"":-10.0}",NA,False,0.00036478599221789884,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+1,4.2.03.png,PVD,1024,stego/1_PVD_1024.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+1,4.2.03.png,PVD,1024,stego/1_PVD_1024.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1024,stego/1_PVD_1024.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1024,stego/1_PVD_1024.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1024,stego/1_PVD_1024.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1024,stego/1_PVD_1024.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1024,stego/1_PVD_1024.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1500,stego/1_PVD_1500.png,none,{},NA,True,0.0,,
+1,4.2.03.png,PVD,1500,stego/1_PVD_1500.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1500,stego/1_PVD_1500.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1500,stego/1_PVD_1500.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1500,stego/1_PVD_1500.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1500,stego/1_PVD_1500.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.47564827127659576,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+1,4.2.03.png,PVD,1500,stego/1_PVD_1500.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.48661901595744683,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+1,4.2.03.png,PVD,1500,stego/1_PVD_1500.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1500,stego/1_PVD_1500.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1500,stego/1_PVD_1500.png,brightness,"{""delta"":-10.0}",NA,False,0.000581781914893617,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+1,4.2.03.png,PVD,1500,stego/1_PVD_1500.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+1,4.2.03.png,PVD,1500,stego/1_PVD_1500.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1500,stego/1_PVD_1500.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1500,stego/1_PVD_1500.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1500,stego/1_PVD_1500.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1500,stego/1_PVD_1500.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,PVD,1500,stego/1_PVD_1500.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,128,stego/1_DWT_128.png,none,{},NA,True,0.0,,
+1,4.2.03.png,DWT,128,stego/1_DWT_128.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,128,stego/1_DWT_128.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,128,stego/1_DWT_128.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+1,4.2.03.png,DWT,128,stego/1_DWT_128.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.000946969696969697,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+1,4.2.03.png,DWT,128,stego/1_DWT_128.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+1,4.2.03.png,DWT,128,stego/1_DWT_128.png,salt_pepper,"{""amount"":0.01}",20260919,True,0.0,,
+1,4.2.03.png,DWT,128,stego/1_DWT_128.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,128,stego/1_DWT_128.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+1,4.2.03.png,DWT,128,stego/1_DWT_128.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+1,4.2.03.png,DWT,128,stego/1_DWT_128.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+1,4.2.03.png,DWT,128,stego/1_DWT_128.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,128,stego/1_DWT_128.png,contrast,"{""alpha"":1.1}",NA,False,0.003787878787878788,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+1,4.2.03.png,DWT,128,stego/1_DWT_128.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,128,stego/1_DWT_128.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,128,stego/1_DWT_128.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,128,stego/1_DWT_128.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,512,stego/1_DWT_512.png,none,{},NA,True,0.0,,
+1,4.2.03.png,DWT,512,stego/1_DWT_512.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,512,stego/1_DWT_512.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,512,stego/1_DWT_512.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+1,4.2.03.png,DWT,512,stego/1_DWT_512.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.00024224806201550387,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+1,4.2.03.png,DWT,512,stego/1_DWT_512.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+1,4.2.03.png,DWT,512,stego/1_DWT_512.png,salt_pepper,"{""amount"":0.01}",20260919,True,0.0,,
+1,4.2.03.png,DWT,512,stego/1_DWT_512.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,512,stego/1_DWT_512.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+1,4.2.03.png,DWT,512,stego/1_DWT_512.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+1,4.2.03.png,DWT,512,stego/1_DWT_512.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+1,4.2.03.png,DWT,512,stego/1_DWT_512.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,512,stego/1_DWT_512.png,contrast,"{""alpha"":1.1}",NA,False,0.0031492248062015503,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+1,4.2.03.png,DWT,512,stego/1_DWT_512.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,512,stego/1_DWT_512.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,512,stego/1_DWT_512.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,512,stego/1_DWT_512.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,1024,stego/1_DWT_1024.png,none,{},NA,True,0.0,,
+1,4.2.03.png,DWT,1024,stego/1_DWT_1024.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,1024,stego/1_DWT_1024.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,1024,stego/1_DWT_1024.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+1,4.2.03.png,DWT,1024,stego/1_DWT_1024.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.00024319066147859923,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+1,4.2.03.png,DWT,1024,stego/1_DWT_1024.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+1,4.2.03.png,DWT,1024,stego/1_DWT_1024.png,salt_pepper,"{""amount"":0.01}",20260919,True,0.0,,
+1,4.2.03.png,DWT,1024,stego/1_DWT_1024.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,1024,stego/1_DWT_1024.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+1,4.2.03.png,DWT,1024,stego/1_DWT_1024.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+1,4.2.03.png,DWT,1024,stego/1_DWT_1024.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+1,4.2.03.png,DWT,1024,stego/1_DWT_1024.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,1024,stego/1_DWT_1024.png,contrast,"{""alpha"":1.1}",NA,False,0.001580739299610895,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+1,4.2.03.png,DWT,1024,stego/1_DWT_1024.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,1024,stego/1_DWT_1024.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,1024,stego/1_DWT_1024.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,1024,stego/1_DWT_1024.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,1500,stego/1_DWT_1500.png,none,{},NA,True,0.0,,
+1,4.2.03.png,DWT,1500,stego/1_DWT_1500.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,1500,stego/1_DWT_1500.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,1500,stego/1_DWT_1500.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+1,4.2.03.png,DWT,1500,stego/1_DWT_1500.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.00016622340425531914,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+1,4.2.03.png,DWT,1500,stego/1_DWT_1500.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+1,4.2.03.png,DWT,1500,stego/1_DWT_1500.png,salt_pepper,"{""amount"":0.01}",20260919,True,0.0,,
+1,4.2.03.png,DWT,1500,stego/1_DWT_1500.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,1500,stego/1_DWT_1500.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+1,4.2.03.png,DWT,1500,stego/1_DWT_1500.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+1,4.2.03.png,DWT,1500,stego/1_DWT_1500.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+1,4.2.03.png,DWT,1500,stego/1_DWT_1500.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,1500,stego/1_DWT_1500.png,contrast,"{""alpha"":1.1}",NA,False,0.001163563829787234,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+1,4.2.03.png,DWT,1500,stego/1_DWT_1500.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,1500,stego/1_DWT_1500.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,1500,stego/1_DWT_1500.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+1,4.2.03.png,DWT,1500,stego/1_DWT_1500.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,128,stego/2_PVD_128.png,none,{},NA,True,0.0,,
+2,4.2.05.png,PVD,128,stego/2_PVD_128.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,128,stego/2_PVD_128.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,128,stego/2_PVD_128.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,128,stego/2_PVD_128.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,128,stego/2_PVD_128.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+2,4.2.05.png,PVD,128,stego/2_PVD_128.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.39678030303030304,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+2,4.2.05.png,PVD,128,stego/2_PVD_128.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,128,stego/2_PVD_128.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,128,stego/2_PVD_128.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+2,4.2.05.png,PVD,128,stego/2_PVD_128.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+2,4.2.05.png,PVD,128,stego/2_PVD_128.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,128,stego/2_PVD_128.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,128,stego/2_PVD_128.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,128,stego/2_PVD_128.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,128,stego/2_PVD_128.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,128,stego/2_PVD_128.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,512,stego/2_PVD_512.png,none,{},NA,True,0.0,,
+2,4.2.05.png,PVD,512,stego/2_PVD_512.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,512,stego/2_PVD_512.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,512,stego/2_PVD_512.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,512,stego/2_PVD_512.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,512,stego/2_PVD_512.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.40431201550387597,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+2,4.2.05.png,PVD,512,stego/2_PVD_512.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.47819767441860467,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+2,4.2.05.png,PVD,512,stego/2_PVD_512.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,512,stego/2_PVD_512.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,512,stego/2_PVD_512.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+2,4.2.05.png,PVD,512,stego/2_PVD_512.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+2,4.2.05.png,PVD,512,stego/2_PVD_512.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,512,stego/2_PVD_512.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,512,stego/2_PVD_512.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,512,stego/2_PVD_512.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,512,stego/2_PVD_512.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,512,stego/2_PVD_512.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1024,stego/2_PVD_1024.png,none,{},NA,True,0.0,,
+2,4.2.05.png,PVD,1024,stego/2_PVD_1024.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1024,stego/2_PVD_1024.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1024,stego/2_PVD_1024.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1024,stego/2_PVD_1024.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1024,stego/2_PVD_1024.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.47324902723735407,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+2,4.2.05.png,PVD,1024,stego/2_PVD_1024.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.48455739299610895,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+2,4.2.05.png,PVD,1024,stego/2_PVD_1024.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1024,stego/2_PVD_1024.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1024,stego/2_PVD_1024.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+2,4.2.05.png,PVD,1024,stego/2_PVD_1024.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+2,4.2.05.png,PVD,1024,stego/2_PVD_1024.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1024,stego/2_PVD_1024.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1024,stego/2_PVD_1024.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1024,stego/2_PVD_1024.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1024,stego/2_PVD_1024.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1024,stego/2_PVD_1024.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1500,stego/2_PVD_1500.png,none,{},NA,True,0.0,,
+2,4.2.05.png,PVD,1500,stego/2_PVD_1500.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1500,stego/2_PVD_1500.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1500,stego/2_PVD_1500.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1500,stego/2_PVD_1500.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1500,stego/2_PVD_1500.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.49642619680851063,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+2,4.2.05.png,PVD,1500,stego/2_PVD_1500.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.49085771276595747,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+2,4.2.05.png,PVD,1500,stego/2_PVD_1500.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1500,stego/2_PVD_1500.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1500,stego/2_PVD_1500.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+2,4.2.05.png,PVD,1500,stego/2_PVD_1500.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+2,4.2.05.png,PVD,1500,stego/2_PVD_1500.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1500,stego/2_PVD_1500.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1500,stego/2_PVD_1500.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1500,stego/2_PVD_1500.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1500,stego/2_PVD_1500.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,PVD,1500,stego/2_PVD_1500.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,DWT,128,stego/2_DWT_128.png,none,{},NA,True,0.0,,
+2,4.2.05.png,DWT,128,stego/2_DWT_128.png,jpeg,"{""quality"":90}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,128,stego/2_DWT_128.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,128,stego/2_DWT_128.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+2,4.2.05.png,DWT,128,stego/2_DWT_128.png,gaussian_noise,"{""sigma"":3.0}",20260919,True,0.0,,
+2,4.2.05.png,DWT,128,stego/2_DWT_128.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+2,4.2.05.png,DWT,128,stego/2_DWT_128.png,salt_pepper,"{""amount"":0.01}",20260919,True,0.0,,
+2,4.2.05.png,DWT,128,stego/2_DWT_128.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,128,stego/2_DWT_128.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,128,stego/2_DWT_128.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+2,4.2.05.png,DWT,128,stego/2_DWT_128.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+2,4.2.05.png,DWT,128,stego/2_DWT_128.png,contrast,"{""alpha"":0.9}",NA,True,0.0,,
+2,4.2.05.png,DWT,128,stego/2_DWT_128.png,contrast,"{""alpha"":1.1}",NA,True,0.0,,
+2,4.2.05.png,DWT,128,stego/2_DWT_128.png,resize,"{""scale"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,128,stego/2_DWT_128.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,128,stego/2_DWT_128.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,DWT,128,stego/2_DWT_128.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,512,stego/2_DWT_512.png,none,{},NA,True,0.0,,
+2,4.2.05.png,DWT,512,stego/2_DWT_512.png,jpeg,"{""quality"":90}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,512,stego/2_DWT_512.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,512,stego/2_DWT_512.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+2,4.2.05.png,DWT,512,stego/2_DWT_512.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.0007267441860465116,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+2,4.2.05.png,DWT,512,stego/2_DWT_512.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+2,4.2.05.png,DWT,512,stego/2_DWT_512.png,salt_pepper,"{""amount"":0.01}",20260919,True,0.0,,
+2,4.2.05.png,DWT,512,stego/2_DWT_512.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,512,stego/2_DWT_512.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,512,stego/2_DWT_512.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+2,4.2.05.png,DWT,512,stego/2_DWT_512.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+2,4.2.05.png,DWT,512,stego/2_DWT_512.png,contrast,"{""alpha"":0.9}",NA,True,0.0,,
+2,4.2.05.png,DWT,512,stego/2_DWT_512.png,contrast,"{""alpha"":1.1}",NA,True,0.0,,
+2,4.2.05.png,DWT,512,stego/2_DWT_512.png,resize,"{""scale"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,512,stego/2_DWT_512.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,512,stego/2_DWT_512.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,DWT,512,stego/2_DWT_512.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,DWT,1024,stego/2_DWT_1024.png,none,{},NA,True,0.0,,
+2,4.2.05.png,DWT,1024,stego/2_DWT_1024.png,jpeg,"{""quality"":90}",NA,False,0.2717655642023346,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+2,4.2.05.png,DWT,1024,stego/2_DWT_1024.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,1024,stego/2_DWT_1024.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+2,4.2.05.png,DWT,1024,stego/2_DWT_1024.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.00048638132295719845,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+2,4.2.05.png,DWT,1024,stego/2_DWT_1024.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+2,4.2.05.png,DWT,1024,stego/2_DWT_1024.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.00012159533073929961,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+2,4.2.05.png,DWT,1024,stego/2_DWT_1024.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,1024,stego/2_DWT_1024.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,1024,stego/2_DWT_1024.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+2,4.2.05.png,DWT,1024,stego/2_DWT_1024.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+2,4.2.05.png,DWT,1024,stego/2_DWT_1024.png,contrast,"{""alpha"":0.9}",NA,True,0.0,,
+2,4.2.05.png,DWT,1024,stego/2_DWT_1024.png,contrast,"{""alpha"":1.1}",NA,False,0.00012159533073929961,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+2,4.2.05.png,DWT,1024,stego/2_DWT_1024.png,resize,"{""scale"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,1024,stego/2_DWT_1024.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,1024,stego/2_DWT_1024.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,DWT,1024,stego/2_DWT_1024.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,DWT,1500,stego/2_DWT_1500.png,none,{},NA,True,0.0,,
+2,4.2.05.png,DWT,1500,stego/2_DWT_1500.png,jpeg,"{""quality"":90}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,1500,stego/2_DWT_1500.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,1500,stego/2_DWT_1500.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+2,4.2.05.png,DWT,1500,stego/2_DWT_1500.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.0003324468085106383,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+2,4.2.05.png,DWT,1500,stego/2_DWT_1500.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+2,4.2.05.png,DWT,1500,stego/2_DWT_1500.png,salt_pepper,"{""amount"":0.01}",20260919,False,8.311170212765957e-05,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+2,4.2.05.png,DWT,1500,stego/2_DWT_1500.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,1500,stego/2_DWT_1500.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,1500,stego/2_DWT_1500.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+2,4.2.05.png,DWT,1500,stego/2_DWT_1500.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+2,4.2.05.png,DWT,1500,stego/2_DWT_1500.png,contrast,"{""alpha"":0.9}",NA,True,0.0,,
+2,4.2.05.png,DWT,1500,stego/2_DWT_1500.png,contrast,"{""alpha"":1.1}",NA,False,8.311170212765957e-05,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+2,4.2.05.png,DWT,1500,stego/2_DWT_1500.png,resize,"{""scale"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,1500,stego/2_DWT_1500.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+2,4.2.05.png,DWT,1500,stego/2_DWT_1500.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+2,4.2.05.png,DWT,1500,stego/2_DWT_1500.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,128,stego/3_PVD_128.png,none,{},NA,True,0.0,,
+3,4.2.06.png,PVD,128,stego/3_PVD_128.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,128,stego/3_PVD_128.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,128,stego/3_PVD_128.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,128,stego/3_PVD_128.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,128,stego/3_PVD_128.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+3,4.2.06.png,PVD,128,stego/3_PVD_128.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.3172348484848485,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+3,4.2.06.png,PVD,128,stego/3_PVD_128.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,128,stego/3_PVD_128.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,128,stego/3_PVD_128.png,brightness,"{""delta"":-10.0}",NA,False,0.003787878787878788,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+3,4.2.06.png,PVD,128,stego/3_PVD_128.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+3,4.2.06.png,PVD,128,stego/3_PVD_128.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,128,stego/3_PVD_128.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,128,stego/3_PVD_128.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,128,stego/3_PVD_128.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,128,stego/3_PVD_128.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,128,stego/3_PVD_128.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,512,stego/3_PVD_512.png,none,{},NA,True,0.0,,
+3,4.2.06.png,PVD,512,stego/3_PVD_512.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,512,stego/3_PVD_512.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,512,stego/3_PVD_512.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,512,stego/3_PVD_512.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,512,stego/3_PVD_512.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.39195736434108525,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+3,4.2.06.png,PVD,512,stego/3_PVD_512.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.42999031007751937,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+3,4.2.06.png,PVD,512,stego/3_PVD_512.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,512,stego/3_PVD_512.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,512,stego/3_PVD_512.png,brightness,"{""delta"":-10.0}",NA,False,0.0024224806201550387,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+3,4.2.06.png,PVD,512,stego/3_PVD_512.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+3,4.2.06.png,PVD,512,stego/3_PVD_512.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,512,stego/3_PVD_512.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,512,stego/3_PVD_512.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,512,stego/3_PVD_512.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,512,stego/3_PVD_512.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,512,stego/3_PVD_512.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1024,stego/3_PVD_1024.png,none,{},NA,True,0.0,,
+3,4.2.06.png,PVD,1024,stego/3_PVD_1024.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1024,stego/3_PVD_1024.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1024,stego/3_PVD_1024.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1024,stego/3_PVD_1024.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1024,stego/3_PVD_1024.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.4670476653696498,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+3,4.2.06.png,PVD,1024,stego/3_PVD_1024.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.4700875486381323,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+3,4.2.06.png,PVD,1024,stego/3_PVD_1024.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1024,stego/3_PVD_1024.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1024,stego/3_PVD_1024.png,brightness,"{""delta"":-10.0}",NA,False,0.0023103112840466926,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+3,4.2.06.png,PVD,1024,stego/3_PVD_1024.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+3,4.2.06.png,PVD,1024,stego/3_PVD_1024.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1024,stego/3_PVD_1024.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1024,stego/3_PVD_1024.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1024,stego/3_PVD_1024.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1024,stego/3_PVD_1024.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1024,stego/3_PVD_1024.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1500,stego/3_PVD_1500.png,none,{},NA,True,0.0,,
+3,4.2.06.png,PVD,1500,stego/3_PVD_1500.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1500,stego/3_PVD_1500.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1500,stego/3_PVD_1500.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1500,stego/3_PVD_1500.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1500,stego/3_PVD_1500.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.4921875,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+3,4.2.06.png,PVD,1500,stego/3_PVD_1500.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.4847905585106383,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+3,4.2.06.png,PVD,1500,stego/3_PVD_1500.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1500,stego/3_PVD_1500.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1500,stego/3_PVD_1500.png,brightness,"{""delta"":-10.0}",NA,False,0.13106715425531915,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+3,4.2.06.png,PVD,1500,stego/3_PVD_1500.png,brightness,"{""delta"":10.0}",NA,False,0.0002493351063829787,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+3,4.2.06.png,PVD,1500,stego/3_PVD_1500.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1500,stego/3_PVD_1500.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1500,stego/3_PVD_1500.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1500,stego/3_PVD_1500.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1500,stego/3_PVD_1500.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,PVD,1500,stego/3_PVD_1500.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,128,stego/3_DWT_128.png,none,{},NA,True,0.0,,
+3,4.2.06.png,DWT,128,stego/3_DWT_128.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,128,stego/3_DWT_128.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,128,stego/3_DWT_128.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+3,4.2.06.png,DWT,128,stego/3_DWT_128.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.000946969696969697,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+3,4.2.06.png,DWT,128,stego/3_DWT_128.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+3,4.2.06.png,DWT,128,stego/3_DWT_128.png,salt_pepper,"{""amount"":0.01}",20260919,True,0.0,,
+3,4.2.06.png,DWT,128,stego/3_DWT_128.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+3,4.2.06.png,DWT,128,stego/3_DWT_128.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+3,4.2.06.png,DWT,128,stego/3_DWT_128.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+3,4.2.06.png,DWT,128,stego/3_DWT_128.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+3,4.2.06.png,DWT,128,stego/3_DWT_128.png,contrast,"{""alpha"":0.9}",NA,True,0.0,,
+3,4.2.06.png,DWT,128,stego/3_DWT_128.png,contrast,"{""alpha"":1.1}",NA,True,0.0,,
+3,4.2.06.png,DWT,128,stego/3_DWT_128.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,128,stego/3_DWT_128.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,128,stego/3_DWT_128.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,128,stego/3_DWT_128.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,512,stego/3_DWT_512.png,none,{},NA,True,0.0,,
+3,4.2.06.png,DWT,512,stego/3_DWT_512.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,512,stego/3_DWT_512.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,512,stego/3_DWT_512.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+3,4.2.06.png,DWT,512,stego/3_DWT_512.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.00024224806201550387,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+3,4.2.06.png,DWT,512,stego/3_DWT_512.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+3,4.2.06.png,DWT,512,stego/3_DWT_512.png,salt_pepper,"{""amount"":0.01}",20260919,True,0.0,,
+3,4.2.06.png,DWT,512,stego/3_DWT_512.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+3,4.2.06.png,DWT,512,stego/3_DWT_512.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+3,4.2.06.png,DWT,512,stego/3_DWT_512.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+3,4.2.06.png,DWT,512,stego/3_DWT_512.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+3,4.2.06.png,DWT,512,stego/3_DWT_512.png,contrast,"{""alpha"":0.9}",NA,True,0.0,,
+3,4.2.06.png,DWT,512,stego/3_DWT_512.png,contrast,"{""alpha"":1.1}",NA,True,0.0,,
+3,4.2.06.png,DWT,512,stego/3_DWT_512.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,512,stego/3_DWT_512.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,512,stego/3_DWT_512.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,512,stego/3_DWT_512.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,1024,stego/3_DWT_1024.png,none,{},NA,True,0.0,,
+3,4.2.06.png,DWT,1024,stego/3_DWT_1024.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,1024,stego/3_DWT_1024.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,1024,stego/3_DWT_1024.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+3,4.2.06.png,DWT,1024,stego/3_DWT_1024.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.00024319066147859923,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+3,4.2.06.png,DWT,1024,stego/3_DWT_1024.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+3,4.2.06.png,DWT,1024,stego/3_DWT_1024.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.00024319066147859923,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+3,4.2.06.png,DWT,1024,stego/3_DWT_1024.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+3,4.2.06.png,DWT,1024,stego/3_DWT_1024.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+3,4.2.06.png,DWT,1024,stego/3_DWT_1024.png,brightness,"{""delta"":-10.0}",NA,False,0.00024319066147859923,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+3,4.2.06.png,DWT,1024,stego/3_DWT_1024.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+3,4.2.06.png,DWT,1024,stego/3_DWT_1024.png,contrast,"{""alpha"":0.9}",NA,True,0.0,,
+3,4.2.06.png,DWT,1024,stego/3_DWT_1024.png,contrast,"{""alpha"":1.1}",NA,False,0.00024319066147859923,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+3,4.2.06.png,DWT,1024,stego/3_DWT_1024.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,1024,stego/3_DWT_1024.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,1024,stego/3_DWT_1024.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,1024,stego/3_DWT_1024.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,1500,stego/3_DWT_1500.png,none,{},NA,True,0.0,,
+3,4.2.06.png,DWT,1500,stego/3_DWT_1500.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,1500,stego/3_DWT_1500.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,1500,stego/3_DWT_1500.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+3,4.2.06.png,DWT,1500,stego/3_DWT_1500.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.00016622340425531914,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+3,4.2.06.png,DWT,1500,stego/3_DWT_1500.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+3,4.2.06.png,DWT,1500,stego/3_DWT_1500.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.00016622340425531914,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+3,4.2.06.png,DWT,1500,stego/3_DWT_1500.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+3,4.2.06.png,DWT,1500,stego/3_DWT_1500.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+3,4.2.06.png,DWT,1500,stego/3_DWT_1500.png,brightness,"{""delta"":-10.0}",NA,False,0.00016622340425531914,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+3,4.2.06.png,DWT,1500,stego/3_DWT_1500.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+3,4.2.06.png,DWT,1500,stego/3_DWT_1500.png,contrast,"{""alpha"":0.9}",NA,True,0.0,,
+3,4.2.06.png,DWT,1500,stego/3_DWT_1500.png,contrast,"{""alpha"":1.1}",NA,False,0.00016622340425531914,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+3,4.2.06.png,DWT,1500,stego/3_DWT_1500.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,1500,stego/3_DWT_1500.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,1500,stego/3_DWT_1500.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+3,4.2.06.png,DWT,1500,stego/3_DWT_1500.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,128,stego/4_PVD_128.png,none,{},NA,True,0.0,,
+4,5.2.10.png,PVD,128,stego/4_PVD_128.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,128,stego/4_PVD_128.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,128,stego/4_PVD_128.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,128,stego/4_PVD_128.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,128,stego/4_PVD_128.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+4,5.2.10.png,PVD,128,stego/4_PVD_128.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.3768939393939394,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+4,5.2.10.png,PVD,128,stego/4_PVD_128.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,128,stego/4_PVD_128.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,128,stego/4_PVD_128.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+4,5.2.10.png,PVD,128,stego/4_PVD_128.png,brightness,"{""delta"":10.0}",NA,False,0.001893939393939394,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+4,5.2.10.png,PVD,128,stego/4_PVD_128.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,128,stego/4_PVD_128.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,128,stego/4_PVD_128.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,128,stego/4_PVD_128.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,128,stego/4_PVD_128.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,128,stego/4_PVD_128.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,512,stego/4_PVD_512.png,none,{},NA,True,0.0,,
+4,5.2.10.png,PVD,512,stego/4_PVD_512.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,512,stego/4_PVD_512.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,512,stego/4_PVD_512.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,512,stego/4_PVD_512.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,512,stego/4_PVD_512.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.3817829457364341,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+4,5.2.10.png,PVD,512,stego/4_PVD_512.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.43580426356589147,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+4,5.2.10.png,PVD,512,stego/4_PVD_512.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,512,stego/4_PVD_512.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,512,stego/4_PVD_512.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+4,5.2.10.png,PVD,512,stego/4_PVD_512.png,brightness,"{""delta"":10.0}",NA,False,0.00048449612403100775,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+4,5.2.10.png,PVD,512,stego/4_PVD_512.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,512,stego/4_PVD_512.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,512,stego/4_PVD_512.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,512,stego/4_PVD_512.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,512,stego/4_PVD_512.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,512,stego/4_PVD_512.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1024,stego/4_PVD_1024.png,none,{},NA,True,0.0,,
+4,5.2.10.png,PVD,1024,stego/4_PVD_1024.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1024,stego/4_PVD_1024.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1024,stego/4_PVD_1024.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1024,stego/4_PVD_1024.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1024,stego/4_PVD_1024.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.4783560311284047,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+4,5.2.10.png,PVD,1024,stego/4_PVD_1024.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.47580252918287935,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+4,5.2.10.png,PVD,1024,stego/4_PVD_1024.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1024,stego/4_PVD_1024.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1024,stego/4_PVD_1024.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+4,5.2.10.png,PVD,1024,stego/4_PVD_1024.png,brightness,"{""delta"":10.0}",NA,False,0.00024319066147859923,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+4,5.2.10.png,PVD,1024,stego/4_PVD_1024.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1024,stego/4_PVD_1024.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1024,stego/4_PVD_1024.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1024,stego/4_PVD_1024.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1024,stego/4_PVD_1024.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1024,stego/4_PVD_1024.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1500,stego/4_PVD_1500.png,none,{},NA,True,0.0,,
+4,5.2.10.png,PVD,1500,stego/4_PVD_1500.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1500,stego/4_PVD_1500.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1500,stego/4_PVD_1500.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1500,stego/4_PVD_1500.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1500,stego/4_PVD_1500.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.5071476063829787,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+4,5.2.10.png,PVD,1500,stego/4_PVD_1500.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.47606382978723405,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+4,5.2.10.png,PVD,1500,stego/4_PVD_1500.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1500,stego/4_PVD_1500.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1500,stego/4_PVD_1500.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+4,5.2.10.png,PVD,1500,stego/4_PVD_1500.png,brightness,"{""delta"":10.0}",NA,False,0.0004986702127659574,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+4,5.2.10.png,PVD,1500,stego/4_PVD_1500.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1500,stego/4_PVD_1500.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1500,stego/4_PVD_1500.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1500,stego/4_PVD_1500.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1500,stego/4_PVD_1500.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,PVD,1500,stego/4_PVD_1500.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,128,stego/4_DWT_128.png,none,{},NA,True,0.0,,
+4,5.2.10.png,DWT,128,stego/4_DWT_128.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,128,stego/4_DWT_128.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,128,stego/4_DWT_128.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+4,5.2.10.png,DWT,128,stego/4_DWT_128.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.022727272727272728,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+4,5.2.10.png,DWT,128,stego/4_DWT_128.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+4,5.2.10.png,DWT,128,stego/4_DWT_128.png,salt_pepper,"{""amount"":0.01}",20260919,True,0.0,,
+4,5.2.10.png,DWT,128,stego/4_DWT_128.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+4,5.2.10.png,DWT,128,stego/4_DWT_128.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+4,5.2.10.png,DWT,128,stego/4_DWT_128.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+4,5.2.10.png,DWT,128,stego/4_DWT_128.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+4,5.2.10.png,DWT,128,stego/4_DWT_128.png,contrast,"{""alpha"":0.9}",NA,True,0.0,,
+4,5.2.10.png,DWT,128,stego/4_DWT_128.png,contrast,"{""alpha"":1.1}",NA,True,0.0,,
+4,5.2.10.png,DWT,128,stego/4_DWT_128.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,128,stego/4_DWT_128.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,128,stego/4_DWT_128.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,128,stego/4_DWT_128.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,512,stego/4_DWT_512.png,none,{},NA,True,0.0,,
+4,5.2.10.png,DWT,512,stego/4_DWT_512.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,512,stego/4_DWT_512.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,512,stego/4_DWT_512.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+4,5.2.10.png,DWT,512,stego/4_DWT_512.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.021075581395348836,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+4,5.2.10.png,DWT,512,stego/4_DWT_512.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+4,5.2.10.png,DWT,512,stego/4_DWT_512.png,salt_pepper,"{""amount"":0.01}",20260919,True,0.0,,
+4,5.2.10.png,DWT,512,stego/4_DWT_512.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+4,5.2.10.png,DWT,512,stego/4_DWT_512.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+4,5.2.10.png,DWT,512,stego/4_DWT_512.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+4,5.2.10.png,DWT,512,stego/4_DWT_512.png,brightness,"{""delta"":10.0}",NA,False,0.0026647286821705426,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+4,5.2.10.png,DWT,512,stego/4_DWT_512.png,contrast,"{""alpha"":0.9}",NA,False,0.00024224806201550387,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+4,5.2.10.png,DWT,512,stego/4_DWT_512.png,contrast,"{""alpha"":1.1}",NA,False,0.0031492248062015503,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+4,5.2.10.png,DWT,512,stego/4_DWT_512.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,512,stego/4_DWT_512.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,512,stego/4_DWT_512.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,512,stego/4_DWT_512.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,1024,stego/4_DWT_1024.png,none,{},NA,True,0.0,,
+4,5.2.10.png,DWT,1024,stego/4_DWT_1024.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,1024,stego/4_DWT_1024.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,1024,stego/4_DWT_1024.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+4,5.2.10.png,DWT,1024,stego/4_DWT_1024.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.022616731517509727,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+4,5.2.10.png,DWT,1024,stego/4_DWT_1024.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+4,5.2.10.png,DWT,1024,stego/4_DWT_1024.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.00012159533073929961,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+4,5.2.10.png,DWT,1024,stego/4_DWT_1024.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+4,5.2.10.png,DWT,1024,stego/4_DWT_1024.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+4,5.2.10.png,DWT,1024,stego/4_DWT_1024.png,brightness,"{""delta"":-10.0}",NA,False,0.00012159533073929961,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+4,5.2.10.png,DWT,1024,stego/4_DWT_1024.png,brightness,"{""delta"":10.0}",NA,False,0.0038910505836575876,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+4,5.2.10.png,DWT,1024,stego/4_DWT_1024.png,contrast,"{""alpha"":0.9}",NA,False,0.00036478599221789884,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+4,5.2.10.png,DWT,1024,stego/4_DWT_1024.png,contrast,"{""alpha"":1.1}",NA,False,0.004255836575875486,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+4,5.2.10.png,DWT,1024,stego/4_DWT_1024.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,1024,stego/4_DWT_1024.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,1024,stego/4_DWT_1024.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,1024,stego/4_DWT_1024.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,1500,stego/4_DWT_1500.png,none,{},NA,True,0.0,,
+4,5.2.10.png,DWT,1500,stego/4_DWT_1500.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,1500,stego/4_DWT_1500.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,1500,stego/4_DWT_1500.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+4,5.2.10.png,DWT,1500,stego/4_DWT_1500.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.022190824468085107,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+4,5.2.10.png,DWT,1500,stego/4_DWT_1500.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+4,5.2.10.png,DWT,1500,stego/4_DWT_1500.png,salt_pepper,"{""amount"":0.01}",20260919,False,8.311170212765957e-05,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+4,5.2.10.png,DWT,1500,stego/4_DWT_1500.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+4,5.2.10.png,DWT,1500,stego/4_DWT_1500.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+4,5.2.10.png,DWT,1500,stego/4_DWT_1500.png,brightness,"{""delta"":-10.0}",NA,False,0.00016622340425531914,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+4,5.2.10.png,DWT,1500,stego/4_DWT_1500.png,brightness,"{""delta"":10.0}",NA,False,0.0026595744680851063,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+4,5.2.10.png,DWT,1500,stego/4_DWT_1500.png,contrast,"{""alpha"":0.9}",NA,False,0.0002493351063829787,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+4,5.2.10.png,DWT,1500,stego/4_DWT_1500.png,contrast,"{""alpha"":1.1}",NA,False,0.0029920212765957447,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+4,5.2.10.png,DWT,1500,stego/4_DWT_1500.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,1500,stego/4_DWT_1500.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,1500,stego/4_DWT_1500.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+4,5.2.10.png,DWT,1500,stego/4_DWT_1500.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,128,stego/5_PVD_128.png,none,{},NA,True,0.0,,
+5,7.1.02.png,PVD,128,stego/5_PVD_128.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,128,stego/5_PVD_128.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,128,stego/5_PVD_128.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,128,stego/5_PVD_128.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,128,stego/5_PVD_128.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+5,7.1.02.png,PVD,128,stego/5_PVD_128.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.4734848484848485,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+5,7.1.02.png,PVD,128,stego/5_PVD_128.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,128,stego/5_PVD_128.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,128,stego/5_PVD_128.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+5,7.1.02.png,PVD,128,stego/5_PVD_128.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+5,7.1.02.png,PVD,128,stego/5_PVD_128.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,128,stego/5_PVD_128.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,128,stego/5_PVD_128.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,128,stego/5_PVD_128.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,128,stego/5_PVD_128.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,128,stego/5_PVD_128.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,512,stego/5_PVD_512.png,none,{},NA,True,0.0,,
+5,7.1.02.png,PVD,512,stego/5_PVD_512.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,512,stego/5_PVD_512.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,512,stego/5_PVD_512.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,512,stego/5_PVD_512.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,512,stego/5_PVD_512.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.38226744186046513,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+5,7.1.02.png,PVD,512,stego/5_PVD_512.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.4953972868217054,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+5,7.1.02.png,PVD,512,stego/5_PVD_512.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,512,stego/5_PVD_512.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,512,stego/5_PVD_512.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+5,7.1.02.png,PVD,512,stego/5_PVD_512.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+5,7.1.02.png,PVD,512,stego/5_PVD_512.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,512,stego/5_PVD_512.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,512,stego/5_PVD_512.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,512,stego/5_PVD_512.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,512,stego/5_PVD_512.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,512,stego/5_PVD_512.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1024,stego/5_PVD_1024.png,none,{},NA,True,0.0,,
+5,7.1.02.png,PVD,1024,stego/5_PVD_1024.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1024,stego/5_PVD_1024.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1024,stego/5_PVD_1024.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1024,stego/5_PVD_1024.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1024,stego/5_PVD_1024.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.4494163424124514,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+5,7.1.02.png,PVD,1024,stego/5_PVD_1024.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.4998784046692607,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+5,7.1.02.png,PVD,1024,stego/5_PVD_1024.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1024,stego/5_PVD_1024.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1024,stego/5_PVD_1024.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+5,7.1.02.png,PVD,1024,stego/5_PVD_1024.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+5,7.1.02.png,PVD,1024,stego/5_PVD_1024.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1024,stego/5_PVD_1024.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1024,stego/5_PVD_1024.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1024,stego/5_PVD_1024.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1024,stego/5_PVD_1024.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1024,stego/5_PVD_1024.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1500,stego/5_PVD_1500.png,none,{},NA,True,0.0,,
+5,7.1.02.png,PVD,1500,stego/5_PVD_1500.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1500,stego/5_PVD_1500.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1500,stego/5_PVD_1500.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1500,stego/5_PVD_1500.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1500,stego/5_PVD_1500.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.4701628989361702,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+5,7.1.02.png,PVD,1500,stego/5_PVD_1500.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.4995844414893617,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+5,7.1.02.png,PVD,1500,stego/5_PVD_1500.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1500,stego/5_PVD_1500.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1500,stego/5_PVD_1500.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+5,7.1.02.png,PVD,1500,stego/5_PVD_1500.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+5,7.1.02.png,PVD,1500,stego/5_PVD_1500.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1500,stego/5_PVD_1500.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1500,stego/5_PVD_1500.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1500,stego/5_PVD_1500.png,resize,"{""scale"":1.25}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1500,stego/5_PVD_1500.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,PVD,1500,stego/5_PVD_1500.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,DWT,128,stego/5_DWT_128.png,none,{},NA,True,0.0,,
+5,7.1.02.png,DWT,128,stego/5_DWT_128.png,jpeg,"{""quality"":90}",NA,False,0.24621212121212122,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+5,7.1.02.png,DWT,128,stego/5_DWT_128.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,128,stego/5_DWT_128.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+5,7.1.02.png,DWT,128,stego/5_DWT_128.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.021780303030303032,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+5,7.1.02.png,DWT,128,stego/5_DWT_128.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+5,7.1.02.png,DWT,128,stego/5_DWT_128.png,salt_pepper,"{""amount"":0.01}",20260919,True,0.0,,
+5,7.1.02.png,DWT,128,stego/5_DWT_128.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,128,stego/5_DWT_128.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,128,stego/5_DWT_128.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+5,7.1.02.png,DWT,128,stego/5_DWT_128.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+5,7.1.02.png,DWT,128,stego/5_DWT_128.png,contrast,"{""alpha"":0.9}",NA,True,0.0,,
+5,7.1.02.png,DWT,128,stego/5_DWT_128.png,contrast,"{""alpha"":1.1}",NA,True,0.0,,
+5,7.1.02.png,DWT,128,stego/5_DWT_128.png,resize,"{""scale"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,128,stego/5_DWT_128.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,128,stego/5_DWT_128.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,DWT,128,stego/5_DWT_128.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,512,stego/5_DWT_512.png,none,{},NA,True,0.0,,
+5,7.1.02.png,DWT,512,stego/5_DWT_512.png,jpeg,"{""quality"":90}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,512,stego/5_DWT_512.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,512,stego/5_DWT_512.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+5,7.1.02.png,DWT,512,stego/5_DWT_512.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.020106589147286823,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+5,7.1.02.png,DWT,512,stego/5_DWT_512.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+5,7.1.02.png,DWT,512,stego/5_DWT_512.png,salt_pepper,"{""amount"":0.01}",20260919,True,0.0,,
+5,7.1.02.png,DWT,512,stego/5_DWT_512.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,512,stego/5_DWT_512.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,512,stego/5_DWT_512.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+5,7.1.02.png,DWT,512,stego/5_DWT_512.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+5,7.1.02.png,DWT,512,stego/5_DWT_512.png,contrast,"{""alpha"":0.9}",NA,True,0.0,,
+5,7.1.02.png,DWT,512,stego/5_DWT_512.png,contrast,"{""alpha"":1.1}",NA,True,0.0,,
+5,7.1.02.png,DWT,512,stego/5_DWT_512.png,resize,"{""scale"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,512,stego/5_DWT_512.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,512,stego/5_DWT_512.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,DWT,512,stego/5_DWT_512.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,DWT,1024,stego/5_DWT_1024.png,none,{},NA,True,0.0,,
+5,7.1.02.png,DWT,1024,stego/5_DWT_1024.png,jpeg,"{""quality"":90}",NA,False,0.2699416342412451,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+5,7.1.02.png,DWT,1024,stego/5_DWT_1024.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,1024,stego/5_DWT_1024.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+5,7.1.02.png,DWT,1024,stego/5_DWT_1024.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.023711089494163423,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+5,7.1.02.png,DWT,1024,stego/5_DWT_1024.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+5,7.1.02.png,DWT,1024,stego/5_DWT_1024.png,salt_pepper,"{""amount"":0.01}",20260919,True,0.0,,
+5,7.1.02.png,DWT,1024,stego/5_DWT_1024.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,1024,stego/5_DWT_1024.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,1024,stego/5_DWT_1024.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+5,7.1.02.png,DWT,1024,stego/5_DWT_1024.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+5,7.1.02.png,DWT,1024,stego/5_DWT_1024.png,contrast,"{""alpha"":0.9}",NA,True,0.0,,
+5,7.1.02.png,DWT,1024,stego/5_DWT_1024.png,contrast,"{""alpha"":1.1}",NA,True,0.0,,
+5,7.1.02.png,DWT,1024,stego/5_DWT_1024.png,resize,"{""scale"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,1024,stego/5_DWT_1024.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,1024,stego/5_DWT_1024.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,DWT,1024,stego/5_DWT_1024.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,DWT,1500,stego/5_DWT_1500.png,none,{},NA,True,0.0,,
+5,7.1.02.png,DWT,1500,stego/5_DWT_1500.png,jpeg,"{""quality"":90}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,1500,stego/5_DWT_1500.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,1500,stego/5_DWT_1500.png,gaussian_noise,"{""sigma"":1.0}",20260919,True,0.0,,
+5,7.1.02.png,DWT,1500,stego/5_DWT_1500.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.023769946808510637,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+5,7.1.02.png,DWT,1500,stego/5_DWT_1500.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+5,7.1.02.png,DWT,1500,stego/5_DWT_1500.png,salt_pepper,"{""amount"":0.01}",20260919,False,8.311170212765957e-05,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+5,7.1.02.png,DWT,1500,stego/5_DWT_1500.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,1500,stego/5_DWT_1500.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,1500,stego/5_DWT_1500.png,brightness,"{""delta"":-10.0}",NA,True,0.0,,
+5,7.1.02.png,DWT,1500,stego/5_DWT_1500.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+5,7.1.02.png,DWT,1500,stego/5_DWT_1500.png,contrast,"{""alpha"":0.9}",NA,True,0.0,,
+5,7.1.02.png,DWT,1500,stego/5_DWT_1500.png,contrast,"{""alpha"":1.1}",NA,True,0.0,,
+5,7.1.02.png,DWT,1500,stego/5_DWT_1500.png,resize,"{""scale"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,1500,stego/5_DWT_1500.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+5,7.1.02.png,DWT,1500,stego/5_DWT_1500.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+5,7.1.02.png,DWT,1500,stego/5_DWT_1500.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,128,stego/6_PVD_128.png,none,{},NA,True,0.0,,
+6,gray21.512.png,PVD,128,stego/6_PVD_128.png,jpeg,"{""quality"":90}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,128,stego/6_PVD_128.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,128,stego/6_PVD_128.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,128,stego/6_PVD_128.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,128,stego/6_PVD_128.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+6,gray21.512.png,PVD,128,stego/6_PVD_128.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.36553030303030304,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+6,gray21.512.png,PVD,128,stego/6_PVD_128.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,128,stego/6_PVD_128.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,128,stego/6_PVD_128.png,brightness,"{""delta"":-10.0}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,128,stego/6_PVD_128.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+6,gray21.512.png,PVD,128,stego/6_PVD_128.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,128,stego/6_PVD_128.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,128,stego/6_PVD_128.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,128,stego/6_PVD_128.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,128,stego/6_PVD_128.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,128,stego/6_PVD_128.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,512,stego/6_PVD_512.png,none,{},NA,True,0.0,,
+6,gray21.512.png,PVD,512,stego/6_PVD_512.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,512,stego/6_PVD_512.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,512,stego/6_PVD_512.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,512,stego/6_PVD_512.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,512,stego/6_PVD_512.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.3812984496124031,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+6,gray21.512.png,PVD,512,stego/6_PVD_512.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.4900678294573643,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+6,gray21.512.png,PVD,512,stego/6_PVD_512.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,512,stego/6_PVD_512.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,512,stego/6_PVD_512.png,brightness,"{""delta"":-10.0}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,512,stego/6_PVD_512.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+6,gray21.512.png,PVD,512,stego/6_PVD_512.png,contrast,"{""alpha"":0.9}",NA,False,0.4786821705426357,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+6,gray21.512.png,PVD,512,stego/6_PVD_512.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,512,stego/6_PVD_512.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,512,stego/6_PVD_512.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,512,stego/6_PVD_512.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,512,stego/6_PVD_512.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,1024,stego/6_PVD_1024.png,none,{},NA,True,0.0,,
+6,gray21.512.png,PVD,1024,stego/6_PVD_1024.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,1024,stego/6_PVD_1024.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,1024,stego/6_PVD_1024.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,1024,stego/6_PVD_1024.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,1024,stego/6_PVD_1024.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.4489299610894942,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+6,gray21.512.png,PVD,1024,stego/6_PVD_1024.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.4897859922178988,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+6,gray21.512.png,PVD,1024,stego/6_PVD_1024.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,1024,stego/6_PVD_1024.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,1024,stego/6_PVD_1024.png,brightness,"{""delta"":-10.0}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,1024,stego/6_PVD_1024.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+6,gray21.512.png,PVD,1024,stego/6_PVD_1024.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,1024,stego/6_PVD_1024.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,1024,stego/6_PVD_1024.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,1024,stego/6_PVD_1024.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,1024,stego/6_PVD_1024.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,1024,stego/6_PVD_1024.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,1500,stego/6_PVD_1500.png,none,{},NA,True,0.0,,
+6,gray21.512.png,PVD,1500,stego/6_PVD_1500.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,1500,stego/6_PVD_1500.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,1500,stego/6_PVD_1500.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,1500,stego/6_PVD_1500.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,1500,stego/6_PVD_1500.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.46983045212765956,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+6,gray21.512.png,PVD,1500,stego/6_PVD_1500.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.49559507978723405,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+6,gray21.512.png,PVD,1500,stego/6_PVD_1500.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,1500,stego/6_PVD_1500.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,1500,stego/6_PVD_1500.png,brightness,"{""delta"":-10.0}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,1500,stego/6_PVD_1500.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+6,gray21.512.png,PVD,1500,stego/6_PVD_1500.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,1500,stego/6_PVD_1500.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,1500,stego/6_PVD_1500.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,PVD,1500,stego/6_PVD_1500.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,1500,stego/6_PVD_1500.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,PVD,1500,stego/6_PVD_1500.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,128,stego/6_DWT_128.png,none,{},NA,True,0.0,,
+6,gray21.512.png,DWT,128,stego/6_DWT_128.png,jpeg,"{""quality"":90}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,128,stego/6_DWT_128.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,128,stego/6_DWT_128.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,0.022727272727272728,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+6,gray21.512.png,DWT,128,stego/6_DWT_128.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.10700757575757576,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+6,gray21.512.png,DWT,128,stego/6_DWT_128.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+6,gray21.512.png,DWT,128,stego/6_DWT_128.png,salt_pepper,"{""amount"":0.01}",20260919,True,0.0,,
+6,gray21.512.png,DWT,128,stego/6_DWT_128.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,128,stego/6_DWT_128.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,128,stego/6_DWT_128.png,brightness,"{""delta"":-10.0}",NA,False,0.14299242424242425,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+6,gray21.512.png,DWT,128,stego/6_DWT_128.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+6,gray21.512.png,DWT,128,stego/6_DWT_128.png,contrast,"{""alpha"":0.9}",NA,False,0.14299242424242425,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+6,gray21.512.png,DWT,128,stego/6_DWT_128.png,contrast,"{""alpha"":1.1}",NA,False,0.14299242424242425,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+6,gray21.512.png,DWT,128,stego/6_DWT_128.png,resize,"{""scale"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,128,stego/6_DWT_128.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,128,stego/6_DWT_128.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,DWT,128,stego/6_DWT_128.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,512,stego/6_DWT_512.png,none,{},NA,True,0.0,,
+6,gray21.512.png,DWT,512,stego/6_DWT_512.png,jpeg,"{""quality"":90}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,512,stego/6_DWT_512.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,512,stego/6_DWT_512.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,0.011627906976744186,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+6,gray21.512.png,DWT,512,stego/6_DWT_512.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.060077519379844964,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+6,gray21.512.png,DWT,512,stego/6_DWT_512.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+6,gray21.512.png,DWT,512,stego/6_DWT_512.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.00024224806201550387,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+6,gray21.512.png,DWT,512,stego/6_DWT_512.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,512,stego/6_DWT_512.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,512,stego/6_DWT_512.png,brightness,"{""delta"":-10.0}",NA,False,0.06661821705426356,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+6,gray21.512.png,DWT,512,stego/6_DWT_512.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+6,gray21.512.png,DWT,512,stego/6_DWT_512.png,contrast,"{""alpha"":0.9}",NA,False,0.06661821705426356,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+6,gray21.512.png,DWT,512,stego/6_DWT_512.png,contrast,"{""alpha"":1.1}",NA,False,0.06661821705426356,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+6,gray21.512.png,DWT,512,stego/6_DWT_512.png,resize,"{""scale"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,512,stego/6_DWT_512.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,512,stego/6_DWT_512.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,DWT,512,stego/6_DWT_512.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,DWT,1024,stego/6_DWT_1024.png,none,{},NA,True,0.0,,
+6,gray21.512.png,DWT,1024,stego/6_DWT_1024.png,jpeg,"{""quality"":90}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,1024,stego/6_DWT_1024.png,jpeg,"{""quality"":70}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,1024,stego/6_DWT_1024.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,0.005836575875486381,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+6,gray21.512.png,DWT,1024,stego/6_DWT_1024.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,0.04207198443579767,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+6,gray21.512.png,DWT,1024,stego/6_DWT_1024.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+6,gray21.512.png,DWT,1024,stego/6_DWT_1024.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.00012159533073929961,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+6,gray21.512.png,DWT,1024,stego/6_DWT_1024.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,1024,stego/6_DWT_1024.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,1024,stego/6_DWT_1024.png,brightness,"{""delta"":-10.0}",NA,False,0.03343871595330739,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+6,gray21.512.png,DWT,1024,stego/6_DWT_1024.png,brightness,"{""delta"":10.0}",NA,True,0.0,,
+6,gray21.512.png,DWT,1024,stego/6_DWT_1024.png,contrast,"{""alpha"":0.9}",NA,False,0.03343871595330739,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+6,gray21.512.png,DWT,1024,stego/6_DWT_1024.png,contrast,"{""alpha"":1.1}",NA,False,0.03343871595330739,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+6,gray21.512.png,DWT,1024,stego/6_DWT_1024.png,resize,"{""scale"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,1024,stego/6_DWT_1024.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+6,gray21.512.png,DWT,1024,stego/6_DWT_1024.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+6,gray21.512.png,DWT,1024,stego/6_DWT_1024.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,128,stego/7_PVD_128.png,none,{},NA,True,0.0,,
+7,ruler.512.png,PVD,128,stego/7_PVD_128.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,128,stego/7_PVD_128.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,128,stego/7_PVD_128.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,128,stego/7_PVD_128.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,128,stego/7_PVD_128.png,salt_pepper,"{""amount"":0.001}",20260919,True,0.0,,
+7,ruler.512.png,PVD,128,stego/7_PVD_128.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.3172348484848485,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+7,ruler.512.png,PVD,128,stego/7_PVD_128.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,128,stego/7_PVD_128.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,128,stego/7_PVD_128.png,brightness,"{""delta"":-10.0}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,128,stego/7_PVD_128.png,brightness,"{""delta"":10.0}",NA,False,0.09848484848484848,PayloadMismatch,LENGTH khớp nhưng payload thay đổi.
+7,ruler.512.png,PVD,128,stego/7_PVD_128.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,128,stego/7_PVD_128.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,128,stego/7_PVD_128.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,128,stego/7_PVD_128.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,128,stego/7_PVD_128.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,128,stego/7_PVD_128.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,512,stego/7_PVD_512.png,none,{},NA,True,0.0,,
+7,ruler.512.png,PVD,512,stego/7_PVD_512.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,512,stego/7_PVD_512.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,512,stego/7_PVD_512.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,512,stego/7_PVD_512.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,512,stego/7_PVD_512.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.0014534883720930232,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+7,ruler.512.png,PVD,512,stego/7_PVD_512.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.46875,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+7,ruler.512.png,PVD,512,stego/7_PVD_512.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,512,stego/7_PVD_512.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,512,stego/7_PVD_512.png,brightness,"{""delta"":-10.0}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,512,stego/7_PVD_512.png,brightness,"{""delta"":10.0}",NA,False,0.29941860465116277,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+7,ruler.512.png,PVD,512,stego/7_PVD_512.png,contrast,"{""alpha"":0.9}",NA,False,0.43435077519379844,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+7,ruler.512.png,PVD,512,stego/7_PVD_512.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,512,stego/7_PVD_512.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,512,stego/7_PVD_512.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,512,stego/7_PVD_512.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,512,stego/7_PVD_512.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,1024,stego/7_PVD_1024.png,none,{},NA,True,0.0,,
+7,ruler.512.png,PVD,1024,stego/7_PVD_1024.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,1024,stego/7_PVD_1024.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,1024,stego/7_PVD_1024.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,1024,stego/7_PVD_1024.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,1024,stego/7_PVD_1024.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.0007295719844357977,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+7,ruler.512.png,PVD,1024,stego/7_PVD_1024.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.4916099221789883,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+7,ruler.512.png,PVD,1024,stego/7_PVD_1024.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,1024,stego/7_PVD_1024.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,1024,stego/7_PVD_1024.png,brightness,"{""delta"":-10.0}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,1024,stego/7_PVD_1024.png,brightness,"{""delta"":10.0}",NA,False,0.32928015564202334,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+7,ruler.512.png,PVD,1024,stego/7_PVD_1024.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,1024,stego/7_PVD_1024.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,1024,stego/7_PVD_1024.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,1024,stego/7_PVD_1024.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,1024,stego/7_PVD_1024.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,1024,stego/7_PVD_1024.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,1500,stego/7_PVD_1500.png,none,{},NA,True,0.0,,
+7,ruler.512.png,PVD,1500,stego/7_PVD_1500.png,jpeg,"{""quality"":90}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,1500,stego/7_PVD_1500.png,jpeg,"{""quality"":70}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,1500,stego/7_PVD_1500.png,gaussian_noise,"{""sigma"":1.0}",20260919,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,1500,stego/7_PVD_1500.png,gaussian_noise,"{""sigma"":3.0}",20260919,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,1500,stego/7_PVD_1500.png,salt_pepper,"{""amount"":0.001}",20260919,False,0.0004986702127659574,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+7,ruler.512.png,PVD,1500,stego/7_PVD_1500.png,salt_pepper,"{""amount"":0.01}",20260919,False,0.5,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+7,ruler.512.png,PVD,1500,stego/7_PVD_1500.png,blur,"{""kernel_size"":3}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,1500,stego/7_PVD_1500.png,blur,"{""kernel_size"":5}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,1500,stego/7_PVD_1500.png,brightness,"{""delta"":-10.0}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,1500,stego/7_PVD_1500.png,brightness,"{""delta"":10.0}",NA,False,0.34075797872340424,UTF8Error,Trích xuất thất bại: Payload chứa UTF-8 lỗi.
+7,ruler.512.png,PVD,1500,stego/7_PVD_1500.png,contrast,"{""alpha"":0.9}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,1500,stego/7_PVD_1500.png,contrast,"{""alpha"":1.1}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,1500,stego/7_PVD_1500.png,resize,"{""scale"":0.75}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,1500,stego/7_PVD_1500.png,resize,"{""scale"":1.25}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
+7,ruler.512.png,PVD,1500,stego/7_PVD_1500.png,crop,"{""fraction"":0.9}",NA,False,NA,LengthError,Trích xuất thất bại: LENGTH sai hoặc không đủ dữ liệu cho payload.
+7,ruler.512.png,PVD,1500,stego/7_PVD_1500.png,crop,"{""fraction"":0.75}",NA,False,NA,LengthMismatch,LENGTH khác packet gốc; BER=NA vì chưa xác lập đồng bộ.
