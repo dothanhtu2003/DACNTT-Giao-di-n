@@ -10,6 +10,7 @@ import json
 from pathlib import Path
 import platform
 from statistics import mean, stdev
+import tempfile
 from uuid import uuid4
 
 from PIL import Image
@@ -65,6 +66,7 @@ def batch_config(config=None):
             attacks.append(item)
     config['attacks'] = attacks
     config['seed_policy'] = 'listed seed directly for noise only; shared across methods/images/payloads'
+    config['export_details'] = bool(config.get('export_details', True))
     return config
 
 
@@ -136,7 +138,10 @@ def run_batch(image_paths, output_root, config=None, cancel=None, progress=None)
         raise ValueError('Không có ảnh nguồn PNG/BMP.')
     run_id = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '_' + uuid4().hex
     folder = Path(output_root).resolve() / run_id
-    (folder / 'stego').mkdir(parents=True, exist_ok=False)
+    export_details = config['export_details']
+    folder.mkdir(parents=True, exist_ok=False)
+    if export_details:
+        (folder / 'stego').mkdir()
     counts = planned_counts(len(paths), config)
     rows, baselines, images = [], [], []
     stopped = lambda: cancel is not None and cancel.is_set()
@@ -175,6 +180,7 @@ def run_batch(image_paths, output_root, config=None, cancel=None, progress=None)
                         'payload_bytes': byte_count, 'baseline_status': 'embed_io_error',
                         'stego_path': '', 'error': '', 'capacity_bits': None}
                 output = expected = None
+                temporary_stego = None
                 try:
                     if load_error:
                         raise load_error
@@ -186,15 +192,28 @@ def run_batch(image_paths, output_root, config=None, cancel=None, progress=None)
                     else:
                         expected = packet_to_bits(build_packet(public_payload(byte_count)))
                         output = engine.embed(image, expected)
-                        relative = f'stego/{index}_{method}_{byte_count}.png'
-                        save_stego(output, folder / relative)
-                        base['stego_path'] = relative
-                        output = load_image(folder / relative)
+                        if export_details:
+                            relative = f'stego/{index}_{method}_{byte_count}.png'
+                            stego_file = folder / relative
+                            base['stego_path'] = relative
+                        else:
+                            handle = tempfile.NamedTemporaryFile(suffix='.png', delete=False)
+                            temporary_stego = Path(handle.name)
+                            handle.close()
+                            stego_file = temporary_stego
+                        save_stego(output, stego_file)
+                        output = load_image(stego_file)
                         assessment = assess_extraction(engine, output, expected)
                         base.update(baseline_status='valid' if assessment['extract_success'] else 'mismatch',
                                     error=assessment['notes'])
                 except Exception as exc:
                     base['error'] = f'{type(exc).__name__}: {exc}'
+                finally:
+                    if temporary_stego is not None:
+                        try:
+                            temporary_stego.unlink(missing_ok=True)
+                        except OSError:
+                            pass
                 baselines.append(base)
                 if base['baseline_status'] == 'valid':
                     for attack, seed in attack_cases(config):
@@ -224,11 +243,12 @@ def run_batch(image_paths, output_root, config=None, cancel=None, progress=None)
                 'images': images, 'planned': counts, 'completed_cases': len(rows),
                 'processed_baselines': len(baselines), 'environment': {'python': platform.python_version(),
                 'platform': platform.platform(), **{n: version(n) for n in ('numpy', 'Pillow', 'PyWavelets', 'scikit-image', 'opencv-python')}}}
-    _csv(folder / 'cases.csv', rows, ['image_id', 'image_name', 'method', 'payload_bytes', 'stego_path',
-         'attack', 'attack_parameter', 'seed', 'extract_success', 'ber_after_attack', 'error_type', 'notes'])
-    _csv(folder / 'baselines.csv', baselines, ['image_id', 'image_name', 'method', 'payload_bytes', 'baseline_status', 'capacity_bits', 'stego_path', 'error'])
     _csv(folder / 'summary.csv', summary, list(summary[0]))
     (folder / 'config.json').write_text(json.dumps(snapshot, ensure_ascii=False, indent=2, allow_nan=False), encoding='utf-8')
+    if export_details:
+        _csv(folder / 'cases.csv', rows, ['image_id', 'image_name', 'method', 'payload_bytes', 'stego_path',
+             'attack', 'attack_parameter', 'seed', 'extract_success', 'ber_after_attack', 'error_type', 'notes'])
+        _csv(folder / 'baselines.csv', baselines, ['image_id', 'image_name', 'method', 'payload_bytes', 'baseline_status', 'capacity_bits', 'stego_path', 'error'])
     lines = ['# Kết quả Bộ ảnh', '', f'Trạng thái: {status}; chưa đầy đủ: {snapshot["incomplete"]}.',
              f'Đã hoàn tất {len(rows)}/{counts["cases"]} ca dự kiến.', '',
              'Tỷ lệ khôi phục toàn bộ packet là chỉ số chính. Mẫu số chỉ gồm ca đã hoàn tất; ca chưa chạy không là thất bại.',
@@ -244,6 +264,8 @@ def run_batch(image_paths, output_root, config=None, cancel=None, progress=None)
         lines.append('| ' + ' | '.join('NA' if r[k] is None else str(r[k]) for k in
                      ('scope', 'method', 'payload_bytes', 'attack', 'attack_parameter', 'completed_cases',
                       'success_cases', 'image_success_mean', 'image_success_std', 'image_ber_mean', 'ber_na_cases')) + ' |')
-    (folder / 'summary.md').write_text('\n'.join(lines), encoding='utf-8')
+    if export_details:
+        (folder / 'summary.md').write_text('\n'.join(lines), encoding='utf-8')
     return {'run_id': run_id, 'status': status, 'output_dir': str(folder), 'counts': counts,
-            'completed_cases': len(rows), 'summary': summary, 'baselines': baselines, 'rows': rows}
+            'completed_cases': len(rows), 'summary': summary, 'baselines': baselines, 'rows': rows,
+            'details_saved': export_details}

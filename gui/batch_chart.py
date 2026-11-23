@@ -131,7 +131,7 @@ def chart_display_groups(plot):
     return visible, zero
 
 
-def chart_figure(plot):
+def chart_figure(plot, show_footer=True):
     """Same figure for GUI and PNG; complete labels, no relative normalization."""
     groups, zero_groups = chart_display_groups(plot)
     methods = plot['methods']
@@ -169,7 +169,7 @@ def chart_figure(plot):
                      + '; '.join(entries) + '.\nChỉ rút gọn cách vẽ; bảng tổng hợp vẫn giữ đầy đủ từng cấu hình.\n')
     footer = wrapped(zero_note + '\n'.join(notes) + '\n' + plot['limit_note'] + '\nKhông xác định: giá trị thiếu/NA; không phải 0%.', 120)
     top_inches = .75 + .17 * (header.count('\n') + 1)
-    footer_inches = .17 * (footer.count('\n') + 1) + .3
+    footer_inches = (.17 * (footer.count('\n') + 1) + .3) if show_footer else 0.45
     bottom_inches = footer_inches + .6 + .19 * max((label.count('\n') + 1 for label in labels), default=1)
     height = top_inches + 3.5 + bottom_inches
     fig = Figure(figsize=(max(10, len(groups) * 1.15), height), dpi=100, facecolor='white')
@@ -204,7 +204,8 @@ def chart_figure(plot):
     ax.set_xticks(range(len(groups)), labels=labels, fontsize=9)
     ax.legend(handles=[Patch(facecolor=COLORS[METHODS.index(m)], label=m) for m in methods],
               loc='upper left', bbox_to_anchor=(0, -(bottom_inches - footer_inches - .4) / 3.5), ncols=len(methods), frameon=False)
-    fig.text(.04, .18 / height, footer, ha='left', va='bottom', fontsize=9, color='#596579')
+    if show_footer:
+        fig.text(.04, .18 / height, footer, ha='left', va='bottom', fontsize=9, color='#596579')
     return fig
 
 
@@ -221,7 +222,18 @@ class BatchChartWindow(tk.Toplevel):
         self.plots = deepcopy(plots)
         self.figures = []
         self.photos = []
-        self.transient(parent.winfo_toplevel())
+        self._labels = []
+        self._previews = []
+        self._min_widths = []
+        self._resize_timer = None
+        self._current_width = None
+
+        toolbar = ttk.Frame(self, padding=(12, 6))
+        toolbar.pack(fill='x')
+        self.show_notes = tk.BooleanVar(value=False)
+        ttk.Checkbutton(toolbar, text='Hiện miêu tả / ghi chú chi tiết dưới biểu đồ',
+                        variable=self.show_notes, command=self.toggle_notes).pack(side='left')
+
         container = ttk.Frame(self)
         container.pack(fill='both', expand=True)
         container.rowconfigure(0, weight=1)
@@ -234,22 +246,102 @@ class BatchChartWindow(tk.Toplevel):
         horizontal.grid(row=1, column=0, sticky='ew')
         self.scroll_canvas.configure(yscrollcommand=vertical.set, xscrollcommand=horizontal.set)
         content = ttk.Frame(self.scroll_canvas)
-        self.scroll_canvas.create_window((0, 0), window=content, anchor='nw')
+        self.canvas_window = self.scroll_canvas.create_window((0, 0), window=content, anchor='nw')
         content.bind('<Configure>', lambda e: self.scroll_canvas.configure(scrollregion=self.scroll_canvas.bbox('all')))
+
+        def _on_mousewheel(event):
+            self.scroll_canvas.yview_scroll(int(-1 * (event.delta / 120)), 'units')
+
+        self.bind('<MouseWheel>', _on_mousewheel)
+        self.scroll_canvas.bind('<MouseWheel>', _on_mousewheel)
+        content.bind('<MouseWheel>', _on_mousewheel)
+        self.bind('<Escape>', lambda event: self.close())
+
         for index, plot in enumerate(self.plots):
             panel = ttk.Frame(content)
             panel.pack(fill='x', pady=10)
+            panel.bind('<MouseWheel>', _on_mousewheel)
             ttk.Button(panel, text=f'Lưu PNG · Payload {plot["payload"]} byte',
                        command=lambda i=index: self.choose_save(i)).pack(anchor='w', padx=10)
-            fig = chart_figure(plot)
+            fig = chart_figure(plot, show_footer=self.show_notes.get())
             self.figures.append(fig)
+            visible, _ = chart_display_groups(plot)
+            min_width = max(10, len(visible) * 1.15)
+            self._min_widths.append(min_width)
             # Agg pixels keep the preview's size predictable on scaled Windows displays.
             fig.canvas.draw()
             preview = Image.frombytes('RGBA', fig.canvas.get_width_height(), bytes(fig.canvas.buffer_rgba()))
+            self._previews.append(preview)
             photo = ImageTk.PhotoImage(preview, master=self)
             self.photos.append(photo)
-            ttk.Label(panel, image=photo).pack()
+            label = ttk.Label(panel, image=photo)
+            label.pack(padx=10)
+            label.bind('<MouseWheel>', _on_mousewheel)
+            self._labels.append(label)
+
+        self.scroll_canvas.bind('<Configure>', self._on_canvas_configure)
         self.protocol('WM_DELETE_WINDOW', self.close)
+
+    def toggle_notes(self):
+        show = self.show_notes.get()
+        width = self._current_width or self.scroll_canvas.winfo_width() or 1000
+        for index, plot in enumerate(self.plots):
+            min_width = self._min_widths[index]
+            target_width_in = max(min_width, (width - 24) / 100.0)
+            self.figures[index].clear()
+            fig = chart_figure(plot, show_footer=show)
+            fig.set_figwidth(target_width_in)
+            self.figures[index] = fig
+            fig.canvas.draw()
+            preview = Image.frombytes('RGBA', fig.canvas.get_width_height(), bytes(fig.canvas.buffer_rgba()))
+            self._previews[index] = preview
+            photo = ImageTk.PhotoImage(preview, master=self)
+            self.photos[index] = photo
+            self._labels[index].configure(image=photo)
+        self.scroll_canvas.configure(scrollregion=self.scroll_canvas.bbox('all'))
+
+    def _on_canvas_configure(self, event):
+        canvas_width = event.width
+        max_min_width_px = int(max(self._min_widths, default=10) * 100)
+        content_width = max(canvas_width, max_min_width_px)
+        self.scroll_canvas.itemconfig(self.canvas_window, width=content_width)
+        self.scroll_canvas.configure(scrollregion=self.scroll_canvas.bbox('all'))
+
+        if self._current_width is not None and abs(canvas_width - self._current_width) < 15:
+            return
+
+        target_width_px = max(content_width - 24, max_min_width_px - 24)
+        for i, preview in enumerate(self._previews):
+            if preview.width != target_width_px:
+                scaled = preview.resize((target_width_px, preview.height), Image.Resampling.BILINEAR)
+                temp_photo = ImageTk.PhotoImage(scaled, master=self)
+                self.photos[i] = temp_photo
+                self._labels[i].configure(image=temp_photo)
+
+        if self._resize_timer is not None:
+            try:
+                self.after_cancel(self._resize_timer)
+            except Exception:
+                pass
+        self._resize_timer = self.after(100, lambda w=canvas_width: self._redraw_figures(w))
+
+    def _redraw_figures(self, width):
+        self._resize_timer = None
+        if not self.winfo_exists():
+            return
+        self._current_width = width
+        for index, plot in enumerate(self.plots):
+            min_width = self._min_widths[index]
+            target_width_in = max(min_width, (width - 24) / 100.0)
+            fig = self.figures[index]
+            fig.set_figwidth(target_width_in)
+            fig.canvas.draw()
+            preview = Image.frombytes('RGBA', fig.canvas.get_width_height(), bytes(fig.canvas.buffer_rgba()))
+            self._previews[index] = preview
+            photo = ImageTk.PhotoImage(preview, master=self)
+            self.photos[index] = photo
+            self._labels[index].configure(image=photo)
+        self.scroll_canvas.configure(scrollregion=self.scroll_canvas.bbox('all'))
 
     def choose_save(self, index):
         plot = self.plots[index]
@@ -264,7 +356,15 @@ class BatchChartWindow(tk.Toplevel):
                 messagebox.showerror('Không lưu được biểu đồ', str(exc), parent=self)
 
     def close(self):
+        if self._resize_timer is not None:
+            try:
+                self.after_cancel(self._resize_timer)
+            except Exception:
+                pass
+            self._resize_timer = None
         for figure in self.figures:
             figure.clear()
         self.destroy()
         self.photos.clear()
+        self._previews.clear()
+        self._labels.clear()

@@ -183,6 +183,7 @@ class BatchPanel(ttk.Frame):
         self.config_canvas.bind('<Configure>', lambda e: self.config_canvas.itemconfigure(config_window, width=e.width))
         self.source = tk.StringVar()
         self.destination = tk.StringVar(value=str(Path(__file__).resolve().parents[1] / 'experiments' / 'batch_results'))
+        self.export_details = tk.BooleanVar(value=False)
         config = default_config()
         self.payloads = tk.StringVar(value=', '.join(str(l['value']) for l in config['payload_levels']))
         self.seeds = tk.StringVar(value=', '.join(str(s) for s in range(config['seed'], config['seed'] + 5)))
@@ -192,6 +193,8 @@ class BatchPanel(ttk.Frame):
             row.pack(fill='x', pady=2)
             ttk.Button(row, text=title, command=command).pack(side='left')
             ttk.Entry(row, textvariable=variable).pack(side='left', fill='x', expand=True, padx=6)
+        ttk.Checkbutton(cfg, text='Lưu tệp chi tiết (các ca, baseline và ảnh stego)',
+                        variable=self.export_details).pack(anchor='w', pady=(2, 4))
         self.notice = ttk.Label(cfg, wraplength=850, text='Ảnh PNG/BMP trong thư mục đã chọn.')
         self.notice.pack(fill='x')
         for title, variable in [('Payload (byte)', self.payloads), ('Seed nhiễu', self.seeds)]:
@@ -384,9 +387,9 @@ class BatchPanel(ttk.Frame):
         row = self.row_data[selection[0]]
         window = tk.Toplevel(self)
         window.title('Chi tiết nhóm thực nghiệm')
-        window.transient(self.app)
         window.geometry(f'740x650+{max(0, self.app.winfo_rootx() + 80)}+{max(0, self.app.winfo_rooty() + 20)}')
         window.minsize(480, 360)
+        window.bind('<Escape>', lambda event: window.destroy())
         frame = ttk.Frame(window, padding=12)
         frame.pack(fill='both', expand=True)
         frame.columnconfigure(0, weight=1)
@@ -424,6 +427,7 @@ class BatchPanel(ttk.Frame):
 
     def capture_config(self):
         config = default_config()
+        config['export_details'] = self.export_details.get()
         config['payload_levels'] = [{'kind': 'bytes', 'value': v} for v in integer_list(self.payloads.get())]
         config['seeds'] = integer_list(self.seeds.get())
         config['attacks'] = []
